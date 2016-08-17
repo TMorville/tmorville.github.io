@@ -1,7 +1,11 @@
-# main links links
-main:
-  - title: "Sample Navigation Link"
-    url: https://mmistakes.github.io/minimal-mistakes/docs/navigation/
+- title: home
+  url: /
 
-  - title: "Sample Navigation Link 2"
-    url: /
+- title: about
+  url: /me
+
+- title: github
+  url: https://github.com/getmicah
+
+- title: twitter
+  url: https://twitter.com/getmicah
