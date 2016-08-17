@@ -1,9 +1,7 @@
-# Site navigation links
+# main links links
+main:
+  - title: "Sample Navigation Link"
+    url: https://mmistakes.github.io/minimal-mistakes/docs/navigation/
 
-- title: Articles
-  url: /Articles/
-  excerpt: "Peer reviewed and working articles"
-  image: 300x200.gif
-
-- title: DRCMR
-  url: http://drcmr.dk/ 
+  - title: "Sample Navigation Link 2"
+    url: /
