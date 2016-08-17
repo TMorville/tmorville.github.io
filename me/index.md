@@ -2,10 +2,7 @@
 layout: about
 ---
 
-Hello, my name is Micah Cowell. I am a self proclaimed web developer who likes the internet, hip hop, and fancy yo-yos.
+Hello, my name is Tobias and I do neuroscience.
 
-# What do you do?
-I make website and stuff. All the code I write is on my [Github](https://github.com/getmicah).
-
-# What programming languages do you use?
-When making websites I like using Javascript and Sass. I also like Python and making linux scripts.
+# What is my focus?
+My research triangulates between applied mathematics, computational biology and theoretical decision-making. The central motivation of my PhD project is to develop and improve a fundamental theory of choice based subject to normative constraints from physiology and evolution. Through my PhD I’ve tested the predictions from this theory via axiomatic methods using behavioural and neural measurement using magnetic resonance (in humans), optogenetics, and fibre optometry (in mice). 
