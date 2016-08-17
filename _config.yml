@@ -3,11 +3,12 @@
 title: "Tobias Morville"
 description: "Hello, world"
 logo: # 120x120 px default image used for Twitter summary card
-teaser: # 400x250 px default teaser image used in image archive grid
+teaser: bio-photo.jpg
 locale: en
 url: https://tmorville.github.io/
 feed:
 path: atom.xml
+categories: "Test"
 
 # Jekyll configuration
 
