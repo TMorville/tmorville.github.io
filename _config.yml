@@ -7,16 +7,16 @@ teaser: # 400x250 px default teaser image used in image archive grid
 locale: en
 url:
 feed:
-  path: atom.xml
+path: atom.xml
 
 # Jekyll configuration
 
 sass:
-  sass_dir: _sass
-  style: compressed
+sass_dir: _sass
+style: compressed
 permalink: /:categories/:title/
 kramdown:
-  toc_levels: 1..2
+toc_levels: 1..2
 highlighter: rouge
 gems:
   - jekyll-sitemap
@@ -26,15 +26,15 @@ gems:
 
 # Site owner
 owner: "Tobias Morville"
-  name: "Tobias"
-  email: "tobiasmorville@gmail.com"
-  twitter:
-  google:
-    ad-client:
-    ad-slot:
-  bio:
-  avatar: bio-photo.jpg # 160x160 px image for author byline
-  disqus-shortname:
+name: "Tobias"
+email: "tobiasmorville@gmail.com"
+twitter:
+google:
+ad-client:
+ad-slot:
+bio:
+avatar: bio-photo.jpg # 160x160 px image for author byline
+disqus-shortname:
 
 
 include:
