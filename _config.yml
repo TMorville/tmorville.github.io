@@ -25,9 +25,9 @@ gems:
 
 
 # Site owner
-owner:
-  name:
-  email:
+owner: "Tobias Morville"
+  name: "Tobias"
+  email: "tobiasmorville@gmail.com"
   twitter:
   google:
     ad-client:
