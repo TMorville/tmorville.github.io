@@ -12,8 +12,18 @@ layout: default
         {% endfor %}
     </ul>
 </div>
+<div class="portfolio">
+    <h1>Web Design:</h1>
+    <ul>
+</div>        {% for websites in site.data.websites %}
+        <li>
+            <a href="{{ websites.url }}">{{ websites.url }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
 <div class="blog">
-    <h1>Articles:</h1>
+    <h1>Blog Posts:</h1>
     <ul>
         {% for post in site.posts %}
         <li>
@@ -21,16 +31,3 @@ layout: default
         </li>
         {% endfor %}
     </ul>
-</div>
-<script src="/assets/js/main.js"></script>
-</div>
-<div class="portfolio">
-    <h1>Articles:</h1>
-    <ul>
-        {% for websites in site.data.websites %}
-        <li>
-            <a href="{{ websites.url }}">{{ websites.url }}</a>
-        </li>
-        {% endfor %}
-    </ul>
-</div>
