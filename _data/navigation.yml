@@ -1,9 +1,9 @@
 # Site navigation links
 
-- title: Portfolio
-  url: /portfolio/
-  excerpt: "Things I’ve designed, illustrated, developed, coded, and whatever."
+- title: Articles
+  url: /Articles/
+  excerpt: "Peer reviewed and working articles"
   image: 300x200.gif
 
-- title: Made Mistakes
-  url: http://mademistakes.com  
+- title: DRCMR
+  url: http://drcmr.dk/ 
