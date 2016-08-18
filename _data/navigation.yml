@@ -1,5 +1,8 @@
 # main links links
 main:
+  - title: "home"
+    url: "https://tmorville.github.io/"
+
   - title: "articles"
     url: /articles/
 
