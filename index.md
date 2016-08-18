@@ -3,4 +3,4 @@ layout: default
 author_profile: false
 ---
 
-![neurons](/images/firing_neurons.jpg){: .center-image }
+![neurons](/images/firing.gif){: .center-image }
