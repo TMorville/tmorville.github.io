@@ -10,7 +10,7 @@ locale                   : "en"
 title                    : " "
 title_separator          : "-"
 name                     : "Tobias Morville"
-description              : "An amazing website."
+description              : "Hello, my name is Tobias and I do Neuroscience"
 url                      : #"https://tmorville.github.io/"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -81,7 +81,7 @@ author:
   avatar           : "bio-photo.jpg"
   bio              : "Hello, my name is Tobias and I do Neuroscience"
   location         : "Copenahagen"
-  email            :
+  email            : "tobiasmorville@gmail.com"
   uri              :
   bitbucket        :
   codepen          :
