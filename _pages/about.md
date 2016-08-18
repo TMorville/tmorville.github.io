@@ -1,6 +1,6 @@
 ---
-title: "about"
-layout: default
+title: 
+layout: single
 author_profile: true
 sitemap: about
 permalink: /about/
