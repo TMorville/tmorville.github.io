@@ -1,5 +1,5 @@
 ---
-title: "notes"
+title: 
 layout: single
 sitemap: notes
 permalink: /notes/
