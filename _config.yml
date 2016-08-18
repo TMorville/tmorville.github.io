@@ -81,7 +81,7 @@ author:
   name             : "Tobias Morville"
   avatar           : "bio-photo.jpg"
   bio              : "Hello, my name is Tobias and I do Neuroscience"
-  location         : "Copenahagen"
+  location         : "Copenhagen"
   email            : "tobiasmorville@gmail.com"
   uri              :
   bitbucket        :
@@ -95,7 +95,7 @@ author:
   keybase          :
   instagram        :
   lastfm           :
-  linkedin         :
+  linkedin         : "https://dk.linkedin.com/in/tobias-morville-24b97312"
   pinterest        :
   soundcloud       :
   stackoverflow    : # http://stackoverflow.com/users/123456/username
@@ -106,6 +106,7 @@ author:
   weibo            :
   xing             :
   youtube          :
+  researchgate     : "https://www.researchgate.net/profile/Tobias_Morville"
 
 
 # Reading Files
