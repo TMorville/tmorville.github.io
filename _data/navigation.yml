@@ -1,7 +1,7 @@
-# main links links
+# main links
 main:
   - title: "home"
-    url: "https://tmorville.github.io/"
+    url: "/main/"
 
   - title: "articles"
     url: /articles/
