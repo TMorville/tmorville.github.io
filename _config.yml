@@ -9,7 +9,7 @@
 locale                   : "en"
 title                    : " "
 title_separator          : "-"
-name                     : "Tobias Morville"
+name                     : 
 description              : "Hello, my name is Tobias and I do Neuroscience"
 url                      : "https://tmorville.github.io/"
 baseurl                  : # the subpath of your site, e.g. "/blog"
