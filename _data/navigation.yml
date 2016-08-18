@@ -1,7 +1,13 @@
 # main links links
 main:
-  - title: "about"
-    url: /about/
+  - title: "articles"
+    url: /articles/
+
+  - title: "code"
+    url: /code/
 
   - title: "notes"
     url: /notes/
+
+  - title: "about"
+    url: /about/
