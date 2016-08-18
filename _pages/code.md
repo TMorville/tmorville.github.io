@@ -6,3 +6,5 @@ permalink: /code/
 ---
 
 Here are useful snippets of code.
+
+![neurons](/images/firing_neurons.jpg){: .center-image }

@@ -7,4 +7,4 @@ permalink: /notes/
 
 These are my notes.
 
-![neurons](images/firing_neurons.jpg){:class="img-responsive"}
+![neurons](/images/firing_neurons.jpg){:class="img-responsive"}
