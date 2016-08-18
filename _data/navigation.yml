@@ -15,7 +15,7 @@ main:
   - title: "about"
     url: /about/
 
-articles:
+about:
   - title: "home"
     url: "/main/"
 
