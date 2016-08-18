@@ -14,3 +14,19 @@ main:
 
   - title: "about"
     url: /about/
+
+articles:
+  - title: "home"
+    url: "/main/"
+
+  - title: "articles"
+    url: /articles/
+
+  - title: "code"
+    url: /code/
+
+  - title: "notes"
+    url: /notes/
+
+  - title: "about"
+    url: /about/
