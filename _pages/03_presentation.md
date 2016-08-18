@@ -1,3 +1,8 @@
+---
+layout: page
+title: Presentation
+permalink: /Presentation/
+---
 
 #This is a testslide with bullets
 ** test
