@@ -5,7 +5,7 @@ sitemap: code
 permalink: /code/
 ---
 
---- python
+~~~ python
 for i in range(1,10):
 	run some code here
----
+~~~

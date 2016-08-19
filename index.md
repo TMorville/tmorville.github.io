@@ -11,5 +11,7 @@ author_profile: false
 
 <hr>
 
-* Get html5 to work properly
-* Update code
+~~~ python
+for i in range(1,10):
+	run some code here
+~~~
