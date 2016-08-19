@@ -3,4 +3,8 @@ layout: default
 author_profile: false
 ---
 
-<iframe width="420" height="315" src="http://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+<div class="video_container">
+  <video controls="controls" allowfullscreen="true" poster="/images/firing.gif">
+    <source src="https://gfycat.com/DistinctSneakyFruitfly" type="video/mp4">
+  </video> 
+</div>
