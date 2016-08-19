@@ -5,6 +5,7 @@ sitemap: code
 permalink: /code/
 ---
 
-Here are useful snippets of code.
-
-![neurons](/images/firing_neurons.jpg){: .center-image }
+--- python
+for i in range(1,10):
+	run some code here
+---
