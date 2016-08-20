@@ -5,6 +5,4 @@ sitemap: notes
 permalink: /notes/
 ---
 
-These are my notes.
-
-![neurons](/images/firing_neurons.jpg){:class="img-responsive"}
+This is <span style="color: red">written in red</span>.
