@@ -11,7 +11,5 @@ author_profile: false
 
 <hr>
 
-~~~ python
-for i in range(1,10):
-	run some code here
-~~~
+This is <span style="color: red">written in
+red</span>.
