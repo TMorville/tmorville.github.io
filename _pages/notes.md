@@ -5,4 +5,6 @@ sitemap: notes
 permalink: /notes/
 ---
 
-This is <span style="color: red">written in red</span>.
+> ### Recurrent Models of Visual Attention
+>> Volodymyr Mnih, Nicolas Heess, Alex Graves, Koray Kavukcuoglu
+>> [Notes]({{ site.url }}/assets/notes/mydoc.pdf)
