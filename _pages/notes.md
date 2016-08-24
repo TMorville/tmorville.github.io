@@ -6,5 +6,6 @@ permalink: /notes/
 ---
 
 > ### Recurrent Models of Visual Attention
->> Volodymyr Mnih, Nicolas Heess, Alex Graves, Koray Kavukcuoglu
->> [Notes]({{ site.url }}/assets/notes/mydoc.pdf)
+> <span style="font-size:0.8em;"> Volodymyr Mnih, Nicolas Heess, Alex Graves, Koray Kavukcuoglu </span>
+<br>
+> [Notes]({{ site.url }}/assets/notes/deepmind.pdf)
