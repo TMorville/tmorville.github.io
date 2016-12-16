@@ -183,6 +183,7 @@ gems:
   - jekyll-gist
   - jekyll-feed
   - jemoji
+  - github-calendar
 
 # mimic GitHub Pages with --safe
 whitelist:
