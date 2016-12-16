@@ -6,8 +6,8 @@ main:
   - title: "articles"
     url: /articles/
 
-  - title: "code"
-    url: /code/
+  - title: "projects"
+    url: /projects/
 
   - title: "notes"
     url: /notes/
@@ -22,8 +22,8 @@ about:
   - title: "articles"
     url: /articles/
 
-  - title: "code"
-    url: /code/
+  - title: "projects"
+    url: /projects/
 
   - title: "notes"
     url: /notes/

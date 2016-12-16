@@ -1,8 +1,8 @@
 ---
 title: 
 layout: single
-sitemap: code
-permalink: /code/
+sitemap: projects
+permalink: /projects/
 ---
 
 ~~~ python

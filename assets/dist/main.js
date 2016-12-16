@@ -1,1 +1,1 @@
-GitHubCalendar(".calendar", "TMorville");
+GitHubCalendar(".calendar", "TMorville", {global_stats: false})
