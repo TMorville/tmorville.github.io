@@ -1,8 +1,5 @@
 ---
-title: 
-layout: single
-sitemap: projects
-permalink: /projects/
+title: Inverted pendulum using learning
 ---
 
 > ### Inverted pendulum using learning

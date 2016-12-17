@@ -79,7 +79,7 @@ analytics:
 author:
   name             : 
   avatar           : "bio-photo.jpg"
-  bio              : "Hello, my name is Tobias and I do Neuroscience"
+  bio              : 
   location         : "Copenhagen"
   email            : "tobiasmorville@gmail.com"
   uri              :
@@ -89,7 +89,7 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           :
+  github           : "TMorville"
   google_plus      :
   keybase          :
   instagram        :
@@ -160,6 +160,12 @@ kramdown:
   toc_levels: 1..6
   smart_quotes: lsquo,rsquo,ldquo,rdquo
   enable_coderay: false
+
+# Collections
+collections:
+  projects:
+    output: true
+    permalink: /:collection/:path/
 
 
 # Sass/SCSS
