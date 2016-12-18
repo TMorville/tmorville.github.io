@@ -1,5 +1,6 @@
 ---
 title: Inverted pendulum using learning
+layout: default
 ---
 
 > ### Inverted pendulum using learning
