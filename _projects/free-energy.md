@@ -7,17 +7,23 @@ layout: single
 
 Based on R. Bogacz and  K. Friston, S. Samothrakis, and R. Montague a simple learning scheme is implemented in python using (error based) gradient descent on a free-energy potential. This is analog to minimising the KL-divergence. It is shown that 1) This simplifies the calculations 2) Learns the parameters of a few simple distributions (dirac and gaussian). 
  
-~~~ python
+
+
+```python
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 from scipy.stats import norm
-
 %matplotlib inline
-~~~
+```
 
-~~~ python
 
+```python
+sns.set(style="white", palette="muted", color_codes=True)
+```
+
+
+```python
 def ex():
     
     mu = 2 # size of input 
@@ -71,14 +77,20 @@ def ex():
     plt.plot(v_range,eps_v)
     plt.plot(v_range,eps_mu)
     sns.despine()
-            
-~~~
+                
+```
 
-~~~python
+
+```python
 ex()
-~~~
+```
 
-~~~python
+
+![png]({{ site.url }}{{ site.baseurl }}/assets/images/Bogacz_3_0.png)
+
+
+
+```python
 def ex5():
     
     v_step = 0.01
@@ -113,8 +125,17 @@ def ex5():
         sigma[j] = sigma[j-1] + alpha*(error[-1]*e[-1]-1)
         
     plt.plot(sigma)
-~~~
+            
 
-~~~python
+
+```
+
+
+```python
 ex5()
-~~~
+```
+
+![png]({{ site.url }}{{ site.baseurl }}/assets/images/Bogacz_5_0.png)
+
+
+
