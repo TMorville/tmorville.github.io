@@ -3,7 +3,7 @@ title: Inverted pendulum using learning
 layout: default
 ---
 
-> ### Inverted pendulum using learning
+Does this text appear as? 
 
 ~~~ python
 import numpy as np
