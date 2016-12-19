@@ -1,9 +1,9 @@
 ---
 title: Inverted pendulum using learning
-layout: default
+layout: single
 ---
 
-Does this text appear as? 
+The inverted pendulum problem from [OpenAI Gym](https://gym.openai.com/envs/CartPole-v0) is solved using a simple network that learns the first and second derivative using only positional data. Using a simple state-based policy, this is sufficient to solve the problem. 
 
 ~~~ python
 import numpy as np
