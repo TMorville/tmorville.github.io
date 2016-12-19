@@ -4,29 +4,29 @@ main:
     url: "https://tmorville.github.io/"
 
   - title: "articles"
-    url: /articles/
+    url: articles/
 
   - title: "projects"
-    url: /projects/
+    url: projects/
 
   - title: "notes"
-    url: /notes/
+    url: notes/
 
   - title: "about"
-    url: /about/
+    url: about/
 
 about:
   - title: "home"
     url: "https://tmorville.github.io/"
 
   - title: "articles"
-    url: /articles/
+    url: articles/
 
   - title: "projects"
-    url: /projects/
+    url: projects/
 
   - title: "notes"
-    url: /notes/
+    url: notes/
 
   - title: "about"
-    url: /about/
+    url: about/
