@@ -2,8 +2,8 @@
 title: 
 layout: single
 author_profile: false
-sitemap: articles
-permalink: /articles/
+sitemap: writing
+permalink: /writing/
 ---
 
 ### Peer reviewed

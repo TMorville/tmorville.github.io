@@ -3,8 +3,8 @@ main:
   - title: "home"
     url: "https://tmorville.github.io/"
 
-  - title: "articles"
-    url: articles/
+  - title: "writing"
+    url: writing/
 
   - title: "projects"
     url: projects/
@@ -19,8 +19,8 @@ about:
   - title: "home"
     url: "https://tmorville.github.io/"
 
-  - title: "articles"
-    url: articles/
+  - title: "writing"
+    url: writing/
 
   - title: "projects"
     url: projects/
