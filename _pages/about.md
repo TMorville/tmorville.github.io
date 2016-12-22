@@ -10,4 +10,4 @@ My research triangulates between applied mathematics, computational biology and 
 
 Find a one page CV [here]({{ site.url }}/assets/cv/CV.pdf). 
 
-This site is themed by [Minimal Mistakes](https://mmistakes.github.io/minimal-mistakes/) and the Github calendar is tweaked from [IonicaBizau](https://github.com/IonicaBizau/github-calendar).
+<span style="font-size:0.8em;"> This site is themed by [Minimal Mistakes](https://mmistakes.github.io/minimal-mistakes/) and the Github calendar is tweaked from [IonicaBizau](https://github.com/IonicaBizau/github-calendar). </span>
