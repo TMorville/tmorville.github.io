@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
   <head>
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
 
 <meta charset="utf-8">
@@ -18,7 +18,7 @@
 
 
 
-<title>Manual implementation of a network -</title>
+<title>Visual Attention -</title>
 
 
 
@@ -28,15 +28,15 @@
 
 <meta property="og:locale" content="en">
 <meta property="og:site_name" content=" ">
-<meta property="og:title" content="Manual implementation of a network">
+<meta property="og:title" content="Visual Attention">
 
 
-  <link rel="canonical" href="https://tmorville.github.io//projects/np-network/">
-  <meta property="og:url" content="https://tmorville.github.io//projects/np-network/">
+  <link rel="canonical" href="https://tmorville.github.io//projects/visual-attention/">
+  <meta property="og:url" content="https://tmorville.github.io//projects/visual-attention/">
 
 
 
-  <meta property="og:description" content="Implementation of a one-layer neural network that solves the XOR (exclusive or) task using only numpy. This is an exercise purely in the spirit of didactics and to gain a deeper understanding of neural networks (work in progress).">
+  <meta property="og:description" content="An attempt to implement the recurrent attention model (RAM) from “Recurrent Models of Visual Attention” (Mnih+ 2014) in collaboration with ppries (work in progress).">
 
 
 
@@ -149,26 +149,33 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Manual implementation of a network">
-    <meta itemprop="description" content="Implementation of a one-layer neural network that solves the XOR (exclusive or) task using only numpy. This is an exercise purely in the spirit of didactics and to gain a deeper understanding of neural networks (work in progress).">
+    <meta itemprop="headline" content="Visual Attention">
+    <meta itemprop="description" content="An attempt to implement the recurrent attention model (RAM) from “Recurrent Models of Visual Attention” (Mnih+ 2014) in collaboration with ppries (work in progress).">
     <meta itemprop="datePublished" content="December 27, 2016">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 class="page__title" itemprop="headline">Manual implementation of a network
+          <h1 class="page__title" itemprop="headline">Visual Attention
 </h1>
           
         </header>
       
 
       <section class="page__content" itemprop="text">
-        <h3 id="implementation-of-a-one-layer-neural-network-that-solves-the-xorhttpsenwikipediaorgwikiexclusiveor-exclusive-or-task-using-only-numpy-this-is-an-exercise-purely-in-the-spirit-of-didactics-and-to-gain-a-deeper-understanding-of-neural-networks-work-in-progress">Implementation of a one-layer neural network that solves the <a href="https://en.wikipedia.org/wiki/Exclusive_or">XOR</a> (exclusive or) task using only numpy. This is an exercise purely in the spirit of didactics and to gain a deeper understanding of neural networks (work in progress).</h3>
+        <h3 id="an-attempt-to-implement-the-recurrent-attention-model-ram-from-recurrent-models-of-visual-attention-mnih-2014-in-collaboration-with-pprieshttpsgithubcomppries-work-in-progress">An attempt to implement the recurrent attention model (RAM) from “Recurrent Models of Visual Attention” (Mnih+ 2014) in collaboration with <a href="https://github.com/ppries">ppries</a> (work in progress).</h3>
 
-<div class="language-python highlighter-rouge">
-<pre class="highlight"><code></code></pre>
-</div>
+<p>Link to <a href="https://github.com/ppries/tensorflow_mnist_ram">repo</a> and my <a href="https://tmorville.github.io//assets/deepmind.pdf">notes</a>.</p>
+
+<h3 id="to-do-list">To-do list:</h3>
+
+<ul>
+  <li>Overarching aim is to implement a slightly more refined reward structure, such that the learner is <em>punished</em> by wrong guess. The biological analogy is that of an animal increasing it’s survivability by correctlying inferring the <em>important</em> features of the environment. E.g. water is important when thirsty, but less so when hungry.</li>
+  <li>Adapt <a href="https://github.com/seann999/tensorflow_mnist_ram">sean999 implementation</a> to python 3.x <em>(done, see <a href="https://github.com/ppries/tensorflow_mnist_ram">repo</a>)</em>.</li>
+  <li>Change reward to episodic structure with focus on only two numbers: 3 and 7.</li>
+  <li>Introduce dynamics into reward such that after e.g. <strong>T</strong> episodes, 3 stops being rewarding and 7 becomes rewarding.</li>
+</ul>
 
 
         
@@ -193,12 +200,11 @@
 
   <nav class="pagination">
     
-      <a href="https://tmorville.github.io//projects/inverted-pendulum/" class="pagination--pager" title="Inverted pendulum using learning
+      <a href="https://tmorville.github.io//projects/np-network/" class="pagination--pager" title="Manual implementation of a network
 ">Previous</a>
     
     
-      <a href="https://tmorville.github.io//projects/visual-attention/" class="pagination--pager" title="Visual Attention
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
