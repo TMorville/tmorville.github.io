@@ -3,10 +3,11 @@ title: Manual implementation of a network
 layout: single
 ---
 
-### Implementation of a one-layer neural network that solves the [XOR](https://en.wikipedia.org/wiki/Exclusive_or) (exclusive or) task using only numpy, roughly following [this](https://cs231n.github.io/optimization-2/) excellent blogpost by Andrej Karpathy (work in progress). 
+### Implementation of a one-layer neural network that solves the [XOR](https://en.wikipedia.org/wiki/Exclusive_or) task using only numpy, roughly following [this](https://cs231n.github.io/optimization-2/) excellent blogpost by Andrej Karpathy (work in progress). 
 
 
 ~~~python
+
 import numpy as np
 
 input_ = np.asarray([[0,1],[1,0],[0,0],[1,1]])
@@ -36,4 +37,5 @@ def lossfunc():
 	return out_loss
 
 lossfunc()
+
 ~~~
