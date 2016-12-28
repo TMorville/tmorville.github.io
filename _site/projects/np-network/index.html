@@ -36,7 +36,7 @@
 
 
 
-  <meta property="og:description" content="Implementation of a one-layer neural network that solves the XOR (exclusive or) task using only numpy. This is an exercise purely in the spirit of didactics and to gain a deeper understanding of neural networks (work in progress).">
+  <meta property="og:description" content="Implementation of a one-layer neural network that solves the XOR (exclusive or) task using only numpy, roughly following this excellent blogpost by Andrej Karpathy (work in progress).">
 
 
 
@@ -51,7 +51,7 @@
 
 
   <meta property="og:type" content="article">
-  <meta property="article:published_time" content="2016-12-27T14:10:14+01:00">
+  <meta property="article:published_time" content="2016-12-28T10:35:45+01:00">
 
 
 
@@ -150,8 +150,8 @@
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
     <meta itemprop="headline" content="Manual implementation of a network">
-    <meta itemprop="description" content="Implementation of a one-layer neural network that solves the XOR (exclusive or) task using only numpy. This is an exercise purely in the spirit of didactics and to gain a deeper understanding of neural networks (work in progress).">
-    <meta itemprop="datePublished" content="December 27, 2016">
+    <meta itemprop="description" content="Implementation of a one-layer neural network that solves the XOR (exclusive or) task using only numpy, roughly following this excellent blogpost by Andrej Karpathy (work in progress).">
+    <meta itemprop="datePublished" content="December 28, 2016">
     
 
     <div class="page__inner-wrap">
@@ -164,12 +164,40 @@
       
 
       <section class="page__content" itemprop="text">
-        <h3 id="implementation-of-a-one-layer-neural-network-that-solves-the-xorhttpsenwikipediaorgwikiexclusiveor-exclusive-or-task-using-only-numpy-this-is-an-exercise-purely-in-the-spirit-of-didactics-and-to-gain-a-deeper-understanding-of-neural-networks-work-in-progress">Implementation of a one-layer neural network that solves the <a href="https://en.wikipedia.org/wiki/Exclusive_or">XOR</a> (exclusive or) task using only numpy. This is an exercise purely in the spirit of didactics and to gain a deeper understanding of neural networks (work in progress).</h3>
+        <h3 id="implementation-of-a-one-layer-neural-network-that-solves-the-xorhttpsenwikipediaorgwikiexclusiveor-exclusive-or-task-using-only-numpy-roughly-following-thishttpscs231ngithubiooptimization-2-excellent-blogpost-by-andrej-karpathy-work-in-progress">Implementation of a one-layer neural network that solves the <a href="https://en.wikipedia.org/wiki/Exclusive_or">XOR</a> (exclusive or) task using only numpy, roughly following <a href="https://cs231n.github.io/optimization-2/">this</a> excellent blogpost by Andrej Karpathy (work in progress).</h3>
 
 <div class="language-python highlighter-rouge">
-<pre class="highlight"><code></code></pre>
-</div>
+<pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
+<span class="n">input_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">])</span>
+<span class="n">targets</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">input_</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">weights</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="n">y_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span><span class="n">weights</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">y_</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">sigmoid</span><span class="p">():</span>
+	<span class="n">out_sig</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">y_</span><span class="p">))</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">out_sig</span><span class="p">)</span>
+
+	<span class="k">return</span> <span class="n">out_sig</span>
+
+<span class="n">out_sig</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">lossfunc</span><span class="p">():</span>
+
+	<span class="n">out_loss</span> <span class="o">=</span> <span class="o">-</span><span class="n">targets</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">out_sig</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">targets</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">out_sig</span><span class="p">))</span>
+	<span class="n">mean_loss</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">out_loss</span><span class="p">)</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">out_loss</span><span class="p">,</span><span class="n">mean_loss</span><span class="p">)</span>
+
+	<span class="k">return</span> <span class="n">out_loss</span>
+
+<span class="n">lossfunc</span><span class="p">()</span>
+</code></pre>
+</div>
 
         
       </section>
@@ -182,7 +210,7 @@
 
 
         
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2016-12-27T14:10:14+01:00">December 27, 2016</time></p>
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2016-12-28T10:35:45+01:00">December 28, 2016</time></p>
         
       </footer>
 

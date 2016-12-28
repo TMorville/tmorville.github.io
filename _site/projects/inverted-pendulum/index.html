@@ -36,7 +36,7 @@
 
 
 
-  <meta property="og:description" content="The inverted pendulum problem from OpenAI Gym is solved using a simple network that learns the relevant derivatives using only positional data. Using a simple state-based policy, this is sufficient to solve the problem with explicit optimal control (work in progress).">
+  <meta property="og:description" content="">
 
 
 
@@ -51,7 +51,7 @@
 
 
   <meta property="og:type" content="article">
-  <meta property="article:published_time" content="2016-12-27T14:10:14+01:00">
+  <meta property="article:published_time" content="2016-12-28T10:35:45+01:00">
 
 
 
@@ -150,8 +150,8 @@
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
     <meta itemprop="headline" content="Inverted pendulum using learning">
-    <meta itemprop="description" content="The inverted pendulum problem from OpenAI Gym is solved using a simple network that learns the relevant derivatives using only positional data. Using a simple state-based policy, this is sufficient to solve the problem with explicit optimal control (work in progress).">
-    <meta itemprop="datePublished" content="December 27, 2016">
+    <meta itemprop="description" content="">
+    <meta itemprop="datePublished" content="December 28, 2016">
     
 
     <div class="page__inner-wrap">
@@ -164,10 +164,17 @@
       
 
       <section class="page__content" itemprop="text">
-        <h3 id="the-inverted-pendulum-problem-from-openai-gymhttpsgymopenaicomenvscartpole-v0-is-solved-using-a-simple-network-that-learns-the-relevant-derivatives-using-only-positional-data-using-a-simple-state-based-policy-this-is-sufficient-to-solve-the-problem-with-explicit-optimal-control-work-in-progress">The inverted pendulum problem from <a href="https://gym.openai.com/envs/CartPole-v0">OpenAI Gym</a> is solved using a simple network that learns the relevant derivatives using only positional data. Using a simple state-based policy, this is sufficient to solve the problem with explicit optimal control (work in progress).</h3>
+        <script type="text/javascript" async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<h3 id="the-inverted-pendulum-problem-from-openai-gymhttpsgymopenaicomenvscartpole-v0-is-solved-using-a-simple-network-that-learns-the-relevant-derivatives-using-positional-data-the-inferred-derivatives-are-used-in-a-rl-scheme-which-keeps-the-cart-stable">The inverted pendulum problem from <a href="https://gym.openai.com/envs/CartPole-v0">OpenAI Gym</a> is solved using a simple network that learns the relevant derivatives using positional data. The inferred derivatives are used in a RL-scheme which keeps the cart stable.</h3>
 
 <h3 id="to-do-list">To-do list:</h3>
-<p>Train a fully connected network on (essentially noisy) positional data from CartPole-v0 to learn first and second derivatives of cart position <script type="math/tex">\x_t</script> and pole angle <script type="math/tex">\theta_t</script>.</p>
+
+<ul>
+  <li>Train a fully connected, one-layer network on (essentially noisy) positional data from CartPole-v0 to learn first and second derivatives of cart position <script type="math/tex">x_t</script> and pole angle <script type="math/tex">\theta_t</script> (this is given in OpenAI). The output of this network will be the probability of a derivative <script type="math/tex">P(\dot{x_t})</script> and <script type="math/tex">P(\dot{\theta_t})</script> and not the derivative itself.</li>
+  <li>Use the output of the network <em>on the fly</em> combined with <a href="https://en.wikipedia.org/wiki/Q-learning">Q-learning</a> to keep the pole stable.</li>
+</ul>
 
         
       </section>
@@ -180,7 +187,7 @@
 
 
         
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2016-12-27T14:10:14+01:00">December 27, 2016</time></p>
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2016-12-28T10:35:45+01:00">December 28, 2016</time></p>
         
       </footer>
 
