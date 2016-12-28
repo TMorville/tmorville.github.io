@@ -3,11 +3,11 @@ title: Inverted pendulum using learning
 layout: single
 ---
 
+### The inverted pendulum problem from [OpenAI Gym](https://gym.openai.com/envs/CartPole-v0) is solved using a simple network that learns the relevant derivatives using positional data. The inferred derivatives are used in a RL-scheme which keeps the cart stable. 
+
 <script type="text/javascript" async
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
-
-### The inverted pendulum problem from [OpenAI Gym](https://gym.openai.com/envs/CartPole-v0) is solved using a simple network that learns the relevant derivatives using positional data. The inferred derivatives are used in a RL-scheme which keeps the cart stable. 
 
 ### To-do list: 
 
