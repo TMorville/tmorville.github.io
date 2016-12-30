@@ -1,5 +1,5 @@
 ---
-title: 
+title: Mnist visual attention
 layout: single
 ---
 
