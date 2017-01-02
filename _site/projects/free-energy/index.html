@@ -51,7 +51,7 @@
 
 
   <meta property="og:type" content="article">
-  <meta property="article:published_time" content="2017-01-02T20:45:05+01:00">
+  <meta property="article:published_time" content="2017-01-02T20:53:13+01:00">
 
 
 
@@ -391,12 +391,14 @@
 <script type="math/tex; mode=display">% <![CDATA[
 \begin{align}
 \phi-\epsilon_{p}-\Sigma_{p}\xi_{p} & = 0 \\
-s-h(\phi)-\Sigma_{s}\xi_{s} & = 0.
+s-h(\phi)-\Sigma_{s}\xi_{s} & = 0
 \end{align} %]]></script>
 
 <h3 id="part-iv---learning-sigma-with-a-network-model">Part IV - Learning <script type="math/tex">\Sigma</script> with a network model</h3>
 
-<p>Recall that we assumed that homeostatic error was communicated via. a noisy efferent signal <script type="math/tex">s</script> that we assumed to be normally distributed. Above, we outlined a simple sample method for finding the mean value <script type="math/tex">\phi</script> that maximises the posterior. By expanding the simple model above, we esimate the variance <script type="math/tex">\Sigma</script> of the normal distribution as well.</p>
+<p>Recall that we assumed that homeostatic error <script type="math/tex">\epsilon</script> was communicated via. a noisy efferent signal <script type="math/tex">s</script> that we assumed to be normally distributed. Above, we outlined a simple sample method for finding the mean value <script type="math/tex">\phi</script> that maximises the posterior <script type="math/tex">p(\epsilon\vert s)</script>.</p>
+
+<p>By expanding this simple model, we can esimate the variance <script type="math/tex">\Sigma</script> of the normal distribution as well.</p>
 
 <div class="language-python highlighter-rouge">
 <pre class="highlight"><code><span class="k">def</span> <span class="nf">learn_sigma</span><span class="p">():</span>
@@ -469,7 +471,7 @@ s-h(\phi)-\Sigma_{s}\xi_{s} & = 0.
 
 
         
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-01-02T20:45:05+01:00">January 02, 2017</time></p>
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-01-02T20:53:13+01:00">January 02, 2017</time></p>
         
       </footer>
 

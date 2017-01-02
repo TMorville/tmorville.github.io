@@ -227,13 +227,15 @@ As the figure shows, the network learns <span style="color: blue">$$\phi$$</span
 $$
 \begin{align}
 \phi-\epsilon_{p}-\Sigma_{p}\xi_{p} & = 0 \\
-s-h(\phi)-\Sigma_{s}\xi_{s} & = 0.
+s-h(\phi)-\Sigma_{s}\xi_{s} & = 0
 \end{align}
 $$
 
 ### Part IV - Learning $$\Sigma$$ with a network model
 
-Recall that we assumed that homeostatic error was communicated via. a noisy efferent signal $$s$$ that we assumed to be normally distributed. Above, we outlined a simple sample method for finding the mean value $$\phi$$ that maximises the posterior. By expanding the simple model above, we esimate the variance $$\Sigma$$ of the normal distribution as well. 
+Recall that we assumed that homeostatic error $$\epsilon$$ was communicated via. a noisy efferent signal $$s$$ that we assumed to be normally distributed. Above, we outlined a simple sample method for finding the mean value $$\phi$$ that maximises the posterior $$p(\epsilon\vert s)$$. 
+
+By expanding this simple model, we can esimate the variance $$\Sigma$$ of the normal distribution as well. 
 
 
 ```python
