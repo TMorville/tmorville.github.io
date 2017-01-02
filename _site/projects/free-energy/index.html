@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
   <head>
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
 
 <meta charset="utf-8">
@@ -36,7 +36,7 @@
 
 
 
-  <meta property="og:description" content="Based on K. Friston and R. Bogacz a learning scheme is implemented using gradient descent on a free-energy potential (work in progress).">
+  <meta property="og:description" content="Based on K. Friston and R. Bogacz a learning scheme is implemented using gradient descent on a free-energy potential. In the following the framework is guided by biological semantics to maximise intuition - but generally this method can (and has been) applied to many different problems.">
 
 
 
@@ -51,7 +51,7 @@
 
 
   <meta property="og:type" content="article">
-  <meta property="article:published_time" content="2016-12-29T15:07:27+01:00">
+  <meta property="article:published_time" content="2017-01-02T13:04:34+01:00">
 
 
 
@@ -153,8 +153,8 @@
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
     <meta itemprop="headline" content="Learning using gradient descent on a free-energy potential">
-    <meta itemprop="description" content="Based on K. Friston and R. Bogacz a learning scheme is implemented using gradient descent on a free-energy potential (work in progress).">
-    <meta itemprop="datePublished" content="December 29, 2016">
+    <meta itemprop="description" content="Based on K. Friston and R. Bogacz a learning scheme is implemented using gradient descent on a free-energy potential. In the following the framework is guided by biological semantics to maximise intuition - but generally this method can (and has been) applied to many different problems.">
+    <meta itemprop="datePublished" content="January 02, 2017">
     
 
     <div class="page__inner-wrap">
@@ -167,134 +167,227 @@
       
 
       <section class="page__content" itemprop="text">
-        <h3 id="based-on-k-fristonhttpwwwfilionuclacukkarla20free20energy20principle20for20the20brainpdf-and-r-bogaczhttpwwwsciencedirectcomsciencearticlepiis0022249615000759-a-learning-scheme-is-implemented-using-gradient-descent-on-a-free-energy-potential-work-in-progress">Based on <a href="http://www.fil.ion.ucl.ac.uk/~karl/A%20free%20energy%20principle%20for%20the%20brain.pdf">K. Friston</a> and <a href="http://www.sciencedirect.com/science/article/pii/S0022249615000759">R. Bogacz</a> a learning scheme is implemented using gradient descent on a free-energy potential (work in progress).</h3>
+        <h3 id="based-on-k-fristonhttpwwwfilionuclacukkarla20free20energy20principle20for20the20brainpdf-and-r-bogaczhttpwwwsciencedirectcomsciencearticlepiis0022249615000759-a-learning-scheme-is-implemented-using-gradient-descent-on-a-free-energy-potential-in-the-following-the-framework-is-guided-by-biological-semantics-to-maximise-intuition---but-generally-this-method-can-and-has-been-applied-to-many-different-problems">Based on <a href="http://www.fil.ion.ucl.ac.uk/~karl/A%20free%20energy%20principle%20for%20the%20brain.pdf">K. Friston</a> and <a href="http://www.sciencedirect.com/science/article/pii/S0022249615000759">R. Bogacz</a> a learning scheme is implemented using gradient descent on a free-energy potential. In the following the framework is guided by biological semantics to maximise intuition - but generally this method can (and has been) applied to many different problems.</h3>
+
+<p>If you are familiar with Bayes, but not approximate inference, I suggest that you skip <strong>Part I</strong> and head to <strong>Part II</strong>. If you’re familiar with both, you probably won’t learn much in the following. Lets begin!</p>
+
+<h3 id="part-i---bayes">Part I - Bayes</h3>
+<p>Consider a theoretical one-dimensional thermoregulator. This simple organism maximises survival by maximising sojourn time in some optimal temperature state defined on evolutionary time. It does this by simple error based control, like a thermostat on a heater. Thus the only signal the regulator cares about, is the real (euclidian) distance between its current temperature state and the optimal state. This real distance on <script type="math/tex">\mathbb{R}</script> is the homeostatic error <script type="math/tex">\epsilon</script> and this is communicated via. a noisy efferent signal <script type="math/tex">s</script>. The non-linear function <script type="math/tex">g(\epsilon)</script> relates homeostatic error to percieved efferent signal, such that when homeostatic error is <script type="math/tex">\epsilon</script> the percieved efferent signal is normally distributed with mean <script type="math/tex">g(\epsilon)</script> and variance <script type="math/tex">\Sigma_\epsilon</script>. Thus, the likelihood function is</p>
+
+<script type="math/tex; mode=display">p(s|\epsilon)=f(s;g(\epsilon),\Sigma_{s})</script>
+
+<p>where</p>
+
+<script type="math/tex; mode=display">f(x;\mu,\Sigma)=\frac{1}{\sqrt{2\pi\Sigma}}\mbox{exp}\left(-\frac{(x-\mu)^{2}}{2\Sigma}\right).</script>
+
+<p>Through evolutionary filtering, the agent has been endowed with strong priors on its interoceptive states and therefore expects homeostatic error to normally distributed with mean <script type="math/tex">\epsilon_{p}</script> and <script type="math/tex">\Sigma_{p}</script> where the subscript <script type="math/tex">p</script> stands for prior. Formally <script type="math/tex">p(\epsilon)=f(\epsilon;\epsilon_{p},\sigma_{p})</script>.</p>
+
+<p>To compute the exact distribution of sensory input <script type="math/tex">s</script> we can formulate the posterior using Bayes theorem</p>
+
+<script type="math/tex; mode=display">p(\epsilon|s)=\frac{p(\epsilon)p(s|\epsilon)}{p(s)}</script>
+
+<p>where the denominator is</p>
+
+<script type="math/tex; mode=display">p(s)=\int p(\epsilon)p(s|\epsilon)d\epsilon</script>
+
+<p>and sum the whole range of possible <script type="math/tex">\epsilon</script>.</p>
+
+<p>The following code implements such an exact solution and plots it.</p>
 
 <div class="language-python highlighter-rouge">
 <pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="kn">as</span> <span class="nn">sns</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="nb">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s">"white"</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">"muted"</span><span class="p">,</span> <span class="n">color_codes</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 </code></pre>
 </div>
 
 <div class="language-python highlighter-rouge">
-<pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="nb">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s">"white"</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">"muted"</span><span class="p">,</span> <span class="n">color_codes</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<pre class="highlight"><code><span class="c"># non-linear transformation of homeostatic error to percieved sensory input e.g. g(phi)</span>
+<span class="k">def</span> <span class="nf">sensory_transform</span><span class="p">(</span><span class="nb">input</span><span class="p">):</span>
+        
+    <span class="n">sensory_output</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+        
+    <span class="k">return</span> <span class="n">sensory_output</span>
 </code></pre>
 </div>
 
 <div class="language-python highlighter-rouge">
-<pre class="highlight"><code><span class="k">def</span> <span class="nf">ex</span><span class="p">():</span>
+<pre class="highlight"><code><span class="k">def</span> <span class="nf">exact_bayes</span><span class="p">():</span>
     
-    <span class="n">mu</span> <span class="o">=</span> <span class="mi">2</span> <span class="c"># size of input </span>
-    <span class="n">sigma_mu</span> <span class="o">=</span> <span class="mi">1</span> <span class="c"># variance of input size</span>
-    <span class="n">v_p</span> <span class="o">=</span> <span class="mi">3</span> <span class="c"># expected mean size of input </span>
-    <span class="n">sigma_v</span> <span class="o">=</span> <span class="mi">1</span> <span class="c"># variance of noisy input signal</span>
-    <span class="n">v_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mf">0.01</span><span class="p">)</span> <span class="c"># range </span>
-    <span class="n">v_step</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="c"># step size</span>
-    
-    
-    <span class="c"># bayes </span>
-    <span class="n">numerator</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">v_range</span><span class="p">,</span><span class="n">v_p</span><span class="p">,</span><span class="n">sigma_v</span><span class="p">),</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">v_range</span><span class="p">),</span><span class="n">sigma_mu</span><span class="p">))</span> <span class="c">#prior * likelih</span>
-    <span class="n">normalisation</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">numerator</span><span class="o">*</span><span class="n">v_step</span><span class="p">)</span> <span class="c"># model evidence / p(noisy input)</span>
-    <span class="n">p</span> <span class="o">=</span> <span class="n">numerator</span> <span class="o">/</span> <span class="n">normalisation</span> <span class="c"># posterior</span>
-    
-    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">7.5</span><span class="p">,</span><span class="mf">2.5</span><span class="p">))</span>
-    
-    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">v_range</span><span class="p">,</span><span class="n">p</span><span class="p">)</span>
-    <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
-
-    <span class="c"># maximises the posterior </span>
-    <span class="n">phi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">v_range</span><span class="p">))</span>
-    
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">v_range</span><span class="p">)):</span>
+    <span class="c"># variabels </span>
+    <span class="n">epsilon</span> <span class="o">=</span> <span class="mi">2</span> <span class="c"># observed homeostatic error </span>
+    <span class="n">sigma_e</span> <span class="o">=</span> <span class="mi">1</span> <span class="c"># standard deviation of the homeostatic error</span>
+    <span class="n">epsilon_p</span> <span class="o">=</span> <span class="mi">3</span> <span class="c"># mean of prior homeostatic error / noisy input / simple prior</span>
+    <span class="n">sigma_s</span> <span class="o">=</span> <span class="mi">1</span> <span class="c"># variance of prior / sensory noise </span>
+    <span class="n">s_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mf">0.01</span><span class="p">)</span> <span class="c"># range of sensory input</span>
+    <span class="n">s_step</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="c"># step size</span>
         
-        <span class="n">phi</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">v_p</span>
-        <span class="n">phi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">phi</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">v_step</span> <span class="o">*</span> <span class="p">(</span> <span class="p">((</span><span class="n">v_p</span> <span class="o">-</span> <span class="n">phi</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="n">sigma_v</span><span class="p">)</span> <span class="o">+</span>
-        <span class="p">(</span> <span class="p">(</span><span class="n">mu</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">phi</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]))</span> <span class="o">/</span> <span class="n">sigma_mu</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">phi</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]))</span>
-
-    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">v_range</span><span class="p">,</span><span class="n">phi</span><span class="p">)</span>
+    <span class="c"># exact bayes (equation 4)</span>
+    <span class="n">numerator</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">s_range</span><span class="p">,</span><span class="n">epsilon_p</span><span class="p">,</span><span class="n">sigma_s</span><span class="p">),</span><span class="c"># prior</span>
+                            <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">epsilon</span><span class="p">,</span><span class="n">sensory_transform</span><span class="p">(</span><span class="n">s_range</span><span class="p">),</span><span class="n">sigma_e</span><span class="p">)))</span> <span class="c"># likelihood</span>
+    <span class="n">normalisation</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">numerator</span><span class="o">*</span><span class="n">s_step</span><span class="p">)</span> <span class="c"># denominator / model evidence / p(noisy input) (equation 5)</span>
+    <span class="n">posterior</span> <span class="o">=</span> <span class="n">numerator</span> <span class="o">/</span> <span class="n">normalisation</span> <span class="c"># posterior</span>
+    
+    <span class="c"># plot exact bayes</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">7.5</span><span class="p">,</span><span class="mf">2.5</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">s_range</span><span class="p">,</span><span class="n">posterior</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">r' $p(</span><span class="err">\</span><span class="s">epsilon | s)$'</span><span class="p">)</span>
     <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
-    
-    <span class="n">phi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">v_range</span><span class="p">))</span>
-    <span class="n">eps_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">v_range</span><span class="p">))</span>
-    <span class="n">eps_mu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">v_range</span><span class="p">))</span>
-    
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">v_range</span><span class="p">)):</span>
-        
-        <span class="n">phi</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">v_p</span>
-        <span class="n">eps_v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">eps_mu</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-        
-        <span class="n">phi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">phi</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">v_step</span><span class="o">*</span><span class="p">(</span><span class="n">eps_mu</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">phi</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">-</span><span class="n">eps_mu</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-        <span class="n">eps_v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">eps_v</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">v_step</span><span class="o">*</span><span class="p">(</span><span class="n">phi</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">v_p</span><span class="o">-</span><span class="n">sigma_v</span><span class="o">*</span><span class="n">eps_v</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-        <span class="n">eps_mu</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">eps_mu</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">v_step</span><span class="o">*</span><span class="p">(</span><span class="n">mu</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">phi</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">-</span><span class="n">sigma_mu</span><span class="o">*</span><span class="n">eps_mu</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-    
-    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">v_range</span><span class="p">,</span><span class="n">phi</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">v_range</span><span class="p">,</span><span class="n">eps_v</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">v_range</span><span class="p">,</span><span class="n">eps_mu</span><span class="p">)</span>
-    <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
-                
 </code></pre>
 </div>
 
 <div class="language-python highlighter-rouge">
-<pre class="highlight"><code><span class="n">ex</span><span class="p">()</span>
+<pre class="highlight"><code><span class="n">exact_bayes</span><span class="p">()</span>
 </code></pre>
 </div>
 
-<p><img src="https://tmorville.github.io//assets/images/Bogacz_3_0.png" alt="png"></p>
+<p><img src="https://tmorville.github.io//assets/images/free_energy_homeostasis_3_0.png" alt="png"></p>
 
 <div class="language-python highlighter-rouge">
-<pre class="highlight"><code><span class="k">def</span> <span class="nf">ex5</span><span class="p">():</span>
+<pre class="highlight"><code><span class="k">def</span> <span class="nf">simple_dyn</span><span class="p">():</span>
     
-    <span class="n">v_step</span> <span class="o">=</span> <span class="mf">0.01</span>
-    <span class="n">maxt</span> <span class="o">=</span> <span class="mi">20</span>
-    <span class="n">trials</span> <span class="o">=</span> <span class="mi">2000</span>
+    <span class="c"># variabels </span>
+    <span class="n">epsilon</span> <span class="o">=</span> <span class="mi">2</span> <span class="c"># observed homeostatic error </span>
+    <span class="n">sigma_e</span> <span class="o">=</span> <span class="mi">1</span> <span class="c"># standard deviation of the homeostatic error</span>
+    <span class="n">epsilon_p</span> <span class="o">=</span> <span class="mi">3</span> <span class="c"># mean of prior homeostatic error / noisy input / simple prior</span>
+    <span class="n">sigma_s</span> <span class="o">=</span> <span class="mi">1</span> <span class="c"># variance of prior / sensory noise </span>
+    <span class="n">s_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mf">0.01</span><span class="p">)</span> <span class="c"># range of sensory input</span>
+    <span class="n">s_step</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="c"># step size</span>
     
-    <span class="n">mean_phi</span> <span class="o">=</span> <span class="mi">5</span>
-    <span class="n">sigma_phi</span> <span class="o">=</span> <span class="mi">2</span>
-    <span class="n">last_phi</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="c"># assume that phi maximises the posterior </span>
+    <span class="n">phi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">s_range</span><span class="p">))</span>
     
-    <span class="n">epi_length</span> <span class="o">=</span> <span class="mi">20</span>
-    <span class="n">t</span> <span class="o">=</span> <span class="mi">2000</span>
-    <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.02</span>
+    <span class="c"># use Eulers method to find the most likely value of phi</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">s_range</span><span class="p">)):</span>
+        
+        <span class="n">phi</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">epsilon_p</span>
+        <span class="n">phi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">phi</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">s_step</span> <span class="o">*</span> <span class="p">(</span> <span class="p">(</span> <span class="p">(</span><span class="n">epsilon_p</span> <span class="o">-</span> <span class="n">phi</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="n">sigma_e</span> <span class="p">)</span> <span class="o">+</span>
+        <span class="p">(</span> <span class="p">(</span> <span class="n">epsilon</span> <span class="o">-</span> <span class="n">sensory_transform</span><span class="p">(</span><span class="n">phi</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span> <span class="p">)</span> <span class="o">/</span> <span class="n">sigma_e</span> <span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">phi</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span> <span class="p">)</span> <span class="c"># equation 12</span>
     
+    <span class="c"># plot convergence</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mf">2.5</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">s_range</span><span class="p">,</span><span class="n">phi</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'Time'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">r' $</span><span class="err">\</span><span class="s">phi$'</span><span class="p">)</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
+    
+</code></pre>
+</div>
+
+<div class="language-python highlighter-rouge">
+<pre class="highlight"><code><span class="n">simple_dyn</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<p><img src="https://tmorville.github.io//assets/images/free_energy_homeostasis_5_0.png" alt="png"></p>
+
+<div class="language-python highlighter-rouge">
+<pre class="highlight"><code><span class="k">def</span> <span class="nf">learn_phi</span><span class="p">():</span>
+    
+    <span class="c"># variabels </span>
+    <span class="n">epsilon</span> <span class="o">=</span> <span class="mi">2</span> <span class="c"># observed homeostatic error </span>
+    <span class="n">sigma_e</span> <span class="o">=</span> <span class="mi">1</span> <span class="c"># standard deviation of the homeostatic error</span>
+    <span class="n">epsilon_p</span> <span class="o">=</span> <span class="mi">3</span> <span class="c"># mean of prior homeostatic error / noisy input / simple prior</span>
+    <span class="n">sigma_s</span> <span class="o">=</span> <span class="mi">1</span> <span class="c"># variance of prior / sensory noise </span>
+    <span class="n">s_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mf">0.01</span><span class="p">)</span> <span class="c"># range of sensory input</span>
+    <span class="n">s_step</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="c"># step size</span>
+    
+    <span class="c"># preallocate</span>
+    <span class="n">phi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">s_range</span><span class="p">))</span> 
+    <span class="n">xi_e</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">s_range</span><span class="p">))</span> 
+    <span class="n">xi_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">s_range</span><span class="p">))</span>
+    
+    <span class="c"># dynamics of prediction errors for homeostatic error (xi_e) and sensory input (xi_s)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">s_range</span><span class="p">)):</span>
+        
+        <span class="n">phi</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">epsilon_p</span> <span class="c"># initialise best guess (prior) of homeostatic error</span>
+        <span class="n">xi_e</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span> <span class="c"># initialise prediction error for homeostatic error</span>
+        <span class="n">xi_s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span> <span class="c"># initialise prediction error for sensory input</span>
+        
+        <span class="n">phi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">phi</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">s_step</span><span class="o">*</span><span class="p">(</span> <span class="o">-</span><span class="n">xi_e</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">xi_s</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">phi</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="p">)</span> <span class="p">)</span> <span class="c"># equation 12</span>
+        <span class="n">xi_e</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">xi_e</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">s_step</span><span class="o">*</span><span class="p">(</span> <span class="n">phi</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">epsilon_p</span> <span class="o">-</span> <span class="n">sigma_e</span> <span class="o">*</span> <span class="n">xi_e</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span> <span class="c"># equation 13</span>
+        <span class="n">xi_s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">xi_s</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">s_step</span><span class="o">*</span><span class="p">(</span> <span class="n">epsilon</span> <span class="o">-</span> <span class="n">sensory_transform</span><span class="p">(</span><span class="n">phi</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="n">sigma_s</span> <span class="o">*</span> <span class="n">xi_s</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span> <span class="c"># equation 14</span>
+    
+    <span class="c"># plot network dynamics</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mf">2.5</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">s_range</span><span class="p">,</span><span class="n">phi</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">s_range</span><span class="p">,</span><span class="n">xi_e</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">s_range</span><span class="p">,</span><span class="n">xi_s</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'Activity'</span><span class="p">)</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>                
+</code></pre>
+</div>
+
+<div class="language-python highlighter-rouge">
+<pre class="highlight"><code><span class="n">learn_phi</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<p><img src="https://tmorville.github.io//assets/images/free_energy_homeostasis_7_0.png" alt="png"></p>
+
+<div class="language-python highlighter-rouge">
+<pre class="highlight"><code><span class="k">def</span> <span class="nf">learn_sigma</span><span class="p">():</span>
+    
+    <span class="c"># variabels </span>
+    <span class="n">epsilon</span> <span class="o">=</span> <span class="mi">2</span> <span class="c"># observed homeostatic error </span>
+    <span class="n">sigma_e</span> <span class="o">=</span> <span class="mi">1</span> <span class="c"># standard deviation of the homeostatic error</span>
+    <span class="n">epsilon_p</span> <span class="o">=</span> <span class="mi">3</span> <span class="c"># mean of prior homeostatic error / noisy input / simple prior</span>
+    <span class="n">sigma_s</span> <span class="o">=</span> <span class="mi">1</span> <span class="c"># variance of prior / sensory noise </span>
+    <span class="n">s_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mf">0.01</span><span class="p">)</span> <span class="c"># range of sensory input</span>
+    <span class="n">s_step</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="c"># step size</span>
+    
+    <span class="c"># new variabels </span>
+    <span class="n">maxt</span> <span class="o">=</span> <span class="mi">20</span> <span class="c"># maximum number of iterations</span>
+    <span class="n">trials</span> <span class="o">=</span> <span class="mi">2000</span> <span class="c"># of trials </span>
+    <span class="n">epi_length</span> <span class="o">=</span> <span class="mi">20</span> <span class="c"># length of episode</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="c"># learning rate</span>
+    
+    <span class="n">mean_phi</span> <span class="o">=</span> <span class="mi">5</span> <span class="c"># the average value that maximises the posterior</span>
+    <span class="n">sigma_phi</span> <span class="o">=</span> <span class="mi">2</span> <span class="c"># the variance of phi</span>
+    <span class="n">last_phi</span> <span class="o">=</span> <span class="mi">5</span> <span class="c"># the last observed phi</span>
+    
+    <span class="c"># preallocate</span>
     <span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">trials</span><span class="p">)</span>
     <span class="n">error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">trials</span><span class="p">)</span>
     <span class="n">e</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">trials</span><span class="p">)</span>
     
-    <span class="n">sigma</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">sigma</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="c"># initialise sigma in 1 </span>
     
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">trials</span><span class="p">):</span>
         
-        <span class="n">error</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">phi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">error</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span> <span class="c"># initialise error in zero</span>
+        <span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span> <span class="c"># initialise interneuron e in zero</span>
+        <span class="n">phi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="c"># draw a new phi every round </span>
         
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">trials</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2000</span><span class="p">):</span>
             
-            <span class="n">error</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">error</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">v_step</span><span class="o">*</span><span class="p">(</span><span class="n">phi</span><span class="o">-</span><span class="n">last_phi</span><span class="o">-</span><span class="n">e</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-            <span class="n">e</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">e</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">v_step</span><span class="o">*</span><span class="p">(</span><span class="n">sigma</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">error</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">e</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">error</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">error</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">s_step</span><span class="o">*</span><span class="p">(</span><span class="n">phi</span><span class="o">-</span><span class="n">last_phi</span><span class="o">-</span><span class="n">e</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="c"># equation 59 in Bogacz</span>
+            <span class="n">e</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">e</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">s_step</span><span class="o">*</span><span class="p">(</span><span class="n">sigma</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">error</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">e</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="c"># equation 60 in Bogacz</span>
             
-        <span class="n">sigma</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">alpha</span><span class="o">*</span><span class="p">(</span><span class="n">error</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">e</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">sigma</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">alpha</span><span class="o">*</span><span class="p">(</span><span class="n">error</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">e</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="c"># synaptic weight (Sigma) update</span>
         
+    <span class="c"># plot dynamics of Sigma</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mf">2.5</span><span class="p">))</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sigma</span><span class="p">)</span>
-            
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'Time'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">r' $</span><span class="err">\</span><span class="s">Sigma$'</span><span class="p">)</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>           
 
 
 </code></pre>
 </div>
 
 <div class="language-python highlighter-rouge">
-<pre class="highlight"><code><span class="n">ex5</span><span class="p">()</span>
+<pre class="highlight"><code><span class="n">learn_sigma</span><span class="p">()</span>
 </code></pre>
 </div>
 
-<p><img src="https://tmorville.github.io//assets/images/Bogacz_5_0.png" alt="png"></p>
+<p><img src="https://tmorville.github.io//assets/images/free_energy_homeostasis_9_0.png" alt="png"></p>
 
 
         
@@ -308,7 +401,7 @@
 
 
         
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2016-12-29T15:07:27+01:00">December 29, 2016</time></p>
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-01-02T13:04:34+01:00">January 02, 2017</time></p>
         
       </footer>
 
