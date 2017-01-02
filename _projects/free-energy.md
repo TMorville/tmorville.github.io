@@ -3,9 +3,9 @@ title: Learning using gradient descent on a free-energy potential
 layout: single
 ---
 
-### Based on [K. Friston](http://www.fil.ion.ucl.ac.uk/~karl/A%20free%20energy%20principle%20for%20the%20brain.pdf) and [R. Bogacz](http://www.sciencedirect.com/science/article/pii/S0022249615000759) a learning scheme is implemented using gradient descent on a free-energy potential. In the following the framework is guided by biological semantics to maximise intuition - but generally this method can (and has been) applied to many different problems.  
+### Based on [K. Friston](http://www.fil.ion.ucl.ac.uk/~karl/A%20free%20energy%20principle%20for%20the%20brain.pdf) and [R. Bogacz](http://www.sciencedirect.com/science/article/pii/S0022249615000759) a learning scheme is implemented using gradient descent on a free-energy potential.  
 
-If you're familiar with Bayes, but not approximate inference, I suggest that you skip **Part I** and head to **Part II**. If you're familiar with both, you probably won't learn much in the following, as it is very basic. Lets begin!
+If you're familiar with Bayes, but not approximate inference, I suggest that you skip **Part I** and head to **Part II**. If you're familiar with both, you probably won't learn much in the following as it is very basic. Lets begin!
 
 ### Biological intuition
 Consider a theoretical one-dimensional thermoregulator. This simple organism stays alive by maximising sojourn time in a optimal temperature state, which we assumed to be defined on evolutionary time. A homeostatic mechanism could be simple feedback control, like the thermostat on a heater. Unlike the thermostat which has direct access to (and control over) temperature, the thermoregulator relies on efferent signaling to infer and control its hidden state - temperature. The only signal the regulator has access to is the real (euclidian) distance between its current temperature, and the optimal temperature. This absolite distance on $$\mathbb{R}$$ is the _homeostatic error_ $$\epsilon$$ and is communicated via. a noisy efferent signal $$s$$. The non-linear function $$g(\epsilon)$$ relates homeostatic error to percieved efferent signal, such that when homeostatic error is exactly $$\epsilon$$ the percieved efferent signal is normally distributed with mean $$g(\epsilon)$$ and variance $$\Sigma_\epsilon$$.  
@@ -96,7 +96,7 @@ $$p(s)=\int p(\epsilon)p(s|\epsilon)d\epsilon$$
 
 can be complicated and numerical solutions often rely on computationally intense algorithms, such as the [Expectation-Maximisation algorithm](https://en.wikipedia.org/wiki/Expectation%E2%80%93maximization_algorithm). 
 
-### Part II - Free Energy
+### Part II - Approximate inference
 We are interested in a more general way of finding the value that maximises the posterior $$\phi$$. This involves maximising the numerator of Bayes equation. As this is independent of the denominator and therefore maximising $$p(\epsilon)p(s|\epsilon)$$ will maximise the posterior. By taking the logarithm to the numerator we get 
 
 $$
@@ -109,7 +109,7 @@ $$
 \dot{\phi}=\frac{\epsilon_{p}-\phi}{\Sigma_{p}}+\frac{s-h(\phi)}{\Sigma_{s}}g^{'}(\phi)
 $$
 
-The next snippit of code asumes values for $$\epsilon,\Sigma_e,\epsilon_p,\Sigma_s$$ and implements the above dynamics to find the value of $$\phi$$ that maximises the posterior using a manual implementation of Eulers method. 
+The next snippit of code asumes values for $$\epsilon,\Sigma_e,\epsilon_p,\Sigma_s$$ and implements the above dynamics to find the value of $$\phi$$ that maximises the posterior using a manual implementation of the dynamics and iterating using Eulers method. 
 
 
 ```python
@@ -164,9 +164,10 @@ $$ \dot{\xi_{p}} = \phi-\epsilon_{p}-\Sigma_{p}\xi_{p} $$
 
 $$ \dot{\xi_{s}} = s-h(\phi)-\Sigma_{s}\xi_{s} $$
 
-where $$\xi_{p}$$ and $$\xi_{s}$$ are the prediction errors 
+where $$\xi_{p}$$ and $$\xi_{s}$$ are the _prediction errors_
 
 $$ \xi_{p} = \frac{\epsilon_{p}-\phi}{\Sigma_{p}} $$
+
 $$ \xi_{s} = \frac{s-g(\phi)}{\Sigma_{s}} $$
 
 that arise from the assumption that the input is normally distributed (again, see notes for derivations). The next snippit of code implements those dynamics and thus, the network "learns" what value of $$\phi$$ that maximises the posterior. 
@@ -218,19 +219,27 @@ learn_phi()
 
 As the figure shows, the network learns <span style="color: blue">$$\phi$$</span> but is slower in converging than when using Eulers method, as the model relies on several nodes that are inhibits and excites each other which causes oscillatory behaviour. Both <span style="color:green">$$\xi_p$$</span> and <span style="color:red">$$\xi_\epsilon$$</span> oscillate and converges to the values where
 
-$$
-\begin{align}
-\phi-\epsilon_{p}-\Sigma_{p}\xi_{p} & = 0 \\
-s-h(\phi)-\Sigma_{s}\xi_{s} & = 0
-\end{align}
-$$
+$$ \phi-\epsilon_{p}-\Sigma_{p}\xi_{p} = 0 $$
 
+$$ s-h(\phi)-\Sigma_{s}\xi_{s} = 0 $$
+    
 ### Part IV - Learning $$\Sigma$$ with a network model
 
 Recall that we assumed that homeostatic error $$\epsilon$$ was communicated via. a noisy efferent signal $$s$$ that we assumed to be normally distributed. Above, we outlined a simple sample method for finding the mean value $$\phi$$ that maximises the posterior $$p(\epsilon\vert s)$$. 
 
-By expanding this simple model, we can esimate the variance $$\Sigma$$ of the normal distribution as well. 
+By expanding this simple model, we can esimate the variance $$\Sigma$$ of the normal distribution as well. Considering computation in one single node computing prediction error 
 
+$$ \xi_{i}=\frac{\phi_{i}-g(\phi_{i+1})}{\Sigma_{i}} $$
+ 
+
+where $$\Sigma_{i}=\left\langle (\phi_{i}-g_{i}(\phi_{i+1})^{2}\right\rangle$$ is the variance of homeostatic error $$\phi_{i}$$. Estimation of $$\Sigma$$ can be achieved by adding a interneuron $$e_{i}$$ which is connected to the prediction error node, and receives input from this via the connection with weight encoding $$\Sigma_{i}$$. The dynamics are described by
+
+$$ \dot{\xi_{i}} = \phi_{i}-g(\phi_{i+1})-e_{i} $$
+
+$$ \dot{e} = \Sigma_{i}\xi_{i}-e_{i} $$
+
+which the following snippit of code implements. 
+ 
 
 ```python
 def learn_sigma():
@@ -291,7 +300,7 @@ learn_sigma()
 
 ![png]({{ site.url }}{{ site.baseurl }}/assets/images/free_energy_homeostasis_9_0.png)
 
-
+Because $$\phi$$ is constantly varying <code>phi = np.random.normal(5, np.sqrt(2), 1)</code> $$\Sigma$$ never does not converge to just one value, but instead to _approximately_ 2, the variance of $$\phi_i$$.
 
 
 
