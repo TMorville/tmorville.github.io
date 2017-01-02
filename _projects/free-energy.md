@@ -159,19 +159,10 @@ Firstly, we must specify what exactly biologically plausible means. 1) A neuron 
 
 Consider the dynamics of a simple network that relies on just two neurons and is coherent with the above requirements of local computation
 
-$$
-test
-$$
 
-
-\begin{align}
+$$
 \dot{\xi_{p}} & = \phi-\epsilon_{p}-\Sigma_{p}\xi_{p} \\
 \dot{\xi_{s}} & = s-h(\phi)-\Sigma_{s}\xi_{s} 
-\end{align}
-
-
-$$
-test
 $$
 
 where $$\xi_{p}$$ and $$\xi_{s}$$ are the prediction errors 
