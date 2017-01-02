@@ -24,3 +24,7 @@ permalink: /writing/
 
  > <span style="font-size:0.8em;"> The Homeostatic Logic of Reward </span>
 : <span style="font-size:0.8em;"> [Society for Neuroscience](https://www.sfn.org/~/media/SfN/Documents/Annual%20Meeting/FinalProgram/NS2014/DailyBooks/NS14_Book3_Sun.ashx) </span>
+
+### Outreach
+ > <span style="font-size:0.8em;"> Rational som på savannen (Rational, as on the savannah. Danish article) </span>
+: <span style="font-size:0.8em;"> [Weekendavisen #47 | Ideer | 22. Nov – 28. Nov 2013](https://www.bibliotekerne.via.dk/da/search/ting/35820523) </span>

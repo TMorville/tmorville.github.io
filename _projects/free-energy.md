@@ -157,7 +157,7 @@ So we ask the question: What does a minimal and _biologically plausible_ network
 ### Part III - Learning $$\phi$$ with a network model
 Firstly, we must specify what exactly biologically plausible means. 1) A neuron only performs computations on the input it is given, weighted by its synaptic weights. 2) Synaptic plasticity of one neuron is only based on the activity of pre-synaptic and post-synaptic activity connecting to that neuron. 
 
-Consider the dynamics of a simple network that relies on just two neurons and is coherent with 1) and 2)
+Consider the dynamics of a simple network that relies on just two neurons and is coherent with the above requirements of local computation
 
 $$
 \begin{align}
@@ -234,7 +234,6 @@ $$
 ### Part IV - Learning $$\Sigma$$ with a network model
 
 Recall that we assumed that homeostatic error was communicated via. a noisy efferent signal $$s$$ that we assumed to be normally distributed. Above, we outlined a simple sample method for finding the mean value $$\phi$$ that maximises the posterior. By expanding the simple model above, we esimate the variance $$\Sigma$$ of the normal distribution as well. 
-
 
 
 ```python
