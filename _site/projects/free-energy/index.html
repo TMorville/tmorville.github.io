@@ -51,7 +51,7 @@
 
 
   <meta property="og:type" content="article">
-  <meta property="article:published_time" content="2017-01-02T13:04:34+01:00">
+  <meta property="article:published_time" content="2017-01-02T16:14:36+01:00">
 
 
 
@@ -169,10 +169,13 @@
       <section class="page__content" itemprop="text">
         <h3 id="based-on-k-fristonhttpwwwfilionuclacukkarla20free20energy20principle20for20the20brainpdf-and-r-bogaczhttpwwwsciencedirectcomsciencearticlepiis0022249615000759-a-learning-scheme-is-implemented-using-gradient-descent-on-a-free-energy-potential-in-the-following-the-framework-is-guided-by-biological-semantics-to-maximise-intuition---but-generally-this-method-can-and-has-been-applied-to-many-different-problems">Based on <a href="http://www.fil.ion.ucl.ac.uk/~karl/A%20free%20energy%20principle%20for%20the%20brain.pdf">K. Friston</a> and <a href="http://www.sciencedirect.com/science/article/pii/S0022249615000759">R. Bogacz</a> a learning scheme is implemented using gradient descent on a free-energy potential. In the following the framework is guided by biological semantics to maximise intuition - but generally this method can (and has been) applied to many different problems.</h3>
 
-<p>If you are familiar with Bayes, but not approximate inference, I suggest that you skip <strong>Part I</strong> and head to <strong>Part II</strong>. If you’re familiar with both, you probably won’t learn much in the following. Lets begin!</p>
+<p>If you’re familiar with Bayes, but not approximate inference, I suggest that you skip <strong>Part I</strong> and head to <strong>Part II</strong>. If you’re familiar with both, you probably won’t learn much in the following, as it is very basic. Lets begin!</p>
+
+<h3 id="biological-intuition">Biological intuition</h3>
+<p>Consider a theoretical one-dimensional thermoregulator. This simple organism stays alive by maximising sojourn time in a optimal temperature state, which we assumed to be defined on evolutionary time. A homeostatic mechanism could be simple feedback control, like the thermostat on a heater. Unlike the thermostat which has direct access to (and control over) temperature, the thermoregulator relies on efferent signaling to infer and control its hidden state - temperature. The only signal the regulator has access to is the real (euclidian) distance between its current temperature, and the optimal temperature. This absolite distance on <script type="math/tex">\mathbb{R}</script> is the <em>homeostatic error</em> <script type="math/tex">\epsilon</script> and is communicated via. a noisy efferent signal <script type="math/tex">s</script>. The non-linear function <script type="math/tex">g(\epsilon)</script> relates homeostatic error to percieved efferent signal, such that when homeostatic error is exactly <script type="math/tex">\epsilon</script> the percieved efferent signal is normally distributed with mean <script type="math/tex">g(\epsilon)</script> and variance <script type="math/tex">\Sigma_\epsilon</script>.</p>
 
 <h3 id="part-i---bayes">Part I - Bayes</h3>
-<p>Consider a theoretical one-dimensional thermoregulator. This simple organism maximises survival by maximising sojourn time in some optimal temperature state defined on evolutionary time. It does this by simple error based control, like a thermostat on a heater. Thus the only signal the regulator cares about, is the real (euclidian) distance between its current temperature state and the optimal state. This real distance on <script type="math/tex">\mathbb{R}</script> is the homeostatic error <script type="math/tex">\epsilon</script> and this is communicated via. a noisy efferent signal <script type="math/tex">s</script>. The non-linear function <script type="math/tex">g(\epsilon)</script> relates homeostatic error to percieved efferent signal, such that when homeostatic error is <script type="math/tex">\epsilon</script> the percieved efferent signal is normally distributed with mean <script type="math/tex">g(\epsilon)</script> and variance <script type="math/tex">\Sigma_\epsilon</script>. Thus, the likelihood function is</p>
+<p>The likelihood function (probability of a signal given a homeostatic error) is defined as</p>
 
 <script type="math/tex; mode=display">p(s|\epsilon)=f(s;g(\epsilon),\Sigma_{s})</script>
 
@@ -192,7 +195,7 @@
 
 <p>and sum the whole range of possible <script type="math/tex">\epsilon</script>.</p>
 
-<p>The following code implements such an exact solution and plots it.</p>
+<p>The following code implements such an exact solution and plots it. Firstly we import some dependencies:</p>
 
 <div class="language-python highlighter-rouge">
 <pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
@@ -205,6 +208,7 @@
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 </code></pre>
 </div>
+<p>and then define <script type="math/tex">g(\cdot)</script>:</p>
 
 <div class="language-python highlighter-rouge">
 <pre class="highlight"><code><span class="c"># non-linear transformation of homeostatic error to percieved sensory input e.g. g(phi)</span>
@@ -215,6 +219,7 @@
     <span class="k">return</span> <span class="n">sensory_output</span>
 </code></pre>
 </div>
+<p>The reason we explicitly define <script type="math/tex">g(\cdot)</script> is that we might want to change it later. For now we assume a simple non-linear relation <script type="math/tex">g(\epsilon)=\epsilon^2</script>. The following snippet of code assumes values of <script type="math/tex">\epsilon,\Sigma_e,\epsilon_p,\Sigma_s</script> and plots tbe posterior distribtuion <script type="math/tex">p(\epsilon|s)</script>.</p>
 
 <div class="language-python highlighter-rouge">
 <pre class="highlight"><code><span class="k">def</span> <span class="nf">exact_bayes</span><span class="p">():</span>
@@ -247,6 +252,32 @@
 </div>
 
 <p><img src="https://tmorville.github.io//assets/images/free_energy_homeostasis_3_0.png" alt="png"></p>
+
+<p>Inspecting the graph, we find that approximately <script type="math/tex">\phi=1.6</script> maximises the posterior. There are two fundamental problems with this approach</p>
+
+<ol>
+  <li>
+    <p>The posterior does not take a standard form, and is thus described by (potentially) infinitely many moments, instead of just simple sufficient statistics, such as the mean and the variance of a gaussian.</p>
+  </li>
+  <li>
+    <p>The normalisation term that sits in the numerator of Bayes formula</p>
+  </li>
+</ol>
+
+<script type="math/tex; mode=display">p(s)=\int p(\epsilon)p(s|\epsilon)d\epsilon</script>
+
+<p>can be complicated and numerical solutions often rely on computationally intense algorithms, such as the <a href="https://en.wikipedia.org/wiki/Expectation%E2%80%93maximization_algorithm">Expectation-Maximisation algorithm</a>.</p>
+
+<h3 id="part-ii---free-energy">Part II - Free Energy</h3>
+<p>We are interested in a more general way of finding the value that maximises the posterior <script type="math/tex">\phi</script>. This involves maximising the numerator of Bayes equation. As this is independent of the denominator and therefore maximising <script type="math/tex">p(\epsilon)p(s|\epsilon)</script> will maximise the posterior. By taking the logarithm to the numerator we get</p>
+
+<script type="math/tex; mode=display">F=\mbox{ln}p(\phi)+\mbox{ln}p(s|\phi)</script>
+
+<p>and the dynamics can be derived (see notes) to be</p>
+
+<script type="math/tex; mode=display">\dot{\phi}=\frac{\epsilon_{p}-\phi}{\Sigma_{p}}+\frac{s-h(\phi)}{\Sigma_{s}}g^{'}(\phi)</script>
+
+<p>The next snippit of code asumes values for <script type="math/tex">\epsilon,\Sigma_e,\epsilon_p,\Sigma_s</script> and implements the above dynamics to find the value of <script type="math/tex">\phi</script> that maximises the posterior using a manual implementation of Eulers method.</p>
 
 <div class="language-python highlighter-rouge">
 <pre class="highlight"><code><span class="k">def</span> <span class="nf">simple_dyn</span><span class="p">():</span>
@@ -285,6 +316,31 @@
 </div>
 
 <p><img src="https://tmorville.github.io//assets/images/free_energy_homeostasis_5_0.png" alt="png"></p>
+
+<p>It is clear that the output converges rapidly to <script type="math/tex">\phi=1.6</script>, the value that maximises the posterior.</p>
+
+<p>So we ask the question: What does a minimal and <em>biologically plausible</em> network model that can do such calculations look like?</p>
+
+<h3 id="part-iii---learning-phi-with-a-network-model">Part III - Learning <script type="math/tex">\phi</script> with a network model</h3>
+<p>Firstly, we must specify what exactly biologically plausible means. 1) A neuron only performs computations on the input it is given, weighted by its synaptic weights. 2) Synaptic plasticity of one neuron is only based on the activity of pre-synaptic and post-synaptic activity connecting to that neuron.</p>
+
+<p>Consider the dynamics of a simple network that relies on just two neurons and is coherent with 1) and 2)</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+\dot{\xi_{p}} & = \phi-\epsilon_{p}-\Sigma_{p}\xi_{p} \\
+\dot{\xi_{s}} & = s-h(\phi)-\Sigma_{s}\xi_{s} 
+\end{align} %]]></script>
+
+<p>where <script type="math/tex">\xi_{p}</script> and <script type="math/tex">\xi_{s}</script> are the prediction errors</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+\xi_{p} & = \frac{\epsilon_{p}-\phi}{\Sigma_{p}} \\
+\xi_{s} & = \frac{s-g(\phi)}{\Sigma_{s}}
+\end{align} %]]></script>
+
+<p>that arise from the assumption that the input is normally distributed (again, see notes for derivations). The next snippit of code implements those dynamics and thus, the network “learns” what value of <script type="math/tex">\phi</script> that maximises the posterior.</p>
 
 <div class="language-python highlighter-rouge">
 <pre class="highlight"><code><span class="k">def</span> <span class="nf">learn_phi</span><span class="p">():</span>
@@ -329,6 +385,18 @@
 </div>
 
 <p><img src="https://tmorville.github.io//assets/images/free_energy_homeostasis_7_0.png" alt="png"></p>
+
+<p>As the figure shows, the network learns <span style="color: blue"><script type="math/tex">\phi</script></span> but is slower in converging than when using Eulers method, as the model relies on several nodes that are inhibits and excites each other which causes oscillatory behaviour. Both <span style="color:green"><script type="math/tex">\xi_p</script></span> and <span style="color:red"><script type="math/tex">\xi_\epsilon</script></span> oscillate and converges to the values where</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+\phi-\epsilon_{p}-\Sigma_{p}\xi_{p} & = 0 \\
+s-h(\phi)-\Sigma_{s}\xi_{s} & = 0.
+\end{align} %]]></script>
+
+<h3 id="part-iv---learning-sigma-with-a-network-model">Part IV - Learning <script type="math/tex">\Sigma</script> with a network model</h3>
+
+<p>Recall that we assumed that homeostatic error was communicated via. a noisy efferent signal <script type="math/tex">s</script> that we assumed to be normally distributed. Above, we outlined a simple sample method for finding the mean value <script type="math/tex">\phi</script> that maximises the posterior. By expanding the simple model above, we esimate the variance <script type="math/tex">\Sigma</script> of the normal distribution as well.</p>
 
 <div class="language-python highlighter-rouge">
 <pre class="highlight"><code><span class="k">def</span> <span class="nf">learn_sigma</span><span class="p">():</span>
@@ -401,7 +469,7 @@
 
 
         
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-01-02T13:04:34+01:00">January 02, 2017</time></p>
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-01-02T16:14:36+01:00">January 02, 2017</time></p>
         
       </footer>
 

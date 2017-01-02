@@ -5,10 +5,13 @@ layout: single
 
 ### Based on [K. Friston](http://www.fil.ion.ucl.ac.uk/~karl/A%20free%20energy%20principle%20for%20the%20brain.pdf) and [R. Bogacz](http://www.sciencedirect.com/science/article/pii/S0022249615000759) a learning scheme is implemented using gradient descent on a free-energy potential. In the following the framework is guided by biological semantics to maximise intuition - but generally this method can (and has been) applied to many different problems.  
 
-If you are familiar with Bayes, but not approximate inference, I suggest that you skip **Part I** and head to **Part II**. If you're familiar with both, you probably won't learn much in the following. Lets begin!
+If you're familiar with Bayes, but not approximate inference, I suggest that you skip **Part I** and head to **Part II**. If you're familiar with both, you probably won't learn much in the following, as it is very basic. Lets begin!
+
+### Biological intuition
+Consider a theoretical one-dimensional thermoregulator. This simple organism stays alive by maximising sojourn time in a optimal temperature state, which we assumed to be defined on evolutionary time. A homeostatic mechanism could be simple feedback control, like the thermostat on a heater. Unlike the thermostat which has direct access to (and control over) temperature, the thermoregulator relies on efferent signaling to infer and control its hidden state - temperature. The only signal the regulator has access to is the real (euclidian) distance between its current temperature, and the optimal temperature. This absolite distance on $$\mathbb{R}$$ is the _homeostatic error_ $$\epsilon$$ and is communicated via. a noisy efferent signal $$s$$. The non-linear function $$g(\epsilon)$$ relates homeostatic error to percieved efferent signal, such that when homeostatic error is exactly $$\epsilon$$ the percieved efferent signal is normally distributed with mean $$g(\epsilon)$$ and variance $$\Sigma_\epsilon$$.  
 
 ### Part I - Bayes
-Consider a theoretical one-dimensional thermoregulator. This simple organism maximises survival by maximising sojourn time in some optimal temperature state defined on evolutionary time. It does this by simple error based control, like a thermostat on a heater. Thus the only signal the regulator cares about, is the real (euclidian) distance between its current temperature state and the optimal state. This real distance on $$\mathbb{R}$$ is the homeostatic error $$\epsilon$$ and this is communicated via. a noisy efferent signal $$s$$. The non-linear function $$g(\epsilon)$$ relates homeostatic error to percieved efferent signal, such that when homeostatic error is $$\epsilon$$ the percieved efferent signal is normally distributed with mean $$g(\epsilon)$$ and variance $$\Sigma_\epsilon$$. Thus, the likelihood function is 
+The likelihood function (probability of a signal given a homeostatic error) is defined as 
 
 $$ p(s|\epsilon)=f(s;g(\epsilon),\Sigma_{s})$$
 
@@ -28,7 +31,7 @@ $$p(s)=\int p(\epsilon)p(s|\epsilon)d\epsilon$$
  
 and sum the whole range of possible $$\epsilon$$.
 
-The following code implements such an exact solution and plots it.
+The following code implements such an exact solution and plots it. Firstly we import some dependencies:
 
 ```python
 import numpy as np
@@ -40,7 +43,7 @@ sns.set(style="white", palette="muted", color_codes=True)
 
 %matplotlib inline
 ```
-
+and then define $$g(\cdot)$$:
 
 ```python
 # non-linear transformation of homeostatic error to percieved sensory input e.g. g(phi)
@@ -50,7 +53,7 @@ def sensory_transform(input):
         
     return sensory_output
 ```
-
+The reason we explicitly define $$g(\cdot)$$ is that we might want to change it later. For now we assume a simple non-linear relation $$g(\epsilon)=\epsilon^2$$. The following snippet of code assumes values of $$\epsilon,\Sigma_e,\epsilon_p,\Sigma_s$$ and plots tbe posterior distribtuion $$p(\epsilon|s)$$.
 
 ```python
 def exact_bayes():
@@ -81,9 +84,32 @@ def exact_bayes():
 exact_bayes()
 ```
 
-
 ![png]({{ site.url }}{{ site.baseurl }}/assets/images/free_energy_homeostasis_3_0.png)
 
+Inspecting the graph, we find that approximately $$\phi=1.6$$ maximises the posterior. There are two fundamental problems with this approach 
+
+ 1. The posterior does not take a standard form, and is thus described by (potentially) infinitely many moments, instead of just simple sufficient statistics, such as the mean and the variance of a gaussian.
+
+ 2. The normalisation term that sits in the numerator of Bayes formula 
+ 
+$$p(s)=\int p(\epsilon)p(s|\epsilon)d\epsilon$$
+
+can be complicated and numerical solutions often rely on computationally intense algorithms, such as the [Expectation-Maximisation algorithm](https://en.wikipedia.org/wiki/Expectation%E2%80%93maximization_algorithm). 
+
+### Part II - Free Energy
+We are interested in a more general way of finding the value that maximises the posterior $$\phi$$. This involves maximising the numerator of Bayes equation. As this is independent of the denominator and therefore maximising $$p(\epsilon)p(s|\epsilon)$$ will maximise the posterior. By taking the logarithm to the numerator we get 
+
+$$
+F=\mbox{ln}p(\phi)+\mbox{ln}p(s|\phi)
+$$
+
+and the dynamics can be derived (see notes) to be  
+
+$$
+\dot{\phi}=\frac{\epsilon_{p}-\phi}{\Sigma_{p}}+\frac{s-h(\phi)}{\Sigma_{s}}g^{'}(\phi)
+$$
+
+The next snippit of code asumes values for $$\epsilon,\Sigma_e,\epsilon_p,\Sigma_s$$ and implements the above dynamics to find the value of $$\phi$$ that maximises the posterior using a manual implementation of Eulers method. 
 
 
 ```python
@@ -124,6 +150,32 @@ simple_dyn()
 
 ![png]({{ site.url }}{{ site.baseurl }}/assets/images/free_energy_homeostasis_5_0.png)
 
+It is clear that the output converges rapidly to $$\phi=1.6$$, the value that maximises the posterior. 
+
+So we ask the question: What does a minimal and _biologically plausible_ network model that can do such calculations look like? 
+
+### Part III - Learning $$\phi$$ with a network model
+Firstly, we must specify what exactly biologically plausible means. 1) A neuron only performs computations on the input it is given, weighted by its synaptic weights. 2) Synaptic plasticity of one neuron is only based on the activity of pre-synaptic and post-synaptic activity connecting to that neuron. 
+
+Consider the dynamics of a simple network that relies on just two neurons and is coherent with 1) and 2)
+
+$$
+\begin{align}
+\dot{\xi_{p}} & = \phi-\epsilon_{p}-\Sigma_{p}\xi_{p} \\
+\dot{\xi_{s}} & = s-h(\phi)-\Sigma_{s}\xi_{s} 
+\end{align}
+$$
+
+where $$\xi_{p}$$ and $$\xi_{s}$$ are the prediction errors 
+
+$$
+\begin{align}
+\xi_{p} & = \frac{\epsilon_{p}-\phi}{\Sigma_{p}} \\
+\xi_{s} & = \frac{s-g(\phi)}{\Sigma_{s}}
+\end{align}
+$$
+
+that arise from the assumption that the input is normally distributed (again, see notes for derivations). The next snippit of code implements those dynamics and thus, the network "learns" what value of $$\phi$$ that maximises the posterior. 
 
 
 ```python
@@ -169,6 +221,19 @@ learn_phi()
 
 
 ![png]({{ site.url }}{{ site.baseurl }}/assets/images/free_energy_homeostasis_7_0.png)
+
+As the figure shows, the network learns <span style="color: blue">$$\phi$$</span> but is slower in converging than when using Eulers method, as the model relies on several nodes that are inhibits and excites each other which causes oscillatory behaviour. Both <span style="color:green">$$\xi_p$$</span> and <span style="color:red">$$\xi_\epsilon$$</span> oscillate and converges to the values where
+
+$$
+\begin{align}
+\phi-\epsilon_{p}-\Sigma_{p}\xi_{p} & = 0 \\
+s-h(\phi)-\Sigma_{s}\xi_{s} & = 0.
+\end{align}
+$$
+
+### Part IV - Learning $$\Sigma$$ with a network model
+
+Recall that we assumed that homeostatic error was communicated via. a noisy efferent signal $$s$$ that we assumed to be normally distributed. Above, we outlined a simple sample method for finding the mean value $$\phi$$ that maximises the posterior. By expanding the simple model above, we esimate the variance $$\Sigma$$ of the normal distribution as well. 
 
 
 
