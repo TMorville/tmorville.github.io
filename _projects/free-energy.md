@@ -159,18 +159,24 @@ Firstly, we must specify what exactly biologically plausible means. 1) A neuron 
 
 Consider the dynamics of a simple network that relies on just two neurons and is coherent with the above requirements of local computation
 
+
+$$ \dot{\xi_{p}} = \phi-\epsilon_{p}-\Sigma_{p}\xi_{p} $$
+
 $$
-    \dot{\xi_{p}} & = \phi-\epsilon_{p}-\Sigma_{p}\xi_{p} \\
-    \dot{\xi_{s}} & = s-h(\phi)-\Sigma_{s}\xi_{s} 
+
+\dot{\xi_{s}} = s-h(\phi)-\Sigma_{s}\xi_{s} 
+
 $$
 
 where $$\xi_{p}$$ and $$\xi_{s}$$ are the prediction errors 
 
 $$
+
 \begin{align}
 \xi_{p} & = \frac{\epsilon_{p}-\phi}{\Sigma_{p}} \\
 \xi_{s} & = \frac{s-g(\phi)}{\Sigma_{s}}
 \end{align}
+
 $$
 
 that arise from the assumption that the input is normally distributed (again, see notes for derivations). The next snippit of code implements those dynamics and thus, the network "learns" what value of $$\phi$$ that maximises the posterior. 
