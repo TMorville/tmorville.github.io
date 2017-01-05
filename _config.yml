@@ -10,10 +10,10 @@ locale                   : "en"
 title                    : " "
 title_separator          : "-"
 name                     : 
-description              : "Hello, my name is Tobias and I do Neuroscience"
+description              : "Hello, I'm Tobias." 
 url                      : "https://tmorville.github.io/"
 baseurl                  : # the subpath of your site, e.g. "/blog"
-repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
+repository               : "TMorville"
 teaser                   : # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
@@ -70,7 +70,7 @@ social:
 
 # Analytics
 analytics:
-  provider               : false # false (default), "google", "google-universal", "custom"
+  provider               : "google" # false (default), "google", "google-universal", "custom"
   google:
     tracking_id          :
 
