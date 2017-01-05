@@ -5,10 +5,16 @@ layout: single
 
 ### Based on [K. Friston](http://www.fil.ion.ucl.ac.uk/~karl/A%20free%20energy%20principle%20for%20the%20brain.pdf) and following [R. Bogacz](http://www.sciencedirect.com/science/article/pii/S0022249615000759) a learning scheme is implemented using gradient descent on a free-energy potential.  
 
+---
+
 If you're familiar with Bayes, but not approximate inference, I suggest that you skip **Part I** and head to **Part II**. If you're familiar with both, you probably won't learn much in the following as it is very basic. Lets begin!
+
+---
 
 ### Biological intuition
 Consider a theoretical one-dimensional thermoregulator. This simple organism stays alive by maximising sojourn time in a optimal temperature state, which we assumed to be defined on evolutionary time. A homeostatic mechanism could be simple feedback control, like the thermostat on a heater. Unlike the thermostat which has direct access to (and control over) temperature, the thermoregulator relies on efferent signaling to infer and control its hidden state - temperature. The only signal the regulator has access to is the real (euclidian) distance between its current temperature, and the optimal temperature. This absolite distance on $$\mathbb{R}$$ is the _homeostatic error_ $$\epsilon$$ and is communicated via. a noisy efferent signal $$s$$. The non-linear function $$g(\epsilon)$$ relates homeostatic error to percieved efferent signal, such that when homeostatic error is exactly $$\epsilon$$ the percieved efferent signal is normally distributed with mean $$g(\epsilon)$$ and variance $$\Sigma_\epsilon$$.  
+
+---
 
 ### Part I - Bayes
 The likelihood function (probability of a signal given a homeostatic error) is defined as 
@@ -96,6 +102,8 @@ $$p(s)=\int p(\epsilon)p(s|\epsilon)d\epsilon$$
 
 can be complicated and numerical solutions often rely on computationally intense algorithms, such as the [Expectation-Maximisation algorithm](https://en.wikipedia.org/wiki/Expectation%E2%80%93maximization_algorithm). 
 
+---
+
 ### Part II - Approximate inference
 We are interested in a more general way of finding the value that maximises the posterior $$\phi$$. This involves maximising the numerator of Bayes equation. As this is independent of the denominator and therefore maximising $$p(\epsilon)p(s|\epsilon)$$ will maximise the posterior. By taking the logarithm to the numerator we get 
 
@@ -153,6 +161,8 @@ simple_dyn()
 It is clear that the output converges rapidly to $$\phi=1.6$$, the value that maximises the posterior. 
 
 So we ask the question: What does a minimal and _biologically plausible_ network model that can do such calculations look like? 
+
+---
 
 ### Part III - Learning $$\phi$$ with a network model
 Firstly, we must specify what exactly biologically plausible means. 1) A neuron only performs computations on the input it is given, weighted by its synaptic weights. 2) Synaptic plasticity of one neuron is only based on the activity of pre-synaptic and post-synaptic activity connecting to that neuron. 
@@ -222,6 +232,8 @@ As the figure shows, the network learns <span style="color: blue">$$\phi$$</span
 $$ \phi-\epsilon_{p}-\Sigma_{p}\xi_{p} = 0 $$
 
 $$ s-h(\phi)-\Sigma_{s}\xi_{s} = 0 $$
+
+---
     
 ### Part IV - Learning $$\Sigma$$ with a network model
 

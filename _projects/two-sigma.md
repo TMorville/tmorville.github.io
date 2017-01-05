@@ -3,7 +3,9 @@ title: Weighted permutation entropy on financial time-series data
 layout: single
 ---
 
-### Following [Joshua Garland, Ryan James, and Elizabeth Bradley](http://journals.aps.org/pre/abstract/10.1103/PhysRevE.90.052910) information theoretical _redundancy_ is explained and estimated using _weighted permutation entropy_ on a subset of the [Two Sigma financial time-series data](https://www.kaggle.com/c/two-sigma-financial-modeling) from Kaggle. 
+### Following [Joshua Garland, Ryan James, and Elizabeth Bradley](http://journals.aps.org/pre/abstract/10.1103/PhysRevE.90.052910) information theoretical _redundancy_ is explained and estimated using _weighted permutation entropy_ on a subset of the [Two Sigma financial time-series data](https://www.kaggle.com/c/two-sigma-financial-modeling) from Kaggle.
+
+--- 
 
 - _Redundancy_ is a empirically tractable measure of the complexity that arises in real-world time-series data "_which results from the dimension, nonlinearity, and nonstationarity of the generating process, as well as from measurement issues such as noise, aggregation, and finite data length_"
 

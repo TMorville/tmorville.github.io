@@ -3,7 +3,9 @@ title: Manual implementation of a network
 layout: single
 ---
 
-### Implementation of a one-layer neural network that solves the [XOR](https://en.wikipedia.org/wiki/Exclusive_or) task using only numpy, roughly following [this](https://cs231n.github.io/optimization-2/) excellent blogpost by Andrej Karpathy (work in progress). 
+### Implementation of a one-layer neural network that solves the [XOR](https://en.wikipedia.org/wiki/Exclusive_or) task using only numpy, roughly following [this](https://cs231n.github.io/optimization-2/) excellent blogpost by Andrej Karpathy. 
+
+---
 
 
 ~~~python

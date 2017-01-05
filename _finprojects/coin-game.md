@@ -3,13 +3,15 @@ title: Non-ergocidity in a simple coin game
 layout: single
 ---
 
-### Based on a [seminal talk](https://www.youtube.com/watch?v=f1vXAHGIpfc) by Ole Peters I illustrate the fundamental difference between an ergodic and non-ergodic process using a simple coin game.  
+### Based on a [seminal talk](https://www.youtube.com/watch?v=f1vXAHGIpfc) by Ole Peters, I illustrate the fundamental difference between an ergodic and non-ergodic process using a simple coin game.  
+
+---
 
 Game dynamics: 
 
->*At each time step a fair coin is flipped and lands either heads or tails.
->*If heads show up, the amount initially gambled will **increase with 60%**. 
->*If the coin lands tails, the initial amount will **decrease by 40%**. 
+* At each time step a fair coin is flipped and lands either heads or tails.
+* If heads show up, the amount initially gambled will **increase with 60%**. 
+* If the coin lands tails, the initial amount will **decrease by 40%**. 
 
 Plots trajectories of exactly this game, assuming that initial wealth is 1. As you add more time steps by sliding the time-bar right, the function iterates the current wealth according to the dynamic explained above. 
 
@@ -91,8 +93,3 @@ interact(multiplicativeW, T = 500, N = 50)
 
 ![png]({{ site.url }}{{ site.baseurl }}/assets/images/SimpleCoinGame_4_0.png)
 
-
-
-```python
-
-```

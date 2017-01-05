@@ -3,7 +3,9 @@ title: Mnist visual attention
 layout: single
 ---
 
-### An attempt to implement the recurrent attention model (RAM) from "Recurrent Models of Visual Attention" (Mnih+ 2014) in collaboration with [ppries](https://github.com/ppries) (work in progress).
+### An attempt to implement the recurrent attention model (RAM) from "Recurrent Models of Visual Attention" (Mnih+ 2014) in collaboration with [ppries](https://github.com/ppries).
+
+---
 
 Link to [repo](https://github.com/ppries/tensorflow_mnist_ram) and my [notes](https://tmorville.github.io//assets/deepmind.pdf).
 

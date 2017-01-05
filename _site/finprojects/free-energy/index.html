@@ -51,7 +51,7 @@
 
 
   <meta property="og:type" content="article">
-  <meta property="article:published_time" content="2017-01-05T14:46:55+01:00">
+  <meta property="article:published_time" content="2017-01-05T14:54:14+01:00">
 
 
 
@@ -166,10 +166,16 @@
       <section class="page__content" itemprop="text">
         <h3 id="based-on-k-fristonhttpwwwfilionuclacukkarla20free20energy20principle20for20the20brainpdf-and-following-r-bogaczhttpwwwsciencedirectcomsciencearticlepiis0022249615000759-a-learning-scheme-is-implemented-using-gradient-descent-on-a-free-energy-potential">Based on <a href="http://www.fil.ion.ucl.ac.uk/~karl/A%20free%20energy%20principle%20for%20the%20brain.pdf">K. Friston</a> and following <a href="http://www.sciencedirect.com/science/article/pii/S0022249615000759">R. Bogacz</a> a learning scheme is implemented using gradient descent on a free-energy potential.</h3>
 
+<hr>
+
 <p>If you’re familiar with Bayes, but not approximate inference, I suggest that you skip <strong>Part I</strong> and head to <strong>Part II</strong>. If you’re familiar with both, you probably won’t learn much in the following as it is very basic. Lets begin!</p>
+
+<hr>
 
 <h3 id="biological-intuition">Biological intuition</h3>
 <p>Consider a theoretical one-dimensional thermoregulator. This simple organism stays alive by maximising sojourn time in a optimal temperature state, which we assumed to be defined on evolutionary time. A homeostatic mechanism could be simple feedback control, like the thermostat on a heater. Unlike the thermostat which has direct access to (and control over) temperature, the thermoregulator relies on efferent signaling to infer and control its hidden state - temperature. The only signal the regulator has access to is the real (euclidian) distance between its current temperature, and the optimal temperature. This absolite distance on <script type="math/tex">\mathbb{R}</script> is the <em>homeostatic error</em> <script type="math/tex">\epsilon</script> and is communicated via. a noisy efferent signal <script type="math/tex">s</script>. The non-linear function <script type="math/tex">g(\epsilon)</script> relates homeostatic error to percieved efferent signal, such that when homeostatic error is exactly <script type="math/tex">\epsilon</script> the percieved efferent signal is normally distributed with mean <script type="math/tex">g(\epsilon)</script> and variance <script type="math/tex">\Sigma_\epsilon</script>.</p>
+
+<hr>
 
 <h3 id="part-i---bayes">Part I - Bayes</h3>
 <p>The likelihood function (probability of a signal given a homeostatic error) is defined as</p>
@@ -265,6 +271,8 @@
 
 <p>can be complicated and numerical solutions often rely on computationally intense algorithms, such as the <a href="https://en.wikipedia.org/wiki/Expectation%E2%80%93maximization_algorithm">Expectation-Maximisation algorithm</a>.</p>
 
+<hr>
+
 <h3 id="part-ii---approximate-inference">Part II - Approximate inference</h3>
 <p>We are interested in a more general way of finding the value that maximises the posterior <script type="math/tex">\phi</script>. This involves maximising the numerator of Bayes equation. As this is independent of the denominator and therefore maximising <script type="math/tex">p(\epsilon)p(s|\epsilon)</script> will maximise the posterior. By taking the logarithm to the numerator we get</p>
 
@@ -317,6 +325,8 @@
 <p>It is clear that the output converges rapidly to <script type="math/tex">\phi=1.6</script>, the value that maximises the posterior.</p>
 
 <p>So we ask the question: What does a minimal and <em>biologically plausible</em> network model that can do such calculations look like?</p>
+
+<hr>
 
 <h3 id="part-iii---learning-phi-with-a-network-model">Part III - Learning <script type="math/tex">\phi</script> with a network model</h3>
 <p>Firstly, we must specify what exactly biologically plausible means. 1) A neuron only performs computations on the input it is given, weighted by its synaptic weights. 2) Synaptic plasticity of one neuron is only based on the activity of pre-synaptic and post-synaptic activity connecting to that neuron.</p>
@@ -384,6 +394,8 @@
 <script type="math/tex; mode=display">\phi-\epsilon_{p}-\Sigma_{p}\xi_{p} = 0</script>
 
 <script type="math/tex; mode=display">s-h(\phi)-\Sigma_{s}\xi_{s} = 0</script>
+
+<hr>
 
 <h3 id="part-iv---learning-sigma-with-a-network-model">Part IV - Learning <script type="math/tex">\Sigma</script> with a network model</h3>
 
@@ -474,7 +486,7 @@
 
 
         
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-01-05T14:46:55+01:00">January 05, 2017</time></p>
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-01-05T14:54:14+01:00">January 05, 2017</time></p>
         
       </footer>
 
