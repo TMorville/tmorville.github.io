@@ -5,23 +5,31 @@ layout: single
 
 ### Based on a [seminal talk](https://www.youtube.com/watch?v=f1vXAHGIpfc) by Ole Peters, I illustrate the fundamental difference between an ergodic and non-ergodic process using a simple coin game.  
 
+(_If you download this notebook, you can use the interactive widgets_) 
+
 ---
 
-Game dynamics: 
+### Dynamics: 
 
-* At each time step a fair coin is flipped and lands either heads or tails.
-* If heads show up, the amount initially gambled will **increase with 50%**. 
-* If the coin lands tails, the initial amount will **decrease by 40%**. 
+* At each time step a **fair coin** is flipped and lands either heads or tails.
+* For **heads** wealth **increases with 50%** e.g. $$W_t\cdot1.5$$
+* For **tails** wealth **decreases by 40%** e.g. $$W_t\cdot0.6$$
 
-Assuming that initial wealth is 1. the following code plots the outcome of $$N$$ different coin games over $$T$$ time. (If you download this notebook, you can add more time steps by sliding the time-bar right, the function iterates the current wealth according to the dynamic explained above.) 
+### Nonclamenture:
 
-In the following code, we assume that 
+* $$W_t$$ is the wealth at time $$t$$ (<code>W_</code>)
+* $$\mathbb{E}$$ is the large-N limit expectation average (<code>E_</code>)
+* $$\mathcal{A}$$ is the the long-time average (<code>A_</code>)
+* $$\mu$$ is the emperical mean (<code>mu</code>)
 
-* $$W_t$$ is the wealth process at time $t$ (W_ in code)
-* $$\mathbb{E}$$ is the large-N limit expectation average (E_ in code)
-* $$\mathcal{A}$$ is the the long-time average (A_ in code)
-* $$\mu$$ is the emperical mean (mu in code)
+---
 
+### Initial analytics:
+
+
+---
+
+### Simulations:
 
 ```python
 import numpy as np
@@ -60,8 +68,6 @@ def multiplicativeW( T, N, W, E, A, mu, phi ):
     np.random.seed(1); 
     
     for j in range(N):
-        
-        
         
         for k in range(T):
             if k == 0:
@@ -115,7 +121,7 @@ def multiplicativeW( T, N, W, E, A, mu, phi ):
         
 ```
 
-First, lets assume that just one player plays this coin game once every minute for an hour and plot $$N=1$$ different instances of the above coin-game for $$T=60$$ time periods. 
+First, let's assume that we play the coin game once every minute for an hour and plot just one ($$N=1$$) instance of the dynamic outlined above for $$T=60$$ time periods. 
 
 
 ```python
@@ -125,7 +131,7 @@ interact(multiplicativeW, T = 60, N = 1, W = True, E = False, A = False, mu = Fa
 ![png]({{ site.url }}{{ site.baseurl }}/assets/images/SimpleCoinGame_6_1.png)
 
 
-Its clear that this process got quite close to very within the hour! However, it seems very noisy and its hard to make out if this one trajectory was just a bit unfortunate. Lets _repeat_ the game 100 times and see what happens.
+Its clear that this process got close to zero $$(10^{-2})$$ quite quickly (after 50 flips)! However, it's also very noisy and difficult to make out if this one trajectory was just a bit unfortunate. Lets _repeat_ the game 100 times $$(N=100)$$ and see what happens.
 
 
 ```python
@@ -136,7 +142,7 @@ interact(multiplicativeW, T = 60, N = 100, W = True, E = False, A = False, mu = 
 ![png]({{ site.url }}{{ site.baseurl }}/assets/images/SimpleCoinGame_8_0.png)
 
 
-We're still not getting much smarter. Well, lets try to average the 100 different trajectories and see what that looks like.
+We're still not getting much smarter. Looks like half on the trajectories are increasing, while the other half is dereasing, but its quite difficult to tell. Lets try to average the 100 different trajectories and see what that looks like.
 
 
 ```python
@@ -145,6 +151,8 @@ interact(multiplicativeW, T = 60, N = 100, W = True, E = False, A = False, mu = 
 
 
 ![png]({{ site.url }}{{ site.baseurl }}/assets/images/SimpleCoinGame_10_0.png)
+
+Well, that looks very flat at around 0. Lets increase the number of times we play to 10000 instead and see if we can get a more conclusive graphical result. 
 
 
 
