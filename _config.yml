@@ -168,6 +168,10 @@ collections:
     output: true
     permalink: /:collection/:path/
 
+  finprojects:
+    output: true
+    permalink: /:collection/:path/
+
 
 # Sass/SCSS
 sass:
