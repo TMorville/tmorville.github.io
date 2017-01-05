@@ -9,9 +9,6 @@ main:
   - title: "projects"
     url: projects/
 
-  - title: "notes"
-    url: notes/
-
   - title: "about"
     url: about/
 
@@ -24,9 +21,6 @@ about:
 
   - title: "projects"
     url: projects/
-
-  - title: "notes"
-    url: notes/
 
   - title: "about"
     url: about/
