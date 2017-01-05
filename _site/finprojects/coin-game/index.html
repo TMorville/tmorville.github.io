@@ -18,7 +18,7 @@
 
 
 
-<title>Learning using gradient descent on a free-energy potential -</title>
+<title>Non-ergocidity in a simple coin game -</title>
 
 
 
@@ -28,7 +28,7 @@
 
 <meta property="og:locale" content="en">
 <meta property="og:site_name" content=" ">
-<meta property="og:title" content="Learning using gradient descent on a free-energy potential">
+<meta property="og:title" content="Non-ergocidity in a simple coin game">
 
 
   <link rel="canonical" href="https://tmorville.github.io//finprojects/coin-game/">
@@ -36,7 +36,7 @@
 
 
 
-  <meta property="og:description" content="Simple coin game dynamics">
+  <meta property="og:description" content="Based on a seminal talk by Ole Peters I illustrate the fundamental difference between an ergodic and non-ergodic process using a simple coin game.">
 
 
 
@@ -51,7 +51,7 @@
 
 
   <meta property="og:type" content="article">
-  <meta property="article:published_time" content="2017-01-05T14:37:05+01:00">
+  <meta property="article:published_time" content="2017-01-05T14:46:55+01:00">
 
 
 
@@ -149,38 +149,32 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Learning using gradient descent on a free-energy potential">
-    <meta itemprop="description" content="Simple coin game dynamics">
+    <meta itemprop="headline" content="Non-ergocidity in a simple coin game">
+    <meta itemprop="description" content="Based on a seminal talk by Ole Peters I illustrate the fundamental difference between an ergodic and non-ergodic process using a simple coin game.">
     <meta itemprop="datePublished" content="January 05, 2017">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 class="page__title" itemprop="headline">Learning using gradient descent on a free-energy potential
+          <h1 class="page__title" itemprop="headline">Non-ergocidity in a simple coin game
 </h1>
           
         </header>
       
 
       <section class="page__content" itemprop="text">
-        <h1 id="simple-coin-game-dynamics">Simple coin game dynamics</h1>
+        <h3 id="based-on-a-seminal-talkhttpswwwyoutubecomwatchvf1vxahgipfc-by-ole-peters-i-illustrate-the-fundamental-difference-between-an-ergodic-and-non-ergodic-process-using-a-simple-coin-game">Based on a <a href="https://www.youtube.com/watch?v=f1vXAHGIpfc">seminal talk</a> by Ole Peters I illustrate the fundamental difference between an ergodic and non-ergodic process using a simple coin game.</h3>
 
-<p><em>This script simulates a simple coin-tossing game and plots the distribution of the outcomes.</em>
-___
-Game dynamics: 
-&gt;At each time step a fair coin is flipped and lands either heads or tails.
-<br>
-&gt;If heads show up, the amount initially gambled will <strong>increase with 60%</strong>. 
-<br>
-&gt;If the coin lands tails, the initial amount will <strong>decrease by 40%</strong>. 
-<br></p>
+<p>Game dynamics:</p>
 
-<hr>
+<blockquote>
+  <p>*At each time step a fair coin is flipped and lands either heads or tails.
+*If heads show up, the amount initially gambled will <strong>increase with 60%</strong>. 
+*If the coin lands tails, the initial amount will <strong>decrease by 40%</strong>.</p>
+</blockquote>
 
-<p>Plots trajectories of exactly this game, assuming that initial wealth is 1. <br>
-As you add more time steps by sliding the time-bar right, the function iterates the current <br>
-wealth according to the dynamic explained above.</p>
+<p>Plots trajectories of exactly this game, assuming that initial wealth is 1. As you add more time steps by sliding the time-bar right, the function iterates the current wealth according to the dynamic explained above.</p>
 
 <div class="language-python highlighter-rouge">
 <pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
@@ -257,7 +251,7 @@ wealth according to the dynamic explained above.</p>
 </code></pre>
 </div>
 
-<p><img src="(https://tmorville.github.io//assets/images/SimpleCoinGame_4_0.png)" alt="png"></p>
+<p><img src="https://tmorville.github.io//assets/images/SimpleCoinGame_4_0.png" alt="png"></p>
 
 <div class="language-python highlighter-rouge">
 <pre class="highlight"><code>
@@ -275,7 +269,7 @@ wealth according to the dynamic explained above.</p>
 
 
         
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-01-05T14:37:05+01:00">January 05, 2017</time></p>
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-01-05T14:46:55+01:00">January 05, 2017</time></p>
         
       </footer>
 

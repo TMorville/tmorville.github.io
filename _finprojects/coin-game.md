@@ -1,25 +1,17 @@
 ---
-title: Learning using gradient descent on a free-energy potential
+title: Non-ergocidity in a simple coin game
 layout: single
 ---
 
-# Simple coin game dynamics
+### Based on a [seminal talk](https://www.youtube.com/watch?v=f1vXAHGIpfc) by Ole Peters I illustrate the fundamental difference between an ergodic and non-ergodic process using a simple coin game.  
 
-*This script simulates a simple coin-tossing game and plots the distribution of the outcomes.*
-___
 Game dynamics: 
->At each time step a fair coin is flipped and lands either heads or tails.
-<br>
->If heads show up, the amount initially gambled will **increase with 60%**. 
-<br>
->If the coin lands tails, the initial amount will **decrease by 40%**. 
-<br>
 
-___
+>*At each time step a fair coin is flipped and lands either heads or tails.
+>*If heads show up, the amount initially gambled will **increase with 60%**. 
+>*If the coin lands tails, the initial amount will **decrease by 40%**. 
 
-Plots trajectories of exactly this game, assuming that initial wealth is 1. <br>
-As you add more time steps by sliding the time-bar right, the function iterates the current <br>
-wealth according to the dynamic explained above. 
+Plots trajectories of exactly this game, assuming that initial wealth is 1. As you add more time steps by sliding the time-bar right, the function iterates the current wealth according to the dynamic explained above. 
 
 
 ```python
@@ -97,7 +89,7 @@ interact(multiplicativeW, T = 500, N = 50)
 ```
 
 
-![png](({{ site.url }}{{ site.baseurl }}/assets/images/SimpleCoinGame_4_0.png))
+![png]({{ site.url }}{{ site.baseurl }}/assets/images/SimpleCoinGame_4_0.png)
 
 
 
