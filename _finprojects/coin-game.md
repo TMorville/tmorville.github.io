@@ -13,15 +13,15 @@ layout: single
 ### Dynamics: 
 
 * At each time step a **fair coin** is flipped and lands either heads or tails.
-* For **heads** wealth **increases with 50%** e.g. $W_t\cdot1.5$
-* For **tails** wealth **decreases by 40%** e.g. $W_t\cdot0.6$
+* For **heads** wealth **increases with 50%** e.g. $$W_t\cdot1.5$$
+* For **tails** wealth **decreases by 40%** e.g. $$W_t\cdot0.6$$
 
 ### Nonclamenture:
 
-* $W_t$ is the wealth at time $t$ (<code>W_</code>)
-* $\mathbb{E}$ is the large-N limit expectation average (<code>E_</code>)
-* $\mathcal{A}$ is the the long-time average (<code>A_</code>)
-* $\mu$ is the emperical mean (<code>mu</code>)
+* $$W_t$$ is the wealth at time $$t$$ (<code>W_</code>)
+* $$\mathbb{E}$$ is the large-N limit expectation average (<code>E_</code>)
+* $$\mathcal{A}$$ is the the long-time average (<code>A_</code>)
+* $$\mu$$ is the emperical mean (<code>mu</code>)
 
 ---
 
@@ -132,17 +132,10 @@ interact(multiplicativeW, T = 60, N = 1, W = True, E = False, A = False, mu = Fa
 ```
 
 
-
-
-    <function __main__.multiplicativeW>
-
-
-
-
 ![png]({{ site.url }}{{ site.baseurl }}/assets/images/SimpleCoinGame_4_1.png)
 
 
-Its clear that this process got close to zero $(10^{-2})$ quite quickly (after 50 flips)! However, it's also very noisy and difficult to make out if this one trajectory was just a bit unfortunate. Lets _repeat_ the game 100 times $(N=100)$ and see what happens.
+Its clear that this process got close to zero $$(10^{-2})$$ quite quickly (after 50 flips)! However, it's also very noisy and difficult to make out if this one trajectory was just a bit unfortunate. Lets _repeat_ the game 100 times $$(N=100)$$ and see what happens.
 
 
 ```python
@@ -150,17 +143,10 @@ interact(multiplicativeW, T = 60, N = 100, W = True, E = False, A = False, mu = 
 ```
 
 
-
-
-    <function __main__.multiplicativeW>
-
-
-
-
 ![png]({{ site.url }}{{ site.baseurl }}/assets/images/SimpleCoinGame_6_1.png)
 
 
-We're still not getting much smarter. Looks like half on the trajectories are increasing, while the other half is dereasing, but its quite difficult to tell. Lets try to average the 100 different trajectories and see what that looks like.
+We're still not getting much smarter. Looks like half on the trajectories are increasing, while the other half is decreasing, but its quite difficult to tell. Lets try to average the 100 different trajectories and see what that looks like.
 
 
 ```python
@@ -168,29 +154,15 @@ interact(multiplicativeW, T = 60, N = 100, W = True, E = False, A = False, mu = 
 ```
 
 
-
-
-    <function __main__.multiplicativeW>
-
-
-
-
 ![png]({{ site.url }}{{ site.baseurl }}/assets/images/SimpleCoinGame_8_1.png)
 
 
-Well, that looks very flat at around 0. Lets increase the number of times we play to 10000 instead and see if we can get a more conclusive graphical result. 
+Well, that looks very flat at around 0. Lets increase the number of times we play to $$N=10000$$ instead and see if we can get a more conclusive graphical result. 
 
 
 ```python
 interact(multiplicativeW, T = 60, N = 10000, W = False, E = False, A = False, mu = True, phi = False)
 ```
-
-
-
-
-    <function __main__.multiplicativeW>
-
-
 
 
 ![png]({{ site.url }}{{ site.baseurl }}/assets/images/SimpleCoinGame_10_1.png)
@@ -216,13 +188,6 @@ interact(multiplicativeW, T = 60, N = 10000, W = False, E = True, A = False, mu 
 ```
 
 
-
-
-    <function __main__.multiplicativeW>
-
-
-
-
 ![png]({{ site.url }}{{ site.baseurl }}/assets/images/SimpleCoinGame_12_1.png)
 
 
@@ -244,13 +209,6 @@ interact(multiplicativeW, T = 10000, N = 1, W = True, E = True, A = False, mu = 
 ```
 
 
-
-
-    <function __main__.multiplicativeW>
-
-
-
-
 ![png]({{ site.url }}{{ site.baseurl }}/assets/images/SimpleCoinGame_14_1.png)
 
 
@@ -262,13 +220,6 @@ Let's try to convince ourselves that we're not just being unlucky and increase t
 ```python
 interact(multiplicativeW, T = 10000, N = 100, W = True, E = True, A = False, mu = False, phi = False)
 ```
-
-
-
-
-    <function __main__.multiplicativeW>
-
-
 
 
 ![png]({{ site.url }}{{ site.baseurl }}/assets/images/SimpleCoinGame_16_1.png)
@@ -301,14 +252,6 @@ Lets plot both $$\mathbb{E}$$, $$\mathcal{A}$$ and some data to see which theore
 ```python
 interact(multiplicativeW, T = 10000, N = 100, W = True, E = True, A = True, mu = False, phi = False)
 ```
-
-
-
-
-    <function __main__.multiplicativeW>
-
-
-
 
 ![png]({{ site.url }}{{ site.baseurl }}/assets/images/SimpleCoinGame_18_1.png)
 

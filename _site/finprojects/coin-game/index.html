@@ -51,7 +51,7 @@
 
 
   <meta property="og:type" content="article">
-  <meta property="article:published_time" content="2017-01-12T18:21:34+01:00">
+  <meta property="article:published_time" content="2017-01-12T18:28:35+01:00">
 
 
 
@@ -174,17 +174,23 @@
 
 <ul>
   <li>At each time step a <strong>fair coin</strong> is flipped and lands either heads or tails.</li>
-  <li>For <strong>heads</strong> wealth <strong>increases with 50%</strong> e.g. $W_t\cdot1.5$</li>
-  <li>For <strong>tails</strong> wealth <strong>decreases by 40%</strong> e.g. $W_t\cdot0.6$</li>
+  <li>For <strong>heads</strong> wealth <strong>increases with 50%</strong> e.g. <script type="math/tex">W_t\cdot1.5</script>
+</li>
+  <li>For <strong>tails</strong> wealth <strong>decreases by 40%</strong> e.g. <script type="math/tex">W_t\cdot0.6</script>
+</li>
 </ul>
 
 <h3 id="nonclamenture">Nonclamenture:</h3>
 
 <ul>
-  <li>$W_t$ is the wealth at time $t$ (<code>W_</code>)</li>
-  <li>$\mathbb{E}$ is the large-N limit expectation average (<code>E_</code>)</li>
-  <li>$\mathcal{A}$ is the the long-time average (<code>A_</code>)</li>
-  <li>$\mu$ is the emperical mean (<code>mu</code>)</li>
+  <li>
+<script type="math/tex">W_t</script> is the wealth at time <script type="math/tex">t</script> (<code>W_</code>)</li>
+  <li>
+<script type="math/tex">\mathbb{E}</script> is the large-N limit expectation average (<code>E_</code>)</li>
+  <li>
+<script type="math/tex">\mathcal{A}</script> is the the long-time average (<code>A_</code>)</li>
+  <li>
+<script type="math/tex">\mu</script> is the emperical mean (<code>mu</code>)</li>
 </ul>
 
 <hr>
@@ -294,50 +300,30 @@
 </code></pre>
 </div>
 
-<div class="highlighter-rouge">
-<pre class="highlight"><code>&lt;function __main__.multiplicativeW&gt;
-</code></pre>
-</div>
-
 <p><img src="https://tmorville.github.io//assets/images/SimpleCoinGame_4_1.png" alt="png"></p>
 
-<p>Its clear that this process got close to zero $(10^{-2})$ quite quickly (after 50 flips)! However, it’s also very noisy and difficult to make out if this one trajectory was just a bit unfortunate. Lets <em>repeat</em> the game 100 times $(N=100)$ and see what happens.</p>
+<p>Its clear that this process got close to zero <script type="math/tex">(10^{-2})</script> quite quickly (after 50 flips)! However, it’s also very noisy and difficult to make out if this one trajectory was just a bit unfortunate. Lets <em>repeat</em> the game 100 times <script type="math/tex">(N=100)</script> and see what happens.</p>
 
 <div class="language-python highlighter-rouge">
 <pre class="highlight"><code><span class="n">interact</span><span class="p">(</span><span class="n">multiplicativeW</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">60</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">E</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">phi</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
 </code></pre>
 </div>
 
-<div class="highlighter-rouge">
-<pre class="highlight"><code>&lt;function __main__.multiplicativeW&gt;
-</code></pre>
-</div>
-
 <p><img src="https://tmorville.github.io//assets/images/SimpleCoinGame_6_1.png" alt="png"></p>
 
-<p>We’re still not getting much smarter. Looks like half on the trajectories are increasing, while the other half is dereasing, but its quite difficult to tell. Lets try to average the 100 different trajectories and see what that looks like.</p>
+<p>We’re still not getting much smarter. Looks like half on the trajectories are increasing, while the other half is decreasing, but its quite difficult to tell. Lets try to average the 100 different trajectories and see what that looks like.</p>
 
 <div class="language-python highlighter-rouge">
 <pre class="highlight"><code><span class="n">interact</span><span class="p">(</span><span class="n">multiplicativeW</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">60</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">E</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">phi</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
 </code></pre>
 </div>
 
-<div class="highlighter-rouge">
-<pre class="highlight"><code>&lt;function __main__.multiplicativeW&gt;
-</code></pre>
-</div>
-
 <p><img src="https://tmorville.github.io//assets/images/SimpleCoinGame_8_1.png" alt="png"></p>
 
-<p>Well, that looks very flat at around 0. Lets increase the number of times we play to 10000 instead and see if we can get a more conclusive graphical result.</p>
+<p>Well, that looks very flat at around 0. Lets increase the number of times we play to <script type="math/tex">N=10000</script> instead and see if we can get a more conclusive graphical result.</p>
 
 <div class="language-python highlighter-rouge">
 <pre class="highlight"><code><span class="n">interact</span><span class="p">(</span><span class="n">multiplicativeW</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">60</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">E</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">phi</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
-</code></pre>
-</div>
-
-<div class="highlighter-rouge">
-<pre class="highlight"><code>&lt;function __main__.multiplicativeW&gt;
 </code></pre>
 </div>
 
@@ -356,11 +342,6 @@ We denote this <script type="math/tex">\mathbb{E}</script>.</p>
 
 <div class="language-python highlighter-rouge">
 <pre class="highlight"><code><span class="n">interact</span><span class="p">(</span><span class="n">multiplicativeW</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">60</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">E</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">phi</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
-</code></pre>
-</div>
-
-<div class="highlighter-rouge">
-<pre class="highlight"><code>&lt;function __main__.multiplicativeW&gt;
 </code></pre>
 </div>
 
@@ -383,11 +364,6 @@ We denote this <script type="math/tex">\mathbb{E}</script>.</p>
 </code></pre>
 </div>
 
-<div class="highlighter-rouge">
-<pre class="highlight"><code>&lt;function __main__.multiplicativeW&gt;
-</code></pre>
-</div>
-
 <p><img src="https://tmorville.github.io//assets/images/SimpleCoinGame_14_1.png" alt="png"></p>
 
 <p>This single trajectory is quite a different scenario from what the theoretical prediction is. While the expectation operator goes to <script type="math/tex">10^{189}</script> (which is a very, very large number), the realised trajectory ends up at <script type="math/tex">10^{-227}</script>, that is, a zero followed by 227 zeros!</p>
@@ -396,11 +372,6 @@ We denote this <script type="math/tex">\mathbb{E}</script>.</p>
 
 <div class="language-python highlighter-rouge">
 <pre class="highlight"><code><span class="n">interact</span><span class="p">(</span><span class="n">multiplicativeW</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">E</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">phi</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
-</code></pre>
-</div>
-
-<div class="highlighter-rouge">
-<pre class="highlight"><code>&lt;function __main__.multiplicativeW&gt;
 </code></pre>
 </div>
 
@@ -428,11 +399,6 @@ We denote this <script type="math/tex">\mathbb{E}</script>.</p>
 
 <div class="language-python highlighter-rouge">
 <pre class="highlight"><code><span class="n">interact</span><span class="p">(</span><span class="n">multiplicativeW</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">E</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">phi</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
-</code></pre>
-</div>
-
-<div class="highlighter-rouge">
-<pre class="highlight"><code>&lt;function __main__.multiplicativeW&gt;
 </code></pre>
 </div>
 
@@ -464,7 +430,7 @@ We denote this <script type="math/tex">\mathbb{E}</script>.</p>
 
 
         
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-01-12T18:21:34+01:00">January 12, 2017</time></p>
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-01-12T18:28:35+01:00">January 12, 2017</time></p>
         
       </footer>
 
