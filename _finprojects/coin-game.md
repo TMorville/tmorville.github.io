@@ -124,7 +124,7 @@ def multiplicativeW( T, N, W, E, A, mu, phi ):
         
 ```
 
-First, let's assume that we play the coin game once every minute for an hour and plot just one ($N=1$) instance of the dynamic outlined above for $T=60$ time periods. 
+First, let's assume that we play the coin game once every minute for an hour and plot just one ($$N=1$$) instance of the dynamic outlined above for $$T=60$$ time periods. 
 
 
 ```python
