@@ -3,11 +3,7 @@ title: Learning using gradient descent on a free-energy potential
 layout: single
 ---
 
-### Based on [K. Friston](http://www.fil.ion.ucl.ac.uk/~karl/A%20free%20energy%20principle%20for%20the%20brain.pdf) and following [R. Bogacz](http://www.sciencedirect.com/science/article/pii/S0022249615000759) a learning scheme is implemented using gradient descent on a free-energy potential.  
-
----
-
-If you're familiar with Bayes, but not approximate inference, I suggest that you skip **Part I** and head to **Part II**. If you're familiar with both, you probably won't learn much in the following as it is very basic. Lets begin!
+### Based on [K. Friston](http://www.fil.ion.ucl.ac.uk/~karl/A%20free%20energy%20principle%20for%20the%20brain.pdf) and following [R. Bogacz](http://www.sciencedirect.com/science/article/pii/S0022249615000759) a learning scheme is implemented using gradient descent on a "free-energy" potential.  
 
 ---
 

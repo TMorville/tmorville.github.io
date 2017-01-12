@@ -163,5 +163,13 @@ interact(multiplicativeW, T = 60, N = 10000, W = True, E = False, A = False, mu 
 
 ![png]({{ site.url }}{{ site.baseurl }}/assets/images/SimpleCoinGame_11_0.png)
 
+Alright! It seems like the empirical average <span style="color:red">$$\mu$$</span> steadily increases. If you feel like removing more noise, you can increase $$N$$ (however this script is quite slow due to all the if-loops). 
+
+Another thing we could do was to calculate the theoretical mean or _expectation operator_. We will denote this as
+
+$$
+\left\langle W(t)\right\rangle _{N} = \frac{1}{N}\sum_{i=1}^{N}W_i(t).
+$$
+
 
 
