@@ -1,5 +1,5 @@
 ---
-title: Non-ergocidity in a simple coin game
+title: Non-ergodicity in a simple coin game
 layout: single
 ---
 
