@@ -51,7 +51,7 @@
 
 
   <meta property="og:type" content="article">
-  <meta property="article:published_time" content="2017-01-17T09:56:48+01:00">
+  <meta property="article:published_time" content="2017-01-21T12:21:36+01:00">
 
 
 
@@ -151,7 +151,7 @@
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
     <meta itemprop="headline" content="Non-ergodicity in a simple coin game">
     <meta itemprop="description" content="Based on a seminal talk by Ole Peters, I illustrate the fundamental difference between an ergodic and non-ergodic process using a simple coin game.">
-    <meta itemprop="datePublished" content="January 17, 2017">
+    <meta itemprop="datePublished" content="January 21, 2017">
     
 
     <div class="page__inner-wrap">
@@ -169,6 +169,12 @@
 <p>(<em>If you download this notebook, you can use the interactive widgets to explore this yourself</em>)</p>
 
 <hr>
+
+<h3 id="why-is-this-importantexciting">Why is this important/exciting?</h3>
+
+<p>In the talk I’ve linked to above, Ole Peters does a very good job at revisiting the properties of a mathmatical quantity (the ensemble average, or expectation operator) in the light of a novel understanding of dynamics. This question is fundamentally the same that motivated the <a href="https://en.wikipedia.org/wiki/St._Petersburg_paradox">St. Petersbrug Paradox</a> and Daniel Bernoullis formulation of expected utility, that still lies as the foundation of all modern macro and micro economics.</p>
+
+<p>In the following I will illustrate the essence of Peters talk using a very simple coin game. The question we’re trying to answer is: <em>Is this gamble worth taking?</em>.</p>
 
 <h3 id="dynamics">Dynamics:</h3>
 
@@ -192,10 +198,6 @@
   <li>
 <script type="math/tex">\mu</script> is the emperical mean (<code>mu</code>)</li>
 </ul>
-
-<hr>
-
-<h3 id="initial-analysis">Initial analysis:</h3>
 
 <hr>
 
@@ -293,7 +295,7 @@
 </code></pre>
 </div>
 
-<p>First, let’s assume that we play the coin game once every minute for an hour and plot just one (<script type="math/tex">N=1</script>) instance of the dynamic outlined above for <script type="math/tex">T=60</script> time periods.</p>
+<p>First, let’s assume that we play the coin game once every minute for an hour and plot just one (<script type="math/tex">N=1</script>) trajectory of the dynamic outlined above for <script type="math/tex">T=60</script> time periods. (Importantly, notice that the y-axis is a logarithmic scale)</p>
 
 <div class="language-python highlighter-rouge">
 <pre class="highlight"><code><span class="n">interact</span><span class="p">(</span><span class="n">multiplicativeW</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">60</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">E</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">phi</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
@@ -302,7 +304,7 @@
 
 <p><img src="https://tmorville.github.io//assets/images/SimpleCoinGame_4_1.png" alt="png"></p>
 
-<p>Its clear that this process got close to zero <script type="math/tex">(10^{-2})</script> quite quickly (after 50 flips)! However, it’s also very noisy and difficult to make out if this one trajectory was just a bit unfortunate. Lets <em>repeat</em> the game 100 times <script type="math/tex">(N=100)</script> and see what happens.</p>
+<p>Its clear that this process got close to zero <script type="math/tex">(10^{-2})</script> quite quickly (after 50 flips). However, it’s also quite noisy and difficult to make out, if this one trajectory was just a bit unfortunate. Lets <em>repeat</em> the game 100 times <script type="math/tex">(N=100)</script> and see what happens.</p>
 
 <div class="language-python highlighter-rouge">
 <pre class="highlight"><code><span class="n">interact</span><span class="p">(</span><span class="n">multiplicativeW</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">60</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">E</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">phi</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
@@ -311,7 +313,9 @@
 
 <p><img src="https://tmorville.github.io//assets/images/SimpleCoinGame_6_1.png" alt="png"></p>
 
-<p>We’re still not getting much smarter. Looks like half on the trajectories are increasing, while the other half is decreasing, but its quite difficult to tell. Lets try to average the 100 different trajectories and see what that looks like.</p>
+<p>We’re still not getting much smarter. Looks like half on the trajectories are increasing, while the other half are decreasing - but it remains difficult to tell if this game is really beneficial.</p>
+
+<p>To get rid of some of the noise, let’s try to <em>average</em> the 100 trajectories.</p>
 
 <div class="language-python highlighter-rouge">
 <pre class="highlight"><code><span class="n">interact</span><span class="p">(</span><span class="n">multiplicativeW</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">60</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">E</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">phi</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
@@ -320,7 +324,9 @@
 
 <p><img src="https://tmorville.github.io//assets/images/SimpleCoinGame_8_1.png" alt="png"></p>
 
-<p>Well, that looks very flat at around 0. Lets increase the number of times we play to <script type="math/tex">N=10000</script> instead and see if we can get a more conclusive graphical result.</p>
+<p>Which looks very flat at at around zero.</p>
+
+<p>To further the noise further, lets increase the number of trajectories to <script type="math/tex">N=10000</script>. Hopefully this will give us a more conclusive graphical result.</p>
 
 <div class="language-python highlighter-rouge">
 <pre class="highlight"><code><span class="n">interact</span><span class="p">(</span><span class="n">multiplicativeW</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">60</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">E</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">phi</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
@@ -329,16 +335,19 @@
 
 <p><img src="https://tmorville.github.io//assets/images/SimpleCoinGame_10_1.png" alt="png"></p>
 
-<p>Alright! It seems like the empirical average <span style="color:red"><script type="math/tex">\mu</script></span> steadily increases. If you feel like removing more noise, you can increase <script type="math/tex">N</script> (however this script is quite slow due to all the if-loops).</p>
+<p>It seems like the empirical average <span style="color:red"><script type="math/tex">\mu</script></span> steadily increases. If you feel like removing more noise, you can increase <script type="math/tex">N</script> (however this script is quite slow due to all the <em>for-loops</em>).</p>
 
-<p>Another thing we could do was to calculate the theoretical mean or <em>expectation operator</em> <script type="math/tex">\mathbb{E}(\cdot)</script>. We calculate this as</p>
+<hr>
+
+<p>As we have explicit knowledge of the dynamics, we can do much better than simulations. We can simply calculate the mean or <em>expectation operator</em> <script type="math/tex">\mathbb{E}(\cdot)</script> over the <script type="math/tex">N</script> trajectories. Formally, the expectation operator is the <em>large-N</em> limit of the empirical mean</p>
 
 <script type="math/tex; mode=display">\underset{N\rightarrow\infty}{\mbox{lim}}\left\langle W\right\rangle _{N}=\frac{1}{N}\sum_{i=1}^{N}W_i(t)</script>
 
-<p>where <script type="math/tex">\left\langle W\right\rangle _{N}</script> denotes the average over <em>N</em> (e.g. 10000 in the figure above). 
-We denote this <script type="math/tex">\mathbb{E}</script>.</p>
+<p>where <script type="math/tex">\left\langle W\right\rangle _{N}</script> denotes the average over <em>N</em>, as this goes to infinity. We denote this <script type="math/tex">\mathbb{E}</script>.</p>
 
-<p>Let’s calculate this. By using our knowledge that as <script type="math/tex">N\rightarrow\infty</script></p>
+<p>Let’s calculate this. By using our knowledge that as <script type="math/tex">N\rightarrow\infty</script> the probability of a fair coin asymptotes to the same ratio. This means we can calculate <script type="math/tex">\mathbb{E}</script> as <script type="math/tex">\frac12\times0.6+\frac12\times1.5=1.05</script> which is a number larger than one, reflecting positive growth over the <em>ensemble</em> of trajectories.</p>
+
+<p>Below is a graphical result of the expectation operator <script type="math/tex">\mathbb{E}</script> and the empirical mean (<script type="math/tex">\mathbb{E}</script> for a finite <em>N</em>).</p>
 
 <div class="language-python highlighter-rouge">
 <pre class="highlight"><code><span class="n">interact</span><span class="p">(</span><span class="n">multiplicativeW</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">60</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">E</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">phi</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
@@ -347,17 +356,17 @@ We denote this <script type="math/tex">\mathbb{E}</script>.</p>
 
 <p><img src="https://tmorville.github.io//assets/images/SimpleCoinGame_12_1.png" alt="png"></p>
 
-<p>Clearly the theoretical mean (or expectation operator) increases towards infinity, and it seems that the emperical mean converges to the theoretical prediction quite well.</p>
+<p>The graph supports our theoretical analysis: The empirical mean seems to asymptote to the large-N limit mean, which grows exponentially towards infinity.</p>
 
-<p>It seems like this might be a favorable gamble! Actually, this gamble has infininte expected payoff, which means that you (and everyone else who has positively increasing utility in increasing wealth) should take this gamble.. Right?</p>
+<p>The conclusion is simple: Since this process has a positive expectation it will simply grow exponentially towards infinity, which means that you (or anyone rational) should be willing to pay <em>any</em> ticket price $$P$ for playing this gamble.</p>
 
-<p>Perhaps surprisingly, the answer turns out to be a resounding <em><strong>no</strong></em>.</p>
+<p>Sounds too good to be true? Well, thats because it is too good to be true. To understand why, we must first consider the <em>time-perspective</em>.</p>
 
 <hr>
 
 <h3 id="the-time-perspective">The time-perspective</h3>
 
-<p>To convince ourselves about this, lets plot one ‘person’ <script type="math/tex">(N)</script> playing the game for <script type="math/tex">T=10000</script> trials and contrast this to the theoretical mean.</p>
+<p>To convince ourselves about this, lets plot one ‘person’ <script type="math/tex">N=1</script> playing the game for <script type="math/tex">T=10000</script> trials and contrast this to the theoretical mean.</p>
 
 <div class="language-python highlighter-rouge">
 <pre class="highlight"><code><span class="n">interact</span><span class="p">(</span><span class="n">multiplicativeW</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">E</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">phi</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
@@ -366,9 +375,9 @@ We denote this <script type="math/tex">\mathbb{E}</script>.</p>
 
 <p><img src="https://tmorville.github.io//assets/images/SimpleCoinGame_14_1.png" alt="png"></p>
 
-<p>This single trajectory is quite a different scenario from what the theoretical prediction is. While the expectation operator goes to <script type="math/tex">10^{189}</script> (which is a very, very large number), the realised trajectory ends up at <script type="math/tex">10^{-227}</script>, that is, a zero followed by 227 zeros!</p>
+<p>This single trajectory tells quite a different story from what we concluded above. While the expectation operator goes to <script type="math/tex">10^{189}</script> (which is a very, very large number), the realised trajectory ends up at <script type="math/tex">10^{-227}</script>.</p>
 
-<p>Let’s try to convince ourselves that we’re not just being unlucky and increase the number of players, playing <script type="math/tex">T=10000</script> to <script type="math/tex">N=100</script>.</p>
+<p>Let’s try to convince ourselves that this was just one unlucky trajectory. Again, we wish to remove noise, and we do so by increasing the number of players, playing <script type="math/tex">T=10000</script> to <script type="math/tex">N=100</script>.</p>
 
 <div class="language-python highlighter-rouge">
 <pre class="highlight"><code><span class="n">interact</span><span class="p">(</span><span class="n">multiplicativeW</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">E</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">phi</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
@@ -377,9 +386,11 @@ We denote this <script type="math/tex">\mathbb{E}</script>.</p>
 
 <p><img src="https://tmorville.github.io//assets/images/SimpleCoinGame_16_1.png" alt="png"></p>
 
-<p>Immediatly there seems to be a fundamental difference between the theoretical prediction <script type="math/tex">\mathbb{E}(\cdot)</script> and the hundred realised trajectories.</p>
+<p>Immediatly there seems to be a fundamental difference between the theoretical prediction <script type="math/tex">\mathbb{E}(\cdot)</script> and the hundred realised trajectories. You can keep adding more trajectories by increasing <script type="math/tex">N</script> or more time by increasing <script type="math/tex">T</script> - it will only make you more certain of the above.</p>
 
-<p>This difference can be explained by considering a rough definition of ergodicity:</p>
+<hr>
+
+<p>The difference can be explained by considering a colloquial definition of ergodicity:</p>
 
 <blockquote>
   <p><em><strong>A process is non-ergodic if the time-average does not equal the ensemble-average.</strong></em></p>
@@ -395,7 +406,7 @@ We denote this <script type="math/tex">\mathbb{E}</script>.</p>
 
 <p>which we denote <script type="math/tex">\mathcal{A}</script>.</p>
 
-<p>Lets plot both <script type="math/tex">\mathbb{E}</script>, <script type="math/tex">\mathcal{A}</script> and some data to see which theoretical prediction suits the simulated data the best (you probably already know the anwser).</p>
+<p>Plotting both <script type="math/tex">\mathbb{E}</script>, <script type="math/tex">\mathcal{A}</script> and some data to see which theoretical prediction suits the simulated data the best (you probably already know the answer).</p>
 
 <div class="language-python highlighter-rouge">
 <pre class="highlight"><code><span class="n">interact</span><span class="p">(</span><span class="n">multiplicativeW</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">E</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">phi</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
@@ -408,16 +419,13 @@ We denote this <script type="math/tex">\mathbb{E}</script>.</p>
 
 <p>This means that the ensemble average, mean or expectation operator does not yield the same as the time-average, which is what we’ve shown in the figures above.</p>
 
-<h3 id="why-is-this-important">Why is this important?</h3>
+<hr>
 
-<p>Well - that’s a really good question. If you ask an economist, or just borrow one of his thick books on micro economics or decision making, the anwser will be along the lines of “If the expected payout is positive, then you should go for it!”. Well, now we’ve seen that this might not be a very good idea. The expectation operator is used <em>very</em> widely in economics and other fields of decision-making - sadly often without too much consideration about the dynamics.</p>
-
-<p>There’s much more to this story and if you find it compelling, I suggest you see the video in the introduction, or read the follow papers:</p>
+<p>There’s much more to this story, and if you find it compelling, I suggest you see the video in the introduction, or read the follow papers:</p>
 
 <p>1) <a href="http://rsta.royalsocietypublishing.org/content/roypta/369/1956/4913.full.pdf">The time resolution of the St Petersburg paradox</a></p>
 
 <p>2) <a href="http://samoa.santafe.edu/media/workingpapers/14-05-013.pdf">Evaluating Gambles Using Dynamics</a></p>
-
 
         
       </section>
@@ -430,7 +438,7 @@ We denote this <script type="math/tex">\mathbb{E}</script>.</p>
 
 
         
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-01-17T09:56:48+01:00">January 17, 2017</time></p>
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-01-21T12:21:36+01:00">January 21, 2017</time></p>
         
       </footer>
 
@@ -438,6 +446,16 @@ We denote this <script type="math/tex">\mathbb{E}</script>.</p>
 
       
 
+
+  <nav class="pagination">
+    
+      <a href="#" class="pagination--pager disabled">Previous</a>
+    
+    
+      <a href="https://tmorville.github.io//finprojects/free-energy/" class="pagination--pager" title="Learning using gradient descent on a free-energy potential
+">Next</a>
+    
+  </nav>
 
     </div>
 
