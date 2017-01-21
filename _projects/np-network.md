@@ -7,6 +7,14 @@ layout: single
 
 ---
 
+### Why is this important/exciting?
+
+Using premade packages such as tensorflow, theano or torch, fundamental understanding often is unessesary. I find that if I understand a simple premise of a general method, I am much more likely to appreciate the possibilities and limitations of that method. 
+
+---
+
+### Implementation of logistic regression using only numpy. 
+
 
 ~~~python
 from __future__ import print_function, division

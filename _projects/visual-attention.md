@@ -7,7 +7,17 @@ layout: single
 
 ---
 
-Link to [repo](https://github.com/ppries/tensorflow_mnist_ram) and my [notes](https://tmorville.github.io//assets/deepmind.pdf).
+### Why is this important/exciting?
+
+"Everyone knows what attention is. It is the taking possession by the mind in
+clear and vivid form, of one out of what seem several simultaneously possible
+objects or trains of thought...It implies withdrawal from some things in order to
+deal effectively with others." (William James, Principles of Psychology, 1890)"
+
+
+---
+
+Link to [repo](https://github.com/ppries/tensorflow_mnist_ram). 
 
 ### To-do list: 
 

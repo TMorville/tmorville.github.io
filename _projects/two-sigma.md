@@ -7,6 +7,16 @@ layout: single
 
 --- 
 
+### Why is this important/exciting?
+
+Finansial time-series are used widely for making predictions about, well, finansial time-series (in the future). These predictions ends up in reports that private and government decision-makers use to change the life of thousands of people on a daily basis. 
+
+Often, those time-series (like an index on the stock market) are so high dimensional (and probably chaotic) that, on average, prediction is futile. This is more or less the premise of [the efficient-market hypothesis](https://en.wikipedia.org/wiki/Efficient-market_hypothesis). 
+
+Based on this, the natural question emerges: _Is there a measure of dimensionality, complexity or chaos that can quantify the presence (or absence) of structure in data that allows prediction?_ .Basically, this what permutation entropy promises. 
+
+---
+
 - _Redundancy_ is a empirically tractable measure of the complexity that arises in real-world time-series data "_which results from the dimension, nonlinearity, and nonstationarity of the generating process, as well as from measurement issues such as noise, aggregation, and finite data length_"
 
 

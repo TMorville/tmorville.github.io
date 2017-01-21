@@ -7,8 +7,15 @@ layout: single
 
 ---
 
-### Biological intuition
-Consider a theoretical one-dimensional thermoregulator. This simple organism stays alive by maximising sojourn time in a optimal temperature state, which we assumed to be defined on evolutionary time. A homeostatic mechanism could be simple feedback control, like the thermostat on a heater. Unlike the thermostat which has direct access to (and control over) temperature, the thermoregulator relies on efferent signaling to infer and control its hidden state - temperature. The only signal the regulator has access to is the real (euclidian) distance between its current temperature, and the optimal temperature. This absolite distance on $$\mathbb{R}$$ is the _homeostatic error_ $$\epsilon$$ and is communicated via. a noisy efferent signal $$s$$. The non-linear function $$g(\epsilon)$$ relates homeostatic error to percieved efferent signal, such that when homeostatic error is exactly $$\epsilon$$ the percieved efferent signal is normally distributed with mean $$g(\epsilon)$$ and variance $$\Sigma_\epsilon$$.  
+### Why is this important/exciting?
+
+[R. Bogacz](http://www.sciencedirect.com/science/article/pii/S0022249615000759) delivers the most explicit and beautifully made tutorial on a subject that can be very difficult to understand - [Variational Bayes](https://en.wikipedia.org/wiki/Variational_Bayesian_methods) - as seen from Karl Fristons point of view, using the [Free-Energy principle](https://en.wikipedia.org/wiki/Free_energy_principle) to motivate Active Inference, which has come one of the dominating hypothesis of how the brain works. 
+
+In the following I solve the excersises given in [R. Bogacz](http://www.sciencedirect.com/science/article/pii/S0022249615000759) and expand them further to motivate a broarder view on Active Learning in ML, and how this relates to Active Inference. 
+
+### Nomenclature:
+
+I use the same notation as in R. Bogacz and the code refers to equations in the paper. 
 
 ---
 
