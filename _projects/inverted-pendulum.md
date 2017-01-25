@@ -11,7 +11,7 @@ layout: single
 
 Optimal control theory is having a renascence in complex network analysis. There are many very good reasons for this, and if you're interested, I suggest that you read [this excellent article](https://arxiv.org/abs/1508.05384) by Yang-Yu Liu and Albert-Laszló Barabási. 
 
-This project is meant to increase my own understanding of a simple problem: The inverted pendulum or cart-pole problem. This can be solved explicitly using optimal control theory. To make things a bit more difficult for ourselves and hopefully discover or learn something in this process, we "overlay" a neural-network over the variabels of interest, such that the network must learn the relevant control parameters. 
+This project is meant to increase my own (and perhaps your own) understanding of a simple problem: The inverted pendulum or cart-pole problem. This can be solved explicitly using optimal control theory. To make things a bit more difficult for our selves, and hopefully discover or learn something in the process, we "overlay" a neural-network over the variabels of interest, such that the network must learn the relevant control parameters. 
 
 ---
 

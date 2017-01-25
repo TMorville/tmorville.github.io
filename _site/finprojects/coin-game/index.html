@@ -51,7 +51,7 @@
 
 
   <meta property="og:type" content="article">
-  <meta property="article:published_time" content="2017-01-21T12:58:29+01:00">
+  <meta property="article:published_time" content="2017-01-25T16:35:41+01:00">
 
 
 
@@ -151,7 +151,7 @@
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
     <meta itemprop="headline" content="Non-ergodicity in a simple coin game">
     <meta itemprop="description" content="Based on a seminal talk by Ole Peters, I illustrate the fundamental difference between an ergodic and non-ergodic process using a simple coin game.">
-    <meta itemprop="datePublished" content="January 21, 2017">
+    <meta itemprop="datePublished" content="January 25, 2017">
     
 
     <div class="page__inner-wrap">
@@ -172,13 +172,14 @@
 
 <h3 id="why-is-this-importantexciting">Why is this important/exciting?</h3>
 
-<p>In the talk I’ve linked to above, Ole Peters does a very good job at revisiting the properties of a mathmatical quantity (the ensemble average, or expectation operator) in the light of a novel understanding of dynamics. This question is fundamentally the same that motivated the <a href="https://en.wikipedia.org/wiki/St._Petersburg_paradox">St. Petersbrug Paradox</a> and Daniel Bernoullis formulation of expected utility, that still lies as the foundation of all modern macro and micro economics.</p>
+<p>In this talk (see link above) Ole Peters does a very good job at revisiting the use of a mathmatical quantity (the expectation operator) in economics over the last 250 years. He does this by applying novel insights from dynamics of stochastic processes. The question he is trying to answer, is fundamentally the same that motivated the <a href="https://en.wikipedia.org/wiki/St._Petersburg_paradox">St. Petersbrug Paradox</a> which lead to Daniel Bernoullis formulation of expected utility, that still lies as the foundation of all modern macro and micro economics. In the following I illustrate the essence of Peters talk using a simple coin game.</p>
 
-<p>In the following I will illustrate the essence of Peters talk using a very simple coin game. The question we’re trying to answer is: <em>Is this gamble worth taking?</em>.</p>
+<p>The question we’re trying to answer is: <strong><em>Is this gamble worth taking?</em></strong></p>
 
 <h3 id="dynamics">Dynamics:</h3>
 
 <ul>
+  <li>At time <script type="math/tex">t=0</script> you start of with wealth <script type="math/tex">W_0</script>.</li>
   <li>At each time step a <strong>fair coin</strong> is flipped and lands either heads or tails.</li>
   <li>For <strong>heads</strong> wealth <strong>increases with 50%</strong> e.g. <script type="math/tex">W_t\cdot1.5</script>
 </li>
@@ -295,7 +296,7 @@
 </code></pre>
 </div>
 
-<p>First, let’s assume that we play the coin game once every minute for an hour and plot just one (<script type="math/tex">N=1</script>) trajectory of the dynamic outlined above for <script type="math/tex">T=60</script> time periods. (Importantly, notice that the y-axis is a logarithmic scale)</p>
+<p>Assume you’re playing the coin game once every minute for an hour. That is, you iterate the specified dynamics 60 times and plot the resulting data (notice the y-axis is a log scale).</p>
 
 <div class="language-python highlighter-rouge">
 <pre class="highlight"><code><span class="n">interact</span><span class="p">(</span><span class="n">multiplicativeW</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">60</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">E</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">phi</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
@@ -304,7 +305,7 @@
 
 <p><img src="https://tmorville.github.io//assets/images/SimpleCoinGame_4_1.png" alt="png"></p>
 
-<p>Its clear that this process got close to zero <script type="math/tex">(10^{-2})</script> quite quickly (after 50 flips). However, it’s also quite noisy and difficult to make out, if this one trajectory was just a bit unfortunate. Lets <em>repeat</em> the game 100 times <script type="math/tex">(N=100)</script> and see what happens.</p>
+<p>This seems quite noisy and difficult to deduct any real trend. Perhaps this one trajectory was just a bit unfortunate. To convince yourself, <em>repeat</em> the game 100 times <script type="math/tex">(N=100)</script> and plot the result.</p>
 
 <div class="language-python highlighter-rouge">
 <pre class="highlight"><code><span class="n">interact</span><span class="p">(</span><span class="n">multiplicativeW</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">60</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">E</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">phi</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
@@ -313,9 +314,9 @@
 
 <p><img src="https://tmorville.github.io//assets/images/SimpleCoinGame_6_1.png" alt="png"></p>
 
-<p>We’re still not getting much smarter. Looks like half on the trajectories are increasing, while the other half are decreasing - but it remains difficult to tell if this game is really beneficial.</p>
+<p>Still not getting much smarter. Looks like half on the trajectories are increasing, while the other half are decreasing - but it remains difficult to tell if this game is really beneficial.</p>
 
-<p>To get rid of some of the noise, let’s try to <em>average</em> the 100 trajectories.</p>
+<p>Perhaps removing some noise by considering the average of the <script type="math/tex">N</script> processes would be helpful.</p>
 
 <div class="language-python highlighter-rouge">
 <pre class="highlight"><code><span class="n">interact</span><span class="p">(</span><span class="n">multiplicativeW</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">60</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">E</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">phi</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
@@ -326,7 +327,7 @@
 
 <p>Which looks very flat at at around zero.</p>
 
-<p>To further the noise further, lets increase the number of trajectories to <script type="math/tex">N=10000</script>. Hopefully this will give us a more conclusive graphical result.</p>
+<p>Perhaps we don’t have enough data. Lets increase the number of trajectories to <script type="math/tex">N=10000</script>. Hopefully this will give us a more conclusive graphical result.</p>
 
 <div class="language-python highlighter-rouge">
 <pre class="highlight"><code><span class="n">interact</span><span class="p">(</span><span class="n">multiplicativeW</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">60</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">E</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">phi</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
@@ -438,7 +439,7 @@
 
 
         
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-01-21T12:58:29+01:00">January 21, 2017</time></p>
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-01-25T16:35:41+01:00">January 25, 2017</time></p>
         
       </footer>
 

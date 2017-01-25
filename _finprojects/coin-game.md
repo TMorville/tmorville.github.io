@@ -12,12 +12,13 @@ layout: single
 
 ### Why is this important/exciting?
 
-In the talk I've linked to above, Ole Peters does a very good job at revisiting the properties of a mathmatical quantity (the ensemble average, or expectation operator) in the light of a novel understanding of dynamics. This question is fundamentally the same that motivated the [St. Petersbrug Paradox](https://en.wikipedia.org/wiki/St._Petersburg_paradox) and Daniel Bernoullis formulation of expected utility, that still lies as the foundation of all modern macro and micro economics.  
+In this talk (see link above) Ole Peters does a very good job at revisiting the use of a mathmatical quantity (the expectation operator) in economics over the last 250 years. He does this by applying novel insights from dynamics of stochastic processes. The question he is trying to answer, is fundamentally the same that motivated the [St. Petersbrug Paradox](https://en.wikipedia.org/wiki/St._Petersburg_paradox) which lead to Daniel Bernoullis formulation of expected utility, that still lies as the foundation of all modern macro and micro economics. In the following I illustrate the essence of Peters talk using a simple coin game. 
 
-In the following I will illustrate the essence of Peters talk using a very simple coin game. The question we're trying to answer is: _Is this gamble worth taking?_. 
+The question we're trying to answer is: **_Is this gamble worth taking?_**
 
 ### Dynamics: 
 
+* At time $$t=0$$ you start of with wealth $$W_0$$.
 * At each time step a **fair coin** is flipped and lands either heads or tails.
 * For **heads** wealth **increases with 50%** e.g. $$W_t\cdot1.5$$
 * For **tails** wealth **decreases by 40%** e.g. $$W_t\cdot0.6$$
@@ -125,7 +126,7 @@ def multiplicativeW( T, N, W, E, A, mu, phi ):
         
 ```
 
-First, let's assume that we play the coin game once every minute for an hour and plot just one ($$N=1$$) trajectory of the dynamic outlined above for $$T=60$$ time periods. (Importantly, notice that the y-axis is a logarithmic scale)
+Assume you're playing the coin game once every minute for an hour. That is, you iterate the specified dynamics 60 times and plot the resulting data (notice the y-axis is a log scale).
 
 
 ```python
@@ -135,7 +136,7 @@ interact(multiplicativeW, T = 60, N = 1, W = True, E = False, A = False, mu = Fa
 ![png]({{ site.url }}{{ site.baseurl }}/assets/images/SimpleCoinGame_4_1.png)
 
 
-Its clear that this process got close to zero $$(10^{-2})$$ quite quickly (after 50 flips). However, it's also quite noisy and difficult to make out, if this one trajectory was just a bit unfortunate. Lets _repeat_ the game 100 times $$(N=100)$$ and see what happens.
+This seems quite noisy and difficult to deduct any real trend. Perhaps this one trajectory was just a bit unfortunate. To convince yourself, _repeat_ the game 100 times $$(N=100)$$ and plot the result. 
 
 
 ```python
@@ -145,9 +146,9 @@ interact(multiplicativeW, T = 60, N = 100, W = True, E = False, A = False, mu = 
 ![png]({{ site.url }}{{ site.baseurl }}/assets/images/SimpleCoinGame_6_1.png)
 
 
-We're still not getting much smarter. Looks like half on the trajectories are increasing, while the other half are decreasing - but it remains difficult to tell if this game is really beneficial. 
+Still not getting much smarter. Looks like half on the trajectories are increasing, while the other half are decreasing - but it remains difficult to tell if this game is really beneficial. 
 
-To get rid of some of the noise, let's try to _average_ the 100 trajectories.
+Perhaps removing some noise by considering the average of the $$N$$ processes would be helpful.
 
 
 ```python
@@ -159,7 +160,7 @@ interact(multiplicativeW, T = 60, N = 100, W = True, E = False, A = False, mu = 
 
 Which looks very flat at at around zero. 
 
-To further the noise further, lets increase the number of trajectories to $$N=10000$$. Hopefully this will give us a more conclusive graphical result. 
+Perhaps we don't have enough data. Lets increase the number of trajectories to $$N=10000$$. Hopefully this will give us a more conclusive graphical result. 
 
 
 ```python
