@@ -51,7 +51,7 @@
 
 
   <meta property="og:type" content="article">
-  <meta property="article:published_time" content="2017-01-25T16:35:41+01:00">
+  <meta property="article:published_time" content="2017-01-27T12:53:54+01:00">
 
 
 
@@ -151,7 +151,7 @@
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
     <meta itemprop="headline" content="Non-ergodicity in a simple coin game">
     <meta itemprop="description" content="Based on a seminal talk by Ole Peters, I illustrate the fundamental difference between an ergodic and non-ergodic process using a simple coin game.">
-    <meta itemprop="datePublished" content="January 25, 2017">
+    <meta itemprop="datePublished" content="January 27, 2017">
     
 
     <div class="page__inner-wrap">
@@ -327,7 +327,7 @@
 
 <p>Which looks very flat at at around zero.</p>
 
-<p>Perhaps we don’t have enough data. Lets increase the number of trajectories to <script type="math/tex">N=10000</script>. Hopefully this will give us a more conclusive graphical result.</p>
+<p>Increase the number of trajectories to <script type="math/tex">N=10000</script>. Hopefully this will give us a more conclusive graphical result.</p>
 
 <div class="language-python highlighter-rouge">
 <pre class="highlight"><code><span class="n">interact</span><span class="p">(</span><span class="n">multiplicativeW</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">60</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">E</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">phi</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
@@ -336,7 +336,7 @@
 
 <p><img src="https://tmorville.github.io//assets/images/SimpleCoinGame_10_1.png" alt="png"></p>
 
-<p>It seems like the empirical average <span style="color:red"><script type="math/tex">\mu</script></span> steadily increases. If you feel like removing more noise, you can increase <script type="math/tex">N</script> (however this script is quite slow due to all the <em>for-loops</em>).</p>
+<p>It seems like the empirical average steadily increases. If you feel like removing more noise, you can increase <script type="math/tex">N</script> (however this script is quite slow due to all the <em>for-loops</em>).</p>
 
 <hr>
 
@@ -346,7 +346,7 @@
 
 <p>where <script type="math/tex">\left\langle W\right\rangle _{N}</script> denotes the average over <em>N</em>, as this goes to infinity. We denote this <script type="math/tex">\mathbb{E}</script>.</p>
 
-<p>Let’s calculate this. By using our knowledge that as <script type="math/tex">N\rightarrow\infty</script> the probability of a fair coin asymptotes to the same ratio. This means we can calculate <script type="math/tex">\mathbb{E}</script> as <script type="math/tex">\frac12\times0.6+\frac12\times1.5=1.05</script> which is a number larger than one, reflecting positive growth over the <em>ensemble</em> of trajectories.</p>
+<p>Let’s calculate this. By using our knowledge that as <script type="math/tex">N\rightarrow\infty</script> the probability of a fair coin asymptotes to the same ratio (here 0.5). This means we can calculate <script type="math/tex">\mathbb{E}</script> as <script type="math/tex">\frac12\times0.6+\frac12\times1.5=1.05</script> which is a number larger than one, reflecting positive growth over the ensemble of trajectories.</p>
 
 <p>Below is a graphical result of the expectation operator <script type="math/tex">\mathbb{E}</script> and the empirical mean (<script type="math/tex">\mathbb{E}</script> for a finite <em>N</em>).</p>
 
@@ -357,17 +357,15 @@
 
 <p><img src="https://tmorville.github.io//assets/images/SimpleCoinGame_12_1.png" alt="png"></p>
 
-<p>The graph supports our theoretical analysis: The empirical mean seems to asymptote to the large-N limit mean, which grows exponentially towards infinity.</p>
+<p>The graph supports our theoretical analysis: The empirical mean seems to asymptote to the theoretical mean - which grows exponentially towards infinity (recall that y-scale is in logs).</p>
 
-<p>The conclusion is simple: Since this process has a positive expectation it will simply grow exponentially towards infinity, which means that you (or anyone rational) should be willing to pay <em>any</em> ticket price $$P$ for playing this gamble.</p>
-
-<p>Sounds too good to be true? Well, thats because it is too good to be true. To understand why, we must first consider the <em>time-perspective</em>.</p>
+<p>The conclusion is simple: Since this process has a positive expectation it will grow exponentially towards infinity, which means that you (or anyone rational) should be willing to pay <em>any</em> ticket price for playing this game.</p>
 
 <hr>
 
 <h3 id="the-time-perspective">The time-perspective</h3>
 
-<p>To convince ourselves about this, lets plot one ‘person’ <script type="math/tex">N=1</script> playing the game for <script type="math/tex">T=10000</script> trials and contrast this to the theoretical mean.</p>
+<p>Before you go off and buy your ticket, let’s plot just one ‘person’ (<script type="math/tex">N=1</script>) playing the game for a long time (<script type="math/tex">T=10000</script>) and contrast this to the theoretical mean.</p>
 
 <div class="language-python highlighter-rouge">
 <pre class="highlight"><code><span class="n">interact</span><span class="p">(</span><span class="n">multiplicativeW</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">E</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">phi</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
@@ -378,7 +376,7 @@
 
 <p>This single trajectory tells quite a different story from what we concluded above. While the expectation operator goes to <script type="math/tex">10^{189}</script> (which is a very, very large number), the realised trajectory ends up at <script type="math/tex">10^{-227}</script>.</p>
 
-<p>Let’s try to convince ourselves that this was just one unlucky trajectory. Again, we wish to remove noise, and we do so by increasing the number of players, playing <script type="math/tex">T=10000</script> to <script type="math/tex">N=100</script>.</p>
+<p>Let’s try to convince ourselves that this was just one unlucky trajectory. Again, we wish to remove noise using the same strategy of increasing the number of ‘players’ that are gambling over a very long time.</p>
 
 <div class="language-python highlighter-rouge">
 <pre class="highlight"><code><span class="n">interact</span><span class="p">(</span><span class="n">multiplicativeW</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">E</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">phi</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
@@ -387,11 +385,11 @@
 
 <p><img src="https://tmorville.github.io//assets/images/SimpleCoinGame_16_1.png" alt="png"></p>
 
-<p>Immediatly there seems to be a fundamental difference between the theoretical prediction <script type="math/tex">\mathbb{E}(\cdot)</script> and the hundred realised trajectories. You can keep adding more trajectories by increasing <script type="math/tex">N</script> or more time by increasing <script type="math/tex">T</script> - it will only make you more certain of the above.</p>
+<p>Immediatly there seems to be a fundamental difference between the theoretical prediction <script type="math/tex">\mathbb{E}(\cdot)</script> and the hundred realised trajectories (you can keep adding more trajectories by increasing <script type="math/tex">N</script> or more time by increasing <script type="math/tex">T</script> - it will only make you more certain of the above).</p>
 
 <hr>
 
-<p>The difference can be explained by considering a colloquial definition of ergodicity:</p>
+<p>This difference can be explained by considering a colloquial definition of ergodicity:</p>
 
 <blockquote>
   <p><em><strong>A process is non-ergodic if the time-average does not equal the ensemble-average.</strong></em></p>
@@ -416,7 +414,7 @@
 
 <p><img src="https://tmorville.github.io//assets/images/SimpleCoinGame_18_1.png" alt="png"></p>
 
-<p>So what is happening here? Well, hopefully you’ve just realised that a process that grows multiplicatively, just like <script type="math/tex">(W_t)</script>, is <em>non-ergodic</em>.</p>
+<p>So what is happening here? Well, hopefully you’ve just realised that a process that grows multiplicatively - just like <script type="math/tex">W_t</script> - is <em>non-ergodic</em>.</p>
 
 <p>This means that the ensemble average, mean or expectation operator does not yield the same as the time-average, which is what we’ve shown in the figures above.</p>
 
@@ -439,7 +437,7 @@
 
 
         
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-01-25T16:35:41+01:00">January 25, 2017</time></p>
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-01-27T12:53:54+01:00">January 27, 2017</time></p>
         
       </footer>
 

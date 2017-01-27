@@ -160,7 +160,7 @@ interact(multiplicativeW, T = 60, N = 100, W = True, E = False, A = False, mu = 
 
 Which looks very flat at at around zero. 
 
-Perhaps we don't have enough data. Lets increase the number of trajectories to $$N=10000$$. Hopefully this will give us a more conclusive graphical result. 
+Increase the number of trajectories to $$N=10000$$. Hopefully this will give us a more conclusive graphical result. 
 
 
 ```python
@@ -170,7 +170,7 @@ interact(multiplicativeW, T = 60, N = 10000, W = False, E = False, A = False, mu
 ![png]({{ site.url }}{{ site.baseurl }}/assets/images/SimpleCoinGame_10_1.png)
 
 
-It seems like the empirical average <span style="color:red">$$\mu$$</span> steadily increases. If you feel like removing more noise, you can increase $$N$$ (however this script is quite slow due to all the _for-loops_). 
+It seems like the empirical average steadily increases. If you feel like removing more noise, you can increase $$N$$ (however this script is quite slow due to all the _for-loops_). 
 
 ---
 
@@ -182,7 +182,7 @@ $$
 
 where $$\left\langle W\right\rangle _{N}$$ denotes the average over *N*, as this goes to infinity. We denote this $$\mathbb{E}$$.
 
-Let's calculate this. By using our knowledge that as $$N\rightarrow\infty$$ the probability of a fair coin asymptotes to the same ratio. This means we can calculate $$\mathbb{E}$$ as $$\frac12\times0.6+\frac12\times1.5=1.05$$ which is a number larger than one, reflecting positive growth over the _ensemble_ of trajectories. 
+Let's calculate this. By using our knowledge that as $$N\rightarrow\infty$$ the probability of a fair coin asymptotes to the same ratio (here 0.5). This means we can calculate $$\mathbb{E}$$ as $$\frac12\times0.6+\frac12\times1.5=1.05$$ which is a number larger than one, reflecting positive growth over the ensemble of trajectories. 
 
 Below is a graphical result of the expectation operator $$\mathbb{E}$$ and the empirical mean ($$\mathbb{E}$$ for a finite *N*).
 
@@ -195,17 +195,15 @@ interact(multiplicativeW, T = 60, N = 10000, W = False, E = True, A = False, mu 
 ![png]({{ site.url }}{{ site.baseurl }}/assets/images/SimpleCoinGame_12_1.png)
 
 
-The graph supports our theoretical analysis: The empirical mean seems to asymptote to the large-N limit mean, which grows exponentially towards infinity. 
+The graph supports our theoretical analysis: The empirical mean seems to asymptote to the theoretical mean - which grows exponentially towards infinity (recall that y-scale is in logs). 
 
-The conclusion is simple: Since this process has a positive expectation it will simply grow exponentially towards infinity, which means that you (or anyone rational) should be willing to pay _any_ ticket price $$P$ for playing this gamble.
-
-Sounds too good to be true? Well, thats because it is too good to be true. To understand why, we must first consider the _time-perspective_. 
+The conclusion is simple: Since this process has a positive expectation it will grow exponentially towards infinity, which means that you (or anyone rational) should be willing to pay _any_ ticket price for playing this game.
 
 ---
 
 ### The time-perspective
 
-To convince ourselves about this, lets plot one 'person' $$N=1$$ playing the game for $$T=10000$$ trials and contrast this to the theoretical mean. 
+Before you go off and buy your ticket, let's plot just one 'person' ($$N=1$$) playing the game for a long time ($$T=10000$$) and contrast this to the theoretical mean. 
 
 
 ```python
@@ -217,7 +215,7 @@ interact(multiplicativeW, T = 10000, N = 1, W = True, E = True, A = False, mu = 
 
 This single trajectory tells quite a different story from what we concluded above. While the expectation operator goes to $$10^{189}$$ (which is a very, very large number), the realised trajectory ends up at $$10^{-227}$$.
 
-Let's try to convince ourselves that this was just one unlucky trajectory. Again, we wish to remove noise, and we do so by increasing the number of players, playing $$T=10000$$ to $$N=100$$.
+Let's try to convince ourselves that this was just one unlucky trajectory. Again, we wish to remove noise using the same strategy of increasing the number of 'players' that are gambling over a very long time.
 
 
 ```python
@@ -228,11 +226,11 @@ interact(multiplicativeW, T = 10000, N = 100, W = True, E = True, A = False, mu 
 ![png]({{ site.url }}{{ site.baseurl }}/assets/images/SimpleCoinGame_16_1.png)
 
 
-Immediatly there seems to be a fundamental difference between the theoretical prediction $$\mathbb{E}(\cdot)$$ and the hundred realised trajectories. You can keep adding more trajectories by increasing $$N$$ or more time by increasing $$T$$ - it will only make you more certain of the above.
+Immediatly there seems to be a fundamental difference between the theoretical prediction $$\mathbb{E}(\cdot)$$ and the hundred realised trajectories (you can keep adding more trajectories by increasing $$N$$ or more time by increasing $$T$$ - it will only make you more certain of the above).
 
 --- 
 
-The difference can be explained by considering a colloquial definition of ergodicity:
+This difference can be explained by considering a colloquial definition of ergodicity:
 
  > _**A process is non-ergodic if the time-average does not equal the ensemble-average.**_
  
@@ -260,7 +258,7 @@ interact(multiplicativeW, T = 10000, N = 100, W = True, E = True, A = True, mu =
 ![png]({{ site.url }}{{ site.baseurl }}/assets/images/SimpleCoinGame_18_1.png)
 
 
-So what is happening here? Well, hopefully you've just realised that a process that grows multiplicatively, just like $$(W_t)$$, is *non-ergodic*. 
+So what is happening here? Well, hopefully you've just realised that a process that grows multiplicatively - just like $$W_t$$ - is *non-ergodic*. 
 
 This means that the ensemble average, mean or expectation operator does not yield the same as the time-average, which is what we've shown in the figures above.
 
