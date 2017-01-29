@@ -9,7 +9,7 @@ layout: single
 
 ### Why is this important/exciting?
 
-[R. Bogacz](http://www.sciencedirect.com/science/article/pii/S0022249615000759) delivers the most explicit and beautifully made tutorial on a subject that can be very difficult to understand, [Variational Bayes](https://en.wikipedia.org/wiki/Variational_Bayesian_methods), as seen from Karl Fristons point of view. Namely using the [Free-Energy principle](https://en.wikipedia.org/wiki/Free_energy_principle) to motivate Active Inference, which has become one of the dominating hypothesis of how the brain works. 
+[R. Bogacz](http://www.sciencedirect.com/science/article/pii/S0022249615000759) delivers the most explicit and beautifully made tutorial on a subject that can be very difficult to understand, [Variational Bayes](https://en.wikipedia.org/wiki/Variational_Bayesian_methods), as seen from Karl Fristons point of view; Namely invoking the [Free-Energy principle](https://en.wikipedia.org/wiki/Free_energy_principle) to motivate Active Inference, which has become one of the dominating hypothesis of how the brain works. 
 
 In the following I solve the excersises given in [R. Bogacz](http://www.sciencedirect.com/science/article/pii/S0022249615000759) and expand them further to motivate a broarder view on Active Learning in ML, and how this relates to Active Inference. 
 

@@ -12,9 +12,9 @@ layout: single
 
 ### Why is this important/exciting?
 
-In this talk (see link above) Ole Peters does a very good job at revisiting the use of a mathmatical quantity (the expectation operator) in economics over the last 250 years. He does this by applying novel insights from dynamics of stochastic processes. The question he is trying to answer, is fundamentally the same that motivated the [St. Petersbrug Paradox](https://en.wikipedia.org/wiki/St._Petersburg_paradox) which lead to Daniel Bernoullis formulation of expected utility, that still lies as the foundation of all modern macro and micro economics. In the following I illustrate the essence of Peters talk using a simple coin game. 
+In his talk (see link above) Ole Peters revisits the use of the expectation operator in economics. He does this by applying novel insights from dynamics of stochastic processes. The question he is trying to answer is fundamentally the same that motivated the [St. Petersbrug Paradox](https://en.wikipedia.org/wiki/St._Petersburg_paradox) which lead to Daniel Bernoullis formulation of expected utility, which still lies as the foundation of all modern macro and micro economics. In the following I illustrate the essence of Peters talk using a simple coin game. 
 
-The question we're trying to answer is: **_Is this gamble worth taking?_**
+The question we're trying to answer: **_Is this gamble worth taking?_**
 
 ### Dynamics: 
 
