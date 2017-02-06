@@ -258,7 +258,7 @@ $$ \epsilon_{p} \approx 0 $$
 
 $$ \epsilon_{s} \approx 0. $$
 
-Which can be said to be their steady-state solutions. 
+Which can be understood as the steady-state of the network. 
 
 ---
 
