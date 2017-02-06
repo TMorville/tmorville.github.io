@@ -1,17 +1,20 @@
+---
+title: A tutorial on the free-energy framework for modelling perception and learning
+layout: single
+---
 
-### Based on [K. Friston](http://www.fil.ion.ucl.ac.uk/~karl/A%20free%20energy%20principle%20for%20the%20brain.pdf) and following [R. Bogacz](http://www.sciencedirect.com/science/article/pii/S0022249615000759) a learning scheme is implemented using gradient descent on a "free-energy" potential.  
+### Based on [K. Friston](http://www.fil.ion.ucl.ac.uk/~karl/A%20free%20energy%20principle%20for%20the%20brain.pdf) and following [R. Bogacz](http://www.sciencedirect.com/science/article/pii/S0022249615000759) I shortly summarise the former, and solve the programming exercises given in the paper. This motives [another post](https://tmorville.github.io/projects/active-learning), taking a more general look at active learning in ML.
 
 ---
 
 ### Why is this important/exciting?
 
-[R. Bogacz](http://www.sciencedirect.com/science/article/pii/S0022249615000759) delivers the most explicit and beautifully made tutorial on a subject that can be very difficult to understand, [Variational Bayes](https://en.wikipedia.org/wiki/Variational_Bayesian_methods), as seen from Karl Fristons perspective; Namely invoking the [Free-Energy principle](https://en.wikipedia.org/wiki/Free_energy_principle) to motivate Active Inference. The last decade, Active Inference has gained traction with the wider neuroscientific community and recently Karl was [measured](https://www.ucl.ac.uk/news/slms/slms-news/slms/ucl-neuroscientists-most-influential) to be the most influential neuroscientist in the modern era.
+[R. Bogacz](http://www.sciencedirect.com/science/article/pii/S0022249615000759) delivers a detailed and beautifully made tutorial on a subject that can be very difficult to understand, [Variational Bayes](https://en.wikipedia.org/wiki/Variational_Bayesian_methods), as seen from Karl Fristons perspective; Namely invoking the [Free-Energy principle](https://en.wikipedia.org/wiki/Free_energy_principle) to motivate Active Inference. In the last decade, Active Inference has gained traction with the wider neuroscientific community, and recently Karl was [measured](https://www.ucl.ac.uk/news/slms/slms-news/slms/ucl-neuroscientists-most-influential) to be the most influential neuroscientist in the modern era.
 
-In the following, I solve the exercises given in [R. Bogacz](http://www.sciencedirect.com/science/article/pii/S0022249615000759) and in a different post expand them further to motivate a broarder view of Active Learning in ML and how this relates to Active Inference. 
 
 ### Nomenclature:
 
-I use the same notation as in R. Bogacz and the code implements and refers to equations in the paper. 
+I use the same notation as in R. Bogacz. The code implements and refers to equations in the paper. 
 
 ---
 
@@ -24,15 +27,17 @@ A simple organism is trying to infer the size $$v$$ of a food item. The only sou
 
 We can write of the the likelihood function (probability of a size $$v$$ given a signal $$u$$) as 
 
-$$ p(v\vert u)=f(u;g(v),\Sigma_{u})$$
+$$ p(v\vert u)=f(u;g(v),\Sigma_{u}) $$
 
 where
 
 $$ f(x;\mu,\Sigma)=\frac{1}{\sqrt{2\pi\Sigma}}\mbox{exp}\left(-\frac{(x-\mu)^{2}}{2\Sigma}\right) $$
 
-is the normal distribution with mean $$\mu$$ and variance $$\Sigma$$
+is the normal distribution with mean $$\mu$$ and variance $$\Sigma$$.
  
-Through learning or evolutionary filtering, the agent has been endowed with priors on expected size of food items and therefore expects sizes of food items to normally distributed with mean $$v_{p}$$ and $$\Sigma_{p}$$ where the subscript $$p$$ stands for prior. Formally $$p(v)=f(v;v{p},\Sigma_{p})$$.
+Through learning or evolutionary filtering, the agent has been endowed with priors on the expected size of food items, and therefore expects sizes of food items to normally distributed with mean $$v_{p}$$ and $$\Sigma_{p}$$ where the subscript $$p$$ stands for prior. Formally 
+
+$$ p(v)=f(v;v{p},\Sigma_{p}) $$.
  
 To compute the exact distribution of sensory input $$u$$ we can formulate the posterior using Bayes theorem 
 
@@ -44,7 +49,7 @@ $$p(u)=\int p(v)p(u|v)dv$$
  
 and sum the whole range of possible sizes.
 
-The following code implements such an exact solution and plots it. Firstly we import some dependencies:
+The following code implements such an exact solution and plots it.
 
 
 ```python
@@ -68,7 +73,7 @@ def sensory_transform(input):
     return sensory_output
 ```
 
-The reason we explicitly define $$g(\cdot)$$ is that we might want to change it later. For now we assume a simple non-linear relation $$g(v)=v^2$$. The following snippet of code assumes values of $$v,\Sigma_u,v_p,\Sigma_p$$ and plots the posterior distribtuion $$p(v|u)$$.
+The reason we explicitly define $$g(\cdot)$$ is that we might want to change it later. For now we assume a simple non-linear relation $$g(v)=v^2$$. The following snippet of code assumes values of $$v,\Sigma_u,v_p,\Sigma_p$$ and plots the posterior distribution.
 
 
 ```python
@@ -110,13 +115,15 @@ Inspecting the graph, we find that approximately $$\phi=1.6$$ maximises the post
 
  2. The normalisation term that sits in the numerator of Bayes formula 
  
-$$p(u)=\int p(v)p(u|v)dv$$
+$$
+p(u)=\int p(v)p(u|v)dv
+$$
 
 can be complicated and numerical solutions often rely on computationally intense algorithms, such as the [Expectation-Maximisation algorithm](https://en.wikipedia.org/wiki/Expectation%E2%80%93maximization_algorithm). 
 
 ### Part II - Iteration using Eulers method
 
-We are interested in a more general way of finding the value that maximises the posterior $$\phi$$. This involves maximising the numerator of Bayes equation. As this is independent of the denominator and therefore maximising $$p(v)p(u|v)$$ will maximise the posterior. By taking the logarithm to the numerator we get 
+We are interested in a more general way of finding the value that maximises the posterior $$ \phi $$. This involves maximising the numerator of Bayes equation. As this is independent of the denominator and therefore maximising $$p(v)p(u\vert v)$$ will maximise the posterior. By taking the logarithm to the numerator we get 
 
 $$
 F=\mbox{ln}p(\phi)+\mbox{ln}p(u|\phi)
@@ -179,7 +186,11 @@ So we ask the question: What does a minimal and _biologically plausible_ network
 
 ### Part III - Biological plausibility
 
-Firstly, we must specify what exactly biologically plausible means. 1) A neuron only performs computations on the input it is given, weighted by its synaptic weights. 2) Synaptic plasticity of one neuron, is only based on the activity of pre-synaptic and post-synaptic activity connecting to that neuron. 
+Firstly, we must specify what exactly biologically plausible means. 
+
+* _A neuron only performs computations on the input it is given, weighted by its synaptic weights._ 
+
+* _Synaptic plasticity of one neuron, is only based on the activity of pre-synaptic and post-synaptic activity connecting to that neuron._ 
 
 Consider the dynamics of a simple network that relies on just two neurons and is coherent with the above requirements of local computation
 
@@ -246,6 +257,8 @@ As the figure shows, the network learns <span style="color: blue">$$\phi$$</span
 $$ \epsilon_{p} \approx 0 $$
 
 $$ \epsilon_{s} \approx 0. $$
+
+Which can be said to be their steady-state solutions. 
 
 ---
 
