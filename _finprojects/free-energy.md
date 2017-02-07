@@ -14,7 +14,7 @@ layout: single
 
 ### Nomenclature:
 
-I use the same notation as in R. Bogacz. The code implements and refers to equations in the paper and network graphs were provided by Rafal Bogacz. 
+I use the same notation as in R. Bogacz. The code implements and refers to equations in the paper, and network graphs were provided by Bogacz himself. 
 
 ---
 
@@ -259,13 +259,13 @@ learn_phi()
 ![png]({{ site.url }}{{ site.baseurl }}/assets/images/Bogacz_11_0.png)
 
 
-As the figure shows, the network learns <span style="color: blue">$$\phi$$</span> but is slower in converging than when using Eulers method, as the model relies on several other nodes that are inhibits and excites each other, which causes oscillatory behaviour. Both <span style="color:green">$$\epsilon_p$$</span> and <span style="color:red">$$\epsilon_v$$</span>oscillate and converge to the values where
+As the figure shows, the network learns <span style="color: blue">$$\phi$$</span> but is slower in converging than when using Eulers method, as the model relies on several other nodes that are inhibits and excites each other, which causes oscillatory behaviour. Both <span style="color:green">$$\epsilon_p$$</span> and <span style="color:red">$$\epsilon_v$$</span> oscillate and converge to the values where
 
 $$ \epsilon_{p} \approx 0 $$
 
 $$ \epsilon_{s} \approx 0. $$
 
-Which can be understood as the steady-state of the network. 
+Which can be understood as the steady-state of the network. This means that minimising prediction errors minimises (by learning the correct parameters) minimises the free energy potential - a tenet in Active Inference.
 
 ---
 
