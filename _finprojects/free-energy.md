@@ -206,12 +206,12 @@ $$ \epsilon_{s} = \frac{s-g(\phi)}{\Sigma_{s}} $$
 
 that arise from the assumption that the input is normally distributed (again, see Bogaez for derivations).
 
+Below the network dynamics are sketched. Arrows denote excitatory input, circles inhibitory input,   and unless specified ($$\theta,v_p,\Sigma_u,\Sigma_p$$), weights of connections are assumed to be one.
+
 ![png]({{ site.url }}{{ site.baseurl }}/assets/images/Bogacz_graph_1.png)
 
 
 The next snippit of code implements those dynamics and thus, the network "learns" what value of $$\phi$$ that maximises the posterior. 
-
-
 
 
 ```python
@@ -259,7 +259,7 @@ learn_phi()
 ![png]({{ site.url }}{{ site.baseurl }}/assets/images/Bogacz_11_0.png)
 
 
-As the figure shows, the network learns <span style="color: blue">$$\phi$$</span> but is slower in converging than when using Eulers method, as the model relies on several other nodes that are inhibits and excites each other, which causes oscillatory behaviour. Both <span style="color:green">$$\epsilon_p$$</span> and <span style="color:red">$$\epsilon_v$$</span> oscillate and converge to the values where
+As the figure shows, the network learns <span style="color: blue">$$\phi$$</span> but is slower in converging than when using Eulers method, as the model relies on several other nodes that are inhibits and excites each other, which causes oscillatory behaviour. Both <span style="color:green">$$\epsilon_p$$</span> and <span style="color:red">$$\epsilon_v$$</span>oscillate and converge to the values where
 
 $$ \epsilon_{p} \approx 0 $$
 
@@ -277,7 +277,11 @@ By expanding this simple model, we can esimate the variance $$\Sigma$$ of the no
 
 $$ \epsilon_{i}=\frac{\phi_{i}-g(\phi_{i+1})}{\Sigma_{i}} $$
  
-where $$\Sigma_{i}=\left\langle (\phi_{i}-g_{i}(\phi_{i+1})^{2}\right\rangle$$ is the variance of homeostatic error $$\phi_{i}$$. Estimation of $$\Sigma$$ can be achieved by adding a interneuron $$e_{i}$$ which is connected to the prediction error node, and receives input from this via the connection with weight encoding $$\Sigma_{i}$$. The dynamics are described by
+where $$\Sigma_{i}=\left\langle (\phi_{i}-g_{i}(\phi_{i+1})^{2}\right\rangle$$ is the variance of the best guess of $$v$$, $$\phi_{i}$$. Estimation of $$\Sigma$$ can be achieved by adding a interneuron $$e_{i}$$ which is connected to the prediction error node, and receives input from this via the connection with weight encoding $$\Sigma_{i}$$, such as sketched in the figure below.
+
+![png]({{ site.url }}{{ site.baseurl }}/assets/images/Bogacz_graph_2.png)
+
+The dynamics are described by
 
 $$ \dot{\epsilon_{i}} = \phi_{i}-g(\phi_{i+1})-e_{i} $$
 

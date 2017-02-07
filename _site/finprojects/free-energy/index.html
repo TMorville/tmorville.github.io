@@ -51,7 +51,7 @@
 
 
   <meta property="og:type" content="article">
-  <meta property="article:published_time" content="2017-02-07T09:40:35+01:00">
+  <meta property="article:published_time" content="2017-02-07T09:51:38+01:00">
 
 
 
@@ -365,6 +365,8 @@
 
 <p>that arise from the assumption that the input is normally distributed (again, see Bogaez for derivations).</p>
 
+<p>Below the network dynamics are sketched. Arrows denote excitatory input, circles inhibitory input,   and unless specified (<script type="math/tex">\theta,v_p,\Sigma_u,\Sigma_p</script>), weights of connections are assumed to be one.</p>
+
 <p><img src="https://tmorville.github.io//assets/images/Bogacz_graph_1.png" alt="png"></p>
 
 <p>The next snippit of code implements those dynamics and thus, the network “learns” what value of <script type="math/tex">\phi</script> that maximises the posterior.</p>
@@ -413,7 +415,7 @@
 
 <p><img src="https://tmorville.github.io//assets/images/Bogacz_11_0.png" alt="png"></p>
 
-<p>As the figure shows, the network learns <span style="color: blue"><script type="math/tex">\phi</script></span> but is slower in converging than when using Eulers method, as the model relies on several other nodes that are inhibits and excites each other, which causes oscillatory behaviour. Both <span style="color:green"><script type="math/tex">\epsilon_p</script></span> and <span style="color:red"><script type="math/tex">\epsilon_v</script></span> oscillate and converge to the values where</p>
+<p>As the figure shows, the network learns <span style="color: blue"><script type="math/tex">\phi</script></span> but is slower in converging than when using Eulers method, as the model relies on several other nodes that are inhibits and excites each other, which causes oscillatory behaviour. Both <span style="color:green"><script type="math/tex">\epsilon_p</script></span> and <span style="color:red"><script type="math/tex">\epsilon_v</script></span>oscillate and converge to the values where</p>
 
 <script type="math/tex; mode=display">\epsilon_{p} \approx 0</script>
 
@@ -432,7 +434,11 @@
 
 <script type="math/tex; mode=display">\epsilon_{i}=\frac{\phi_{i}-g(\phi_{i+1})}{\Sigma_{i}}</script>
 
-<p>where <script type="math/tex">\Sigma_{i}=\left\langle (\phi_{i}-g_{i}(\phi_{i+1})^{2}\right\rangle</script> is the variance of homeostatic error <script type="math/tex">\phi_{i}</script>. Estimation of <script type="math/tex">\Sigma</script> can be achieved by adding a interneuron <script type="math/tex">e_{i}</script> which is connected to the prediction error node, and receives input from this via the connection with weight encoding <script type="math/tex">\Sigma_{i}</script>. The dynamics are described by</p>
+<p>where <script type="math/tex">\Sigma_{i}=\left\langle (\phi_{i}-g_{i}(\phi_{i+1})^{2}\right\rangle</script> is the variance of the best guess of <script type="math/tex">v</script>, <script type="math/tex">\phi_{i}</script>. Estimation of <script type="math/tex">\Sigma</script> can be achieved by adding a interneuron <script type="math/tex">e_{i}</script> which is connected to the prediction error node, and receives input from this via the connection with weight encoding <script type="math/tex">\Sigma_{i}</script>, such as sketched in the figure below.</p>
+
+<p><img src="https://tmorville.github.io//assets/images/Bogacz_graph_2.png" alt="png"></p>
+
+<p>The dynamics are described by</p>
 
 <script type="math/tex; mode=display">\dot{\epsilon_{i}} = \phi_{i}-g(\phi_{i+1})-e_{i}</script>
 
@@ -510,7 +516,7 @@
 
 
         
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-02-07T09:40:35+01:00">February 07, 2017</time></p>
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-02-07T09:51:38+01:00">February 07, 2017</time></p>
         
       </footer>
 
