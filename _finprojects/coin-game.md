@@ -11,9 +11,11 @@ layout: single
 
 ### Why is this important/exciting?
 
-In his talk (see link above) Ole Peters revisits the use of the expectation operator in economics. He does this by applying novel insights from dynamics of stochastic processes. The question he is trying to answer is fundamentally the same that motivated the [St. Petersbrug Paradox](https://en.wikipedia.org/wiki/St._Petersburg_paradox) which lead to Daniel Bernoullis formulation of expected utility, which still lies as the foundation of all modern macro and micro economics. In the following I illustrate the essence of Peters talk using a simple coin game. 
+Ole Peters revisits the use of the expectation operator in economics. He does this by applying novel insights from dynamics of stochastic processes. The question he is trying to answer is fundamentally the same that motivated the [St. Petersbrug Paradox](https://en.wikipedia.org/wiki/St._Petersburg_paradox). This is closely related to Daniel Bernoullis formulation of expected utility that lies as the foundation of all modern macro and micro economics. In the following I illustrate the essence of Peters talk using a simple coin game. 
 
-The question we're trying to answer: **_Is this gamble worth taking?_**
+---
+
+Firstly, lets outline the game dynamics.
 
 ### Dynamics: 
 
@@ -22,14 +24,12 @@ The question we're trying to answer: **_Is this gamble worth taking?_**
 * For **heads** wealth **increases with 50%** e.g. $$W_t\cdot1.5$$
 * For **tails** wealth **decreases by 40%** e.g. $$W_t\cdot0.6$$
 
-### Nonclamenture:
-
-* $$W_t$$ is the wealth at time $$t$$ (<code>W_</code>)
-* $$\mathbb{E}$$ is the large-N limit expectation average (<code>E_</code>)
-* $$\mathcal{A}$$ is the the long-time average (<code>A_</code>)
-* $$\mu$$ is the emperical mean (<code>mu</code>)
-
 ---
+
+
+The question we're trying to answer: 
+**_Is this gamble worth taking?_** 
+{: style="color:lightred; font-size: 100%; text-align: center;"}
 
 ### Simulations:
 
