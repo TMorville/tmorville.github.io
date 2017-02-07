@@ -14,7 +14,7 @@ layout: single
 
 ### Nomenclature:
 
-I use the same notation as in R. Bogacz. The code implements and refers to equations in the paper. 
+I use the same notation as in R. Bogacz. The code implements and refers to equations in the paper and network graphs were provided by Rafal Bogacz. 
 
 ---
 
@@ -204,7 +204,14 @@ $$ \epsilon_{p} = \frac{v_{p}-\phi}{\Sigma_{p}} $$
 
 $$ \epsilon_{s} = \frac{s-g(\phi)}{\Sigma_{s}} $$
 
-that arise from the assumption that the input is normally distributed (again, see Bogaez for derivations). The next snippit of code implements those dynamics and thus, the network "learns" what value of $$\phi$$ that maximises the posterior. 
+that arise from the assumption that the input is normally distributed (again, see Bogaez for derivations).
+
+![png]({{ site.url }}{{ site.baseurl }}/assets/images/Bogacz_graph_1.png)
+
+
+The next snippit of code implements those dynamics and thus, the network "learns" what value of $$\phi$$ that maximises the posterior. 
+
+
 
 
 ```python
