@@ -265,7 +265,7 @@ $$ \epsilon_{p} \approx 0 $$
 
 $$ \epsilon_{s} \approx 0. $$
 
-Which can be understood as the steady-state of the network. This means that minimising prediction errors minimises (by learning the correct parameters) minimises the free energy potential - a tenet in Active Inference.
+Which can be understood as the steady-state of the network. This means that minimising prediction errors (by learning the correct parameters) minimises the free energy potential - a tenet in Active Inference.
 
 ---
 
