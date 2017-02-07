@@ -279,7 +279,7 @@ $$ \epsilon_{i}=\frac{\phi_{i}-g(\phi_{i+1})}{\Sigma_{i}} $$
  
 where $$\Sigma_{i}=\left\langle (\phi_{i}-g_{i}(\phi_{i+1})^{2}\right\rangle$$ is the variance of the best guess of $$v$$, $$\phi_{i}$$. Estimation of $$\Sigma$$ can be achieved by adding a interneuron $$e_{i}$$ which is connected to the prediction error node, and receives input from this via the connection with weight encoding $$\Sigma_{i}$$, such as sketched in the figure below.
 
-![png]({{ site.url }}{{ site.baseurl }}/assets/images/Bogacz_graph_2.png)
+![png]({{ site.url }}{{ site.baseurl }}/assets/images/Bogacz_graph_2.png){:width="250px"}
 
 The dynamics are described by
 
