@@ -26,7 +26,6 @@ Firstly, lets outline the game dynamics.
 
 ---
 
-
 The question we're trying to answer: 
 **_Is this gamble worth taking?_** 
 {: style="color:lightred; font-size: 100%; text-align: center;"}
