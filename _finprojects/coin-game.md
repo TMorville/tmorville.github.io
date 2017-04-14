@@ -220,9 +220,7 @@ $$
 \left\langle W(t)\right\rangle _{T} = \frac{1}{T}\sum_{t=0}^{T}W(t)
 $$
 
-which we will denote $$\mathcal{A}$$.
-
-where $$\left\langle W(t)\right\rangle _{T}$$ denotes the average of a single process over time $$T$$. This quantity evolves over time as shown in the figure below. Similar to the above, taking the *time-limit* of this gives us the theoretical time-average 
+Where $$\left\langle W(t)\right\rangle _{T}$$ denotes the average of a single process over time $$T$$. This quantity evolves over time as shown in the figure below. Similar to the above, taking the *time-limit* of this gives us the infinite time-average 
 
 $$
 \underset{T\rightarrow\infty}{\mbox{lim}}\left\langle W(t)\right\rangle _{T} = \frac{1}{T}\sum_{t=0}^{T}W(t)
