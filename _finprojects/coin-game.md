@@ -5,7 +5,7 @@ layout: single
 
 ### Based on a [seminal talk](https://www.youtube.com/watch?v=f1vXAHGIpfc) by Ole Peters, I illustrate the fundamental difference between an ergodic and non-ergodic process using a simple coin game.  
 
-(_If you download this notebook, you can use the interactive widgets to explore this yourself_) 
+(_If you [download this notebook]({{ site.url }}{{ site.baseurl }}/assets/notebooks/coingame.ipynb), you can use the interactive widgets to explore this yourself_) 
 
 ---
 
