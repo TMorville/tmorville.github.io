@@ -1,5 +1,5 @@
 ---
-title: 
+title: about
 layout: single
 author_profile: true
 sitemap: about
