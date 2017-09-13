@@ -1,5 +1,5 @@
 ---
-title: 
+title: writing
 layout: single
 author_profile: false
 sitemap: writing
