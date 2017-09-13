@@ -1,5 +1,5 @@
 ---
-title: writing
+title: __writing__
 layout: single
 author_profile: false
 sitemap: writing
