@@ -7,7 +7,7 @@ permalink: /about/
 ---
 
 ### research
-My research triangulates between applied mathematics, computational biology and theoretical neuroscience. The central motivation of my PhD project is to understand and develop fundamental theory for learning and control in biological agents subject to normative constraints from physiology and evolution. 
+My research triangulates between machine learning, control theory and applied neuroscience. The central motivation of my PhD project is to understand and develop fundamental theory for control in biological agents subject to normative constraints from physiology and evolution.
 
 Find my CV [here]({{ site.url }}/assets/cv/CV.pdf). 
 
