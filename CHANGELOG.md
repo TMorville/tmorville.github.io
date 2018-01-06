@@ -1,3 +1,14 @@
+<<<<<<< HEAD
+=======
+## Unreleased
+
+### Enhancements
+
+* Simplify year archive Liquid.
+
+### Bug Fixes
+
+>>>>>>> 9634bb84fb488cd1f92a1734cfb4c51305f20aa6
 ## [4.9.0](https://github.com/mmistakes/minimal-mistakes/releases/tag/4.9.0)
 
 ### Enhancements
