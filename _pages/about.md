@@ -1,7 +1,7 @@
 ---
 title: about
 layout: single
-author_profile: false
+author_profile: true
 sitemap: about
 permalink: /about/
 ---
