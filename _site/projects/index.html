@@ -1,12 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.9.0 by Michael Rose
+  Copyright 2013-2018 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE.txt
+-->
 <html lang="en" class="no-js">
   <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
-
-<meta charset="utf-8">
-
-
+    <meta charset="utf-8">
 
 <!-- begin SEO -->
 
@@ -23,16 +24,32 @@
 
 
 
+<meta name="description" content="Hello, I’m Tobias.">
 
 
+
+
+<meta name="author" content="">
 
 <meta property="og:locale" content="en">
 <meta property="og:site_name" content=" ">
 <meta property="og:title" content="projects">
 
 
-  <link rel="canonical" href="https://tmorville.github.io//projects/">
-  <meta property="og:url" content="https://tmorville.github.io//projects/">
+  <link rel="canonical" href="http://localhost:4000/projects/">
+  <meta property="og:url" content="http://localhost:4000/projects/">
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -60,7 +77,7 @@
       "@context" : "http://schema.org",
       "@type" : "Person",
       "name" : "Tobias Morville",
-      "url" : "https://tmorville.github.io/",
+      "url" : "http://localhost:4000",
       "sameAs" : null
     }
   </script>
@@ -70,10 +87,11 @@
 
 
 
+
 <!-- end SEO -->
 
 
-<link href="https://tmorville.github.io//feed.xml" type="application/atom+xml" rel="alternate" title="  Feed">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="  Feed">
 
 <!-- http://t.co/dKP3o1e -->
 <meta name="HandheldFriendly" content="True">
@@ -85,215 +103,110 @@
 </script>
 
 <!-- For all browsers -->
-<link rel="stylesheet" href="https://tmorville.github.io//assets/css/main.css">
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
 
-<meta http-equiv="cleartype" content="on">
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
     <!-- start custom head snippets -->
 
-<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
+
 
 <!-- insert favicons. use http://realfavicongenerator.net/ -->
 
 <!-- end custom head snippets -->
   </head>
 
-  <body>
+  <body class="layout--archive">
 
     <!--[if lt IE 9]>
-<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
 <![endif]-->
-    
 
-<div class="masthead">
+    <div class="masthead">
   <div class="masthead__inner-wrap">
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
-        <button><div class="navicon"></div></button>
+        <a class="site-title" href="http://localhost:4000/"> </a>
         <ul class="visible-links">
-          <li class="masthead__menu-item masthead__menu-item--lg"><a href="https://tmorville.github.io//"> </a></li>
           
             
-            <li class="masthead__menu-item"><a href="https://tmorville.github.io/">home</a></li>
+            <li class="masthead__menu-item">
+              <a href="https://tmorville.github.io/" >home</a>
+            </li>
           
             
-            <li class="masthead__menu-item"><a href="https://tmorville.github.io/writing/">writing</a></li>
+            <li class="masthead__menu-item">
+              <a href="http://localhost:4000writing/" >writing</a>
+            </li>
           
             
-            <li class="masthead__menu-item"><a href="https://tmorville.github.io/projects/">projects</a></li>
+            <li class="masthead__menu-item">
+              <a href="http://localhost:4000projects/" >projects</a>
+            </li>
           
             
-            <li class="masthead__menu-item"><a href="https://tmorville.github.io/about/">about</a></li>
+            <li class="masthead__menu-item">
+              <a href="http://localhost:4000about/" >about</a>
+            </li>
           
         </ul>
+        
+        <button class="greedy-nav__toggle" type="button">
+          <span class="visually-hidden">Toggle Menu</span>
+          <div class="navicon"></div>
+        </button>
         <ul class="hidden-links hidden"></ul>
       </nav>
     </div>
   </div>
 </div>
 
-    
+    <div class="initial-content">
+      
 
 
 
 <div id="main" role="main">
   
 
-
-
   <div class="archive">
     
       <h1 class="page__title">projects</h1>
     
     
-  
-
-
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="https://tmorville.github.io//finprojects/coin-game/" rel="permalink">Non-ergodicity in a simple coin game
-</a>
-      
-    </h2>
-    
-    <p class="archive__item-excerpt" itemprop="description">Based on a seminal talk by Ole Peters, I illustrate the fundamental difference between an ergodic and non-ergodic process using a simple coin game.
-
-</p>
-  </article>
-</div>
-
-  
-
-
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="https://tmorville.github.io//finprojects/free-energy/" rel="permalink">A tutorial on the free-energy framework for modelling perception and learning
-</a>
-      
-    </h2>
-    
-    <p class="archive__item-excerpt" itemprop="description">Based on K. Friston and following R. Bogacz I shortly summarise the former, and solve the programming exercises given in the paper. This motives another post...</p>
-  </article>
-</div>
-
 
 <h2><i>work in progress below</i></h2>
 <hr>
 
 
-  
-
-
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="https://tmorville.github.io//projects/inverted-pendulum/" rel="permalink">Inverted pendulum using learning
-</a>
-      
-    </h2>
-    
-    <p class="archive__item-excerpt" itemprop="description">The inverted pendulum problem from OpenAI Gym is solved using a simple network that learns the relevant derivatives using positional data. The inferred deriv...</p>
-  </article>
-</div>
-
-  
-
-
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="https://tmorville.github.io//projects/np-network/" rel="permalink">Manual implementation of a network
-</a>
-      
-    </h2>
-    
-    <p class="archive__item-excerpt" itemprop="description">Implementation of a one-layer neural network that solves the XOR task using only numpy, roughly following this excellent blogpost by Andrej Karpathy. Shared ...</p>
-  </article>
-</div>
-
-  
-
-
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="https://tmorville.github.io//projects/two-sigma/" rel="permalink">Weighted permutation entropy on financial time-series data
-</a>
-      
-    </h2>
-    
-    <p class="archive__item-excerpt" itemprop="description">Following Joshua Garland, Ryan James, and Elizabeth Bradley information theoretical redundancy is explained and estimated using weighted permutation entropy ...</p>
-  </article>
-</div>
-
-  
-
-
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="https://tmorville.github.io//projects/visual-attention/" rel="permalink">Mnist visual attention
-</a>
-      
-    </h2>
-    
-    <p class="archive__item-excerpt" itemprop="description">An attempt to implement the recurrent attention model (RAM) from “Recurrent Models of Visual Attention” (Mnih+ 2014) in collaboration with ppries.
-
-</p>
-  </article>
-</div>
-
   </div>
 </div>
+    </div>
 
-    <script src="https://tmorville.github.io//assets/js/main.min.js"></script>
+    
+
+    
+  <script src="http://localhost:4000/assets/js/main.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
 
 
-
-
-  <script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-89851834-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
 
 
 
