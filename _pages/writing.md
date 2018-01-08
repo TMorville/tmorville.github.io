@@ -10,9 +10,12 @@ permalink: /writing/
  > <span style="font-size:0.8em;">  [Tuning the Brake While Raising the Stake: Network Dynamics during Sequential Decision-Making](http://www.jneurosci.org/content/36/19/5417.short) 
 : <span style="font-size:0.8em;">  David Meder, Brian Numelin Haagensen, Oliver Hulme, Tobias Morville, Sofie Gelskov, Damian Marc Herz, Beata Diomsina, Mark Schram Christensen, Kristoffer Hougaard Madsen and Hartwig Roman Siebner </span>
 
-### Working papers
- > <span style="font-size:0.8em;"> Four Fallacies in the Pursuit of Gambling </span>
-: <span style="font-size:1em;"> (In review, Plos ONE: Economics) </span>
+### Preprint
+ > <span style="font-size:0.8em;">  [Reward signalling in brainstem nuclei under glycemic flux](https://www.biorxiv.org/content/early/2018/01/04/243006) 
+: <span style="font-size:0.8em;"> Tobias Morville, Kristoffer Madsen, Hartwig Siebner, Oliver James Hulme </span>
+
+ > <span style="font-size:0.8em;">  [The Homeostatic Logic of Reward](https://www.biorxiv.org/content/early/2018/01/05/242974) 
+: <span style="font-size:0.8em;">  Tobias Morville, Karl Friston, Denis Burdakov, Hartwig Siebner, Oliver J. Hulme </span>
 
 
 ### Conference abstracts
