@@ -1,7 +1,8 @@
-<!DOCTYPE html>
+
+
+<!doctype html>
 <html lang="en" class="no-js">
   <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
 
 <meta charset="utf-8">
@@ -31,8 +32,8 @@
 <meta property="og:title" content="Non-ergodicity in a simple coin game">
 
 
-  <link rel="canonical" href="https://tmorville.github.io//finprojects/coin-game/">
-  <meta property="og:url" content="https://tmorville.github.io//finprojects/coin-game/">
+  <link rel="canonical" href="http://localhost:4000/finprojects/coin-game/">
+  <meta property="og:url" content="http://localhost:4000/finprojects/coin-game/">
 
 
 
@@ -51,7 +52,7 @@
 
 
   <meta property="og:type" content="article">
-  <meta property="article:published_time" content="2018-03-27T15:43:03+02:00">
+  <meta property="article:published_time" content="2018-03-27T15:50:12+02:00">
 
 
 
@@ -65,7 +66,7 @@
       "@context" : "http://schema.org",
       "@type" : "Person",
       "name" : "Tobias Morville",
-      "url" : "https://tmorville.github.io/",
+      "url" : "http://localhost:4000",
       "sameAs" : null
     }
   </script>
@@ -78,7 +79,7 @@
 <!-- end SEO -->
 
 
-<link href="https://tmorville.github.io//feed.xml" type="application/atom+xml" rel="alternate" title="  Feed">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="  Feed">
 
 <!-- http://t.co/dKP3o1e -->
 <meta name="HandheldFriendly" content="True">
@@ -90,12 +91,13 @@
 </script>
 
 <!-- For all browsers -->
-<link rel="stylesheet" href="https://tmorville.github.io//assets/css/main.css">
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
 
 <meta http-equiv="cleartype" content="on">
     <!-- start custom head snippets -->
 
-<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
 <!-- insert favicons. use http://realfavicongenerator.net/ -->
@@ -116,19 +118,19 @@
       <nav id="site-nav" class="greedy-nav">
         <button><div class="navicon"></div></button>
         <ul class="visible-links">
-          <li class="masthead__menu-item masthead__menu-item--lg"><a href="https://tmorville.github.io//"> </a></li>
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/"> </a></li>
           
             
             <li class="masthead__menu-item"><a href="https://tmorville.github.io/">home</a></li>
           
             
-            <li class="masthead__menu-item"><a href="https://tmorville.github.io/writing/">writing</a></li>
+            <li class="masthead__menu-item"><a href="http://localhost:4000writing/">writing</a></li>
           
             
-            <li class="masthead__menu-item"><a href="https://tmorville.github.io/projects/">projects</a></li>
+            <li class="masthead__menu-item"><a href="http://localhost:4000projects/">projects</a></li>
           
             
-            <li class="masthead__menu-item"><a href="https://tmorville.github.io/about/">about</a></li>
+            <li class="masthead__menu-item"><a href="http://localhost:4000about/">about</a></li>
           
         </ul>
         <ul class="hidden-links hidden"></ul>
@@ -166,9 +168,9 @@
       <section class="page__content" itemprop="text">
         <h3 id="based-on-a-seminal-talk-by-ole-peters-i-illustrate-the-fundamental-difference-between-an-ergodic-and-non-ergodic-process-using-a-simple-coin-game">Based on a <a href="https://www.youtube.com/watch?v=f1vXAHGIpfc">seminal talk</a> by Ole Peters, I illustrate the fundamental difference between an ergodic and non-ergodic process using a simple coin game.</h3>
 
-<p>(<em>If you <a href="https://tmorville.github.io//assets/notebooks/coingame.ipynb">download this notebook</a>, you can use the interactive widgets to explore this yourself</em>)</p>
+<p>(<em>If you <a href="http://localhost:4000/assets/notebooks/coingame.ipynb">download this notebook</a>, you can use the interactive widgets to explore this yourself</em>)</p>
 
-<hr>
+<hr />
 
 <h3 id="why-is-this-importantexciting">Why is this important/exciting:</h3>
 
@@ -180,26 +182,20 @@
 
 <ul>
   <li>At each time step a <strong>fair coin</strong> is flipped and lands either heads or tails.</li>
-  <li>For <strong>heads</strong> wealth <strong>increases with 50%</strong> e.g. <script type="math/tex">W_t\cdot1.5</script>
-</li>
-  <li>For <strong>tails</strong> wealth <strong>decreases by 40%</strong> e.g. <script type="math/tex">W_t\cdot0.6</script>
-</li>
+  <li>For <strong>heads</strong> wealth <strong>increases with 50%</strong> e.g. <script type="math/tex">W_t\cdot1.5</script></li>
+  <li>For <strong>tails</strong> wealth <strong>decreases by 40%</strong> e.g. <script type="math/tex">W_t\cdot0.6</script></li>
 </ul>
 
 <h3 id="nonclamenture">Nonclamenture:</h3>
 
 <ul>
-  <li>
-<script type="math/tex">W_t</script> is the wealth at time <script type="math/tex">t</script> (<code>W_</code>)</li>
-  <li>
-<script type="math/tex">\mathbb{E}</script> is the large-N limit expectation average (<code>E_</code>)</li>
-  <li>
-<script type="math/tex">\mathcal{A}</script> is the the finite-time average (<code>A_</code>)</li>
-  <li>
-<script type="math/tex">\mu</script> is the finite-ensemble mean (<code>mu</code>)</li>
+  <li><script type="math/tex">W_t</script> is the wealth at time <script type="math/tex">t</script> (<code>W_</code>)</li>
+  <li><script type="math/tex">\mathbb{E}</script> is the large-N limit expectation average (<code>E_</code>)</li>
+  <li><script type="math/tex">\mathcal{A}</script> is the the finite-time average (<code>A_</code>)</li>
+  <li><script type="math/tex">\mu</script> is the finite-ensemble mean (<code>mu</code>)</li>
 </ul>
 
-<hr>
+<hr />
 
 <h3 id="simulations">Simulations:</h3>
 
@@ -285,14 +281,14 @@
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">interact</span><span class="p">(</span><span class="n">multiplicativeW</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">60</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">E</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p><img src="https://tmorville.github.io//assets/images/SimpleCoinGame_4_1.png" alt="png"></p>
+<p><img src="http://localhost:4000/assets/images/SimpleCoinGame_4_1.png" alt="png" /></p>
 
 <p>Its clear that this process got close to zero <script type="math/tex">(10^{-2})</script> quite quickly (after 50 flips). However, it’s also quite noisy and difficult to make out, if this one trajectory was just a bit unfortunate. Lets <em>repeat</em> the game 100 times <script type="math/tex">(N=100)</script> and see what happens.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">interact</span><span class="p">(</span><span class="n">multiplicativeW</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">60</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">E</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p><img src="https://tmorville.github.io//assets/images/SimpleCoinGame_6_1.png" alt="png"></p>
+<p><img src="http://localhost:4000/assets/images/SimpleCoinGame_6_1.png" alt="png" /></p>
 
 <p>We’re still not getting much smarter. Looks like half on the trajectories are increasing, while the other half are dereasing - but it remains difficult to tell if this game is really beneficial.</p>
 
@@ -301,18 +297,18 @@
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">interact</span><span class="p">(</span><span class="n">multiplicativeW</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">60</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">E</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p><img src="https://tmorville.github.io//assets/images/SimpleCoinGame_8_1.png" alt="png"></p>
+<p><img src="http://localhost:4000/assets/images/SimpleCoinGame_8_1.png" alt="png" /></p>
 
 <p>Which looks noisy around zero. To reduce the noise in the average, increase the number of plays to a large number, say <script type="math/tex">N=10000</script>.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">interact</span><span class="p">(</span><span class="n">multiplicativeW</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">60</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">E</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p><img src="https://tmorville.github.io//assets/images/SimpleCoinGame_10_1.png" alt="png"></p>
+<p><img src="http://localhost:4000/assets/images/SimpleCoinGame_10_1.png" alt="png" /></p>
 
 <p>It seems like the empirical average <span style="color:red"><script type="math/tex">\mu</script></span> steadily increases. If you feel like removing more noise, you can increase <script type="math/tex">N</script> (however this script is quite slow due to all the <em>for-loops</em>).</p>
 
-<hr>
+<hr />
 
 <p>As we have explicit knowledge of the dynamics, we can do much better than simulations. We can simply calculate the mean or <em>expectation operator</em> <script type="math/tex">\mathbb{E}(\cdot)</script> over the <script type="math/tex">N</script> trajectories. Formally, the expectation operator is the <em>large-N</em> limit of the empirical mean</p>
 
@@ -327,7 +323,7 @@
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">interact</span><span class="p">(</span><span class="n">multiplicativeW</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">60</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">E</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p><img src="https://tmorville.github.io//assets/images/SimpleCoinGame_12_1.png" alt="png"></p>
+<p><img src="http://localhost:4000/assets/images/SimpleCoinGame_12_1.png" alt="png" /></p>
 
 <p>The graph supports our theoretical analysis: The empirical mean seems to asymptote to the large-N limit mean, which grows exponentially towards infinity.</p>
 
@@ -335,7 +331,7 @@
 
 <p>Sounds too good to be true? Well, thats because it is too good to be true. To understand why, we must first consider the <em>time-perspective</em>.</p>
 
-<hr>
+<hr />
 
 <h3 id="the-time-perspective">The time-perspective</h3>
 
@@ -344,7 +340,7 @@
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">interact</span><span class="p">(</span><span class="n">multiplicativeW</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">E</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p><img src="https://tmorville.github.io//assets/images/SimpleCoinGame_14_1.png" alt="png"></p>
+<p><img src="http://localhost:4000/assets/images/SimpleCoinGame_14_1.png" alt="png" /></p>
 
 <p>This single trajectory is quite a different scenario from what the theoretical prediction. While the expectation operator goes to <script type="math/tex">10^{189}</script> (which is a very, very large number), the realised trajectory ends up at <script type="math/tex">10^{-227}</script>.</p>
 
@@ -353,7 +349,7 @@
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">interact</span><span class="p">(</span><span class="n">multiplicativeW</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">E</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p><img src="https://tmorville.github.io//assets/images/SimpleCoinGame_16_1.png" alt="png"></p>
+<p><img src="http://localhost:4000/assets/images/SimpleCoinGame_16_1.png" alt="png" /></p>
 
 <p>Immediatly there seems to be a fundamental difference between the theoretical prediction <script type="math/tex">\mathbb{E}(\cdot)</script> and the hundred realised trajectories.</p>
 
@@ -367,7 +363,7 @@
 
 <p>If we calculate this for the above dynamics, we will realise that it asymptotes to zero. The calculation is easy <script type="math/tex">\sqrt{1.5\cdot0.6}\approx0.95</script>, a number less than one, indicating negative asymptotic growth.</p>
 
-<hr>
+<hr />
 
 <p>Thus we have the two fundamental results that in the above scenario</p>
 
@@ -390,7 +386,7 @@
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">interact</span><span class="p">(</span><span class="n">multiplicativeW</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">E</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p><img src="https://tmorville.github.io//assets/images/SimpleCoinGame_18_1.png" alt="png"></p>
+<p><img src="http://localhost:4000/assets/images/SimpleCoinGame_18_1.png" alt="png" /></p>
 
 <p>There’s much more to this story, and if you find it compellin, I suggest you see the video in the introduction, or read the follow papers:</p>
 
@@ -410,7 +406,7 @@
 
 
         
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-03-27T15:43:03+02:00">March 27, 2018</time></p>
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-03-27T15:50:12+02:00">March 27, 2018</time></p>
         
       </footer>
 
@@ -424,7 +420,7 @@
       <a href="#" class="pagination--pager disabled">Previous</a>
     
     
-      <a href="https://tmorville.github.io//finprojects/free-energy/" class="pagination--pager" title="A tutorial on the free-energy framework for modelling perception and learning
+      <a href="http://localhost:4000/finprojects/free-energy/" class="pagination--pager" title="A tutorial on the free-energy framework for modelling perception and learning
 ">Next</a>
     
   </nav>
@@ -438,7 +434,7 @@
   
 </div>
 
-    <script src="https://tmorville.github.io//assets/js/main.min.js"></script>
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
 
 
 
@@ -462,3 +458,4 @@
 
   </body>
 </html>
+

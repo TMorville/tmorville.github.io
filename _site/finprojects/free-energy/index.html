@@ -1,7 +1,8 @@
-<!DOCTYPE html>
+
+
+<!doctype html>
 <html lang="en" class="no-js">
   <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
 
 <meta charset="utf-8">
@@ -31,8 +32,8 @@
 <meta property="og:title" content="A tutorial on the free-energy framework for modelling perception and learning">
 
 
-  <link rel="canonical" href="https://tmorville.github.io//finprojects/free-energy/">
-  <meta property="og:url" content="https://tmorville.github.io//finprojects/free-energy/">
+  <link rel="canonical" href="http://localhost:4000/finprojects/free-energy/">
+  <meta property="og:url" content="http://localhost:4000/finprojects/free-energy/">
 
 
 
@@ -51,7 +52,7 @@
 
 
   <meta property="og:type" content="article">
-  <meta property="article:published_time" content="2018-03-27T15:43:03+02:00">
+  <meta property="article:published_time" content="2018-03-27T15:50:12+02:00">
 
 
 
@@ -65,7 +66,7 @@
       "@context" : "http://schema.org",
       "@type" : "Person",
       "name" : "Tobias Morville",
-      "url" : "https://tmorville.github.io/",
+      "url" : "http://localhost:4000",
       "sameAs" : null
     }
   </script>
@@ -78,7 +79,7 @@
 <!-- end SEO -->
 
 
-<link href="https://tmorville.github.io//feed.xml" type="application/atom+xml" rel="alternate" title="  Feed">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="  Feed">
 
 <!-- http://t.co/dKP3o1e -->
 <meta name="HandheldFriendly" content="True">
@@ -90,12 +91,13 @@
 </script>
 
 <!-- For all browsers -->
-<link rel="stylesheet" href="https://tmorville.github.io//assets/css/main.css">
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
 
 <meta http-equiv="cleartype" content="on">
     <!-- start custom head snippets -->
 
-<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
 <!-- insert favicons. use http://realfavicongenerator.net/ -->
@@ -116,19 +118,19 @@
       <nav id="site-nav" class="greedy-nav">
         <button><div class="navicon"></div></button>
         <ul class="visible-links">
-          <li class="masthead__menu-item masthead__menu-item--lg"><a href="https://tmorville.github.io//"> </a></li>
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/"> </a></li>
           
             
             <li class="masthead__menu-item"><a href="https://tmorville.github.io/">home</a></li>
           
             
-            <li class="masthead__menu-item"><a href="https://tmorville.github.io/writing/">writing</a></li>
+            <li class="masthead__menu-item"><a href="http://localhost:4000writing/">writing</a></li>
           
             
-            <li class="masthead__menu-item"><a href="https://tmorville.github.io/projects/">projects</a></li>
+            <li class="masthead__menu-item"><a href="http://localhost:4000projects/">projects</a></li>
           
             
-            <li class="masthead__menu-item"><a href="https://tmorville.github.io/about/">about</a></li>
+            <li class="masthead__menu-item"><a href="http://localhost:4000about/">about</a></li>
           
         </ul>
         <ul class="hidden-links hidden"></ul>
@@ -166,7 +168,7 @@
       <section class="page__content" itemprop="text">
         <h3 id="based-on-k-friston-and-following-r-bogacz-i-shortly-summarise-the-former-and-solve-the-programming-exercises-given-in-the-paper-this-motives-another-post-taking-a-more-general-look-at-active-learning-in-ml">Based on <a href="http://www.fil.ion.ucl.ac.uk/~karl/A%20free%20energy%20principle%20for%20the%20brain.pdf">K. Friston</a> and following <a href="http://www.sciencedirect.com/science/article/pii/S0022249615000759">R. Bogacz</a> I shortly summarise the former, and solve the programming exercises given in the paper. This motives <a href="https://tmorville.github.io/projects/active-learning">another post</a>, taking a more general look at active learning in ML.</h3>
 
-<hr>
+<hr />
 
 <h3 id="why-is-this-importantexciting">Why is this important/exciting?</h3>
 
@@ -176,12 +178,12 @@
 
 <p>I use the same notation as in R. Bogacz. The code implements and refers to equations in the paper, and network graphs were provided by Bogacz himself.</p>
 
-<hr>
+<hr />
 
 <h3 id="introduction---biological-intuition">Introduction - Biological intuition</h3>
 <p>A simple organism is trying to infer the size <script type="math/tex">v</script> of a food item. The only source of noisy information is one photoreceptor that signals the light reflected from this item, we denote this <script type="math/tex">u</script>. The non-linear function that relates size <script type="math/tex">v</script> to photosensory input <script type="math/tex">u</script> is assumed to be <script type="math/tex">g(v)=v^2</script>. We assume that this signal is normally distributed with mean <script type="math/tex">g(v)</script> and variance <script type="math/tex">\Sigma_{v}</script>.</p>
 
-<hr>
+<hr />
 
 <h3 id="part-i---bayes">Part I - Bayes</h3>
 
@@ -257,7 +259,7 @@
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">exact_bayes</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p><img src="https://tmorville.github.io//assets/images/Bogacz_5_0.png" alt="png"></p>
+<p><img src="http://localhost:4000/assets/images/Bogacz_5_0.png" alt="png" /></p>
 
 <p>Inspecting the graph, we find that approximately <script type="math/tex">\phi=1.6</script> maximises the posterior. There are two fundamental problems with this approach</p>
 
@@ -318,13 +320,13 @@
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">simple_dyn</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p><img src="https://tmorville.github.io//assets/images/Bogacz_8_0.png" alt="png"></p>
+<p><img src="http://localhost:4000/assets/images/Bogacz_8_0.png" alt="png" /></p>
 
 <p>It is clear that the output converges rapidly to <script type="math/tex">\phi=1.6</script>, the value that maximises the posterior.</p>
 
 <p>So we ask the question: What does a minimal and <em>biologically plausible</em> network model that can do such calculations look like?</p>
 
-<hr>
+<hr />
 
 <h3 id="part-iii---biological-plausibility">Part III - Biological plausibility</h3>
 
@@ -355,7 +357,7 @@
 
 <p>Below the network dynamics are sketched. Arrows denote excitatory input, circles inhibitory input,   and unless specified (<script type="math/tex">\theta,v_p,\Sigma_u,\Sigma_p</script>), weights of connections are assumed to be one.</p>
 
-<p><img src="https://tmorville.github.io//assets/images/Bogacz_graph_1.png" alt="png"></p>
+<p><img src="http://localhost:4000/assets/images/Bogacz_graph_1.png" alt="png" /></p>
 
 <p>The next snippit of code implements those dynamics and thus, the network “learns” what value of <script type="math/tex">\phi</script> that maximises the posterior.</p>
 
@@ -397,7 +399,7 @@
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">learn_phi</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p><img src="https://tmorville.github.io//assets/images/Bogacz_11_0.png" alt="png"></p>
+<p><img src="http://localhost:4000/assets/images/Bogacz_11_0.png" alt="png" /></p>
 
 <p>As the figure shows, the network learns <span style="color: blue"><script type="math/tex">\phi</script></span> but is slower in converging than when using Eulers method, as the model relies on several other nodes that are inhibits and excites each other, which causes oscillatory behaviour. Both <span style="color:green"><script type="math/tex">\epsilon_p</script></span> and <span style="color:red"><script type="math/tex">\epsilon_v</script></span> oscillate and converge to the values where</p>
 
@@ -407,10 +409,9 @@
 
 <p>Which can be understood as the steady-state of the network. This means that minimising prediction errors (by learning the correct parameters) minimises the free energy potential - a tenet in Active Inference.</p>
 
-<hr>
+<hr />
 
-<h3 id="part-iv---approximate-estimation-of-sigma">Part IV - Approximate estimation of <script type="math/tex">\Sigma</script>
-</h3>
+<h3 id="part-iv---approximate-estimation-of-sigma">Part IV - Approximate estimation of <script type="math/tex">\Sigma</script></h3>
 
 <p>Recall that we assumed that size <script type="math/tex">v</script> was communicated via. a noisy signal <script type="math/tex">u</script> assumed to be normally distributed. Above, we outlined a simple sample method for finding the mean value <script type="math/tex">\phi</script> that maximises the posterior <script type="math/tex">p(v\vert s)</script>.</p>
 
@@ -420,7 +421,7 @@
 
 <p>where <script type="math/tex">\Sigma_{i}=\left\langle (\phi_{i}-g_{i}(\phi_{i+1})^{2}\right\rangle</script> is the variance of the best guess of <script type="math/tex">v</script>, <script type="math/tex">\phi_{i}</script>. Estimation of <script type="math/tex">\Sigma</script> can be achieved by adding a interneuron <script type="math/tex">e_{i}</script> which is connected to the prediction error node, and receives input from this via the connection with weight encoding <script type="math/tex">\Sigma_{i}</script>, such as sketched in the figure below.</p>
 
-<p><img src="https://tmorville.github.io//assets/images/Bogacz_graph_2.png" alt="png" width="250px"></p>
+<p><img src="http://localhost:4000/assets/images/Bogacz_graph_2.png" alt="png" width="250px" /></p>
 
 <p>The dynamics are described by</p>
 
@@ -481,7 +482,7 @@
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">learn_sigma</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p><img src="https://tmorville.github.io//assets/images/Bogacz_14_0.png" alt="png"></p>
+<p><img src="http://localhost:4000/assets/images/Bogacz_14_0.png" alt="png" /></p>
 
 <p>Because <script type="math/tex">\phi</script> is constantly varying <code>phi = np.random.normal(5, np.sqrt(2), 1)</code> <script type="math/tex">\Sigma</script> never converge to just one value, but instead to <em>approximately</em> 2, the variance of <script type="math/tex">\phi_i</script>.</p>
 
@@ -496,7 +497,7 @@
 
 
         
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-03-27T15:43:03+02:00">March 27, 2018</time></p>
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-03-27T15:50:12+02:00">March 27, 2018</time></p>
         
       </footer>
 
@@ -507,7 +508,7 @@
 
   <nav class="pagination">
     
-      <a href="https://tmorville.github.io//finprojects/coin-game/" class="pagination--pager" title="Non-ergodicity in a simple coin game
+      <a href="http://localhost:4000/finprojects/coin-game/" class="pagination--pager" title="Non-ergodicity in a simple coin game
 ">Previous</a>
     
     
@@ -524,7 +525,7 @@
   
 </div>
 
-    <script src="https://tmorville.github.io//assets/js/main.min.js"></script>
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
 
 
 
@@ -548,3 +549,4 @@
 
   </body>
 </html>
+
