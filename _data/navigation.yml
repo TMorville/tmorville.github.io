@@ -6,21 +6,21 @@ main:
   - title: "writing"
     url: writing/
 
-  - title: "projects"
-    url: projects/
+  - title: "archive"
+    url: archive/
 
   - title: "about"
     url: about/
 
-about:
-  - title: "home"
-    url: "https://tmorville.github.io/"
+# about:
+#   - title: "home"
+#     url: "https://tmorville.github.io/"
 
-  - title: "writing"
-    url: writing/
+#   - title: "writing"
+#     url: writing/
 
-  - title: "projects"
-    url: projects/
+#   - title: "archive"
+#     url: archive/
 
-  - title: "about"
-    url: about/
+#   - title: "about"
+#     url: about/
