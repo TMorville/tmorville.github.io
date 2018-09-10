@@ -2,7 +2,7 @@
 layout: single
 ---
 
-<h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].projects | default: "Recent projects" }}</h3>
+<h5 class="archive__subtitle">{{ site.data.ui-text[site.locale].projects | default: "Recent projects" }}</h5>
 
 {% for post in paginator.posts %}
   {% include archive-single.html %}
