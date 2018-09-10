@@ -6,13 +6,12 @@ sitemap: about
 permalink: /about/
 ---
 
-### research
-My research triangulates between neuroscience, applied mathematics and machine learning. Currently, I work as a research consultant at the Danish Research Centre for Magnetic Resonance & and senior data scientist at 2021.ai. You can find my writing [here]({{ site.url }}/writing). 
+### tmorville.github.io
+The intention of this website is a platform to share streamlined [notes and code]({{ site.url }}/projects) while playing a bit of research catch-up or just exploring interesting stuff. I am widely interested in machine learning with an emphasis on putting models in production. 
 
 Find my CV [here](https://tmorville.github.io/markdown-cv/). 
 
-### tmorville.github.io
-The intention of this website is a platform to share streamlined [notes and code]({{ site.url }}/projects) while playing a bit of research catch-up or just exploring interesting stuff. I am widely interested in implementation of deep learning, control theory, reinforcement learning, computational neuroscience and applied mathematics. 
+### research
+My research triangulates between theoretical neurobiology, applied mathematics and machine learning. You can find my writing [here]({{ site.url }}/writing). 
 
-
-<span style="font-size:0.8em;"> This site is powered by [Jekyll](https://jekyllrb.com/) themed by [Minimal Mistakes](https://mmistakes.github.io/minimal-mistakes/). </span>
+<span style="font-size:0.8em;"> This site is powered by [Jekyll](https://jekyllrb.com/) and themed by [Minimal Mistakes](https://mmistakes.github.io/minimal-mistakes/). </span>

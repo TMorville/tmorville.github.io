@@ -3,7 +3,7 @@ title: A tutorial on the free-energy framework for modelling perception and lear
 layout: single
 ---
 
-### Based on [K. Friston](http://www.fil.ion.ucl.ac.uk/~karl/A%20free%20energy%20principle%20for%20the%20brain.pdf) and following [R. Bogacz](http://www.sciencedirect.com/science/article/pii/S0022249615000759) I shortly summarise the former, and solve the programming exercises given in the paper. This motives [another post](https://tmorville.github.io/projects/active-learning), taking a more general look at active learning in ML.
+### Based on [K. Friston](http://www.fil.ion.ucl.ac.uk/~karl/A%20free%20energy%20principle%20for%20the%20brain.pdf) and following [R. Bogacz](http://www.sciencedirect.com/science/article/pii/S0022249615000759) I shortly summarise the former, and solve the programming exercises given in the paper.
 
 ---
 
