@@ -7,7 +7,7 @@ mathjax: true
 
 ### Learn to build a simple Rails web application that calls a machine learning model and exposes the result with a click of a button.
 
-[_Link to Git_.]()
+[_Link to Git_.](https://github.com/TMorville/ml-on-rails)
 
 ---
 
