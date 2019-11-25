@@ -11,6 +11,10 @@ The intention of this website is a platform to share streamlined [notes and code
 
 Find my CV [here](https://tmorville.github.io/markdown-cv/). 
 
+### work
+
+I am heading all data science and machine learning related initiatives at [Nodes](https://www.nodesagency.com/) across multiple clients in the EMEA region. This includes solution architecture, client engagement and heading development of machine learning solutions as a service that frontend and backend developers can deploy at scale.
+
 ### research
 My research triangulates between theoretical neurobiology, applied mathematics and machine learning. You can find my writing [here]({{ site.url }}/writing). 
 
