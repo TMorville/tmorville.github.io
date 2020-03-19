@@ -5,7 +5,7 @@ author_profile: false
 mathjax: true
 ---
 
-### Finding blocks and defining neighborhoods in city data is surprisingly non-trivial. Fundamentally, it amounts to finding the smallest set of rings (SSSR), which is a NP-complete problem. In the following I will go through a computer vision based solution.
+### Finding blocks and defining neighborhoods in city data is surprisingly non-trivial. Fundamentally, it amounts to finding the smallest set of rings (SSSR), which is a NP-complete problem. In the following, I will go through a computer-vision based solution.
 
 ---
 
@@ -15,12 +15,15 @@ I am working on a service for a hobby projet that identifies different aspects o
 
 > A **neighbourhood** is a geographically localised [community](https://en.wikipedia.org/wiki/Community) within a larger [city](https://en.wikipedia.org/wiki/City), [town](https://en.wikipedia.org/wiki/Town), [suburb](https://en.wikipedia.org/wiki/Suburb) or [rural area](https://en.wikipedia.org/wiki/Rural_area).
 
-Which leaves it pretty open for interpretation. I decided that **a block** is an area inclosed between a number of streets, where the number of streets (edges) and intersections (nodes) is a minimum of three (a triangle).  **A neighborhood** is, for any given block, all the blocks directly adjacent to that block and the block itself.
+Which leaves it pretty open for interpretation. So I decided that that
+
+1. **A block** is an area inclosed between a number of streets, where the number of streets (edges) and intersections (nodes) is a minimum of three (a triangle).  
+
+2. **A neighborhood** is, for any given block, all the blocks directly adjacent to that block and the block itself.
 
 ### Prerequisites
 
-Python3
-
+Python
 [OSMnx](https://osmnx.readthedocs.io/en/stable/osmnx.html)
 
 ### Finding cycles 
