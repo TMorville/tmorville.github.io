@@ -1,4 +1,11 @@
-This is a note to refresh my understand of the meaning of [precision](https://en.wikipedia.org/wiki/Precision_(statistics)) in bayesian regression. 
+---
+title: What is precision? 
+layout: single
+author_profile: false
+mathjax: true
+---
+
+### This is a note to refresh my understand of the meaning of [precision](https://en.wikipedia.org/wiki/Precision_(statistics)) in bayesian regression. 
 
 This became relevant in [my ongoing project](https://tmorville.github.io//rl-svd_1/) with multi-armed contextual bandits.
 
@@ -131,6 +138,8 @@ make_plot(100, 100, text=False)
 
 The top two matrices are the uncorrelated data, and the bottom two matrices are the correlated data. Straight off the bat, we notice that the precision matrix shows the largest difference between uncorrelated and correlated data. The lines that permeate the precision matrix in the bottom RHS are clearly correlated (yellow colors) while the blue colors in the top RHS precision matrix are clearly very uncorrelated. 
 
-Looking to the difference between the covariance and precision matrix for the top uncorrelated data, we notice that there are small square "islands" in the covariance matrix that does not exist in the precision matrix. The precision matrix yields **partial correlations** of variables, while the covariance matrix yields **unconditional correlation** between variables. Consider this example to illustrate.
+Looking to the difference between the covariance and precision matrix for the top uncorrelated data, we notice that there are small square "islands" in the covariance matrix that does not exist in the precision matrix. The precision matrix yields **partial correlations** of variables, while the covariance matrix yields **unconditional correlation** between variables. 
 
-There are three events A, B and C. A being that the grass in your front yard is wet, B that your driveway is wet and C the fact that it rained. Now, if we just look at A and B, they will be heavily correlated, but once we condition on C, they are pretty much uncorrelated. A partial correlation describes the correlation between two variables, after you have conditioned on all other variables. So what we are seeing the in the uncorrelated data are conditionally independent variables, while we are seeing conditionally dependent variables in the correlated data.
+Consider this example.
+
+There are three events **A**, **B** and **C**. A being that the grass in your front yard is wet, **B** that your driveway is wet and **C** the fact that it rained. Now, if we just look at **A** and **B**, they will be heavily correlated, but once we condition on **C**, they are pretty much uncorrelated. *A partial correlation describes the correlation between two variables, after you have conditioned on all other variables*. So what we are seeing the in the uncorrelated data are conditionally independent variables, while we are seeing conditionally dependent variables in the correlated data.
