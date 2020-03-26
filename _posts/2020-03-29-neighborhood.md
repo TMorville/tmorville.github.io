@@ -19,12 +19,7 @@ Which leaves it pretty open for interpretation. So I decided that that
 
 1. **A block** is an area inclosed between a number of streets, where the number of streets (edges) and intersections (nodes) is a minimum of three (a triangle).  
 
-2. **A neighborhood** is, for any given block, all the blocks directly adjacent to that block and the block itself.
-
-### Prerequisites
-
-Python
-[OSMnx](https://osmnx.readthedocs.io/en/stable/osmnx.html)
+2. for any given block a **neighborhood** consists of the block itself, and all blocks directly adjacent.
 
 ### Finding cycles 
 
