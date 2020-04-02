@@ -1,11 +1,11 @@
 ---
-title: What is precision? 
+title: What is the precision matrix? 
 layout: single
 author_profile: false
 mathjax: true
 ---
 
-### This is a note to refresh my understand of the meaning of [precision](https://en.wikipedia.org/wiki/Precision_(statistics)) in bayesian regression. 
+### Refreshing my understand of the meaning of the [precision](https://en.wikipedia.org/wiki/Precision_(statistics)) matrix.
 
 This became relevant in [my ongoing project](https://tmorville.github.io//rl-svd_1/) with multi-armed contextual bandits.
 
