@@ -17,17 +17,11 @@ I want to answer three questions.
 
 Covariance is defined as the expected value (or mean) of the product of their deviations from their individual expected values
 
-$$
-cov(X,Y)=E\left[(X-E[X])(Y-E[X])\right]
-$$
-
 ![png]({{ site.url }}{{ site.baseurl }}/assets/images/precision-eq-1.png)
 
 and precision is the matrix inverse of the covariance matrix
-$$
-precision(X,Y) = cov(X, Y)^{-1}
-$$
 
+![png]({{ site.url }}{{ site.baseurl }}/assets/images/precision-eq-2.png)
 
 ```python
 import numpy as np
@@ -68,16 +62,7 @@ ax1.scatter(c[:, 0], c[:, 1])
 ax2.scatter(uc[:, 0], uc[:, 1])
 ```
 
-
-
-
-    <matplotlib.collections.PathCollection at 0x7fc4084d61d0>
-
-
-
-
-![png]({{ site.url }}{{ site.baseurl }}/assets/images/precision-1.png)
-
+![precision-1]({{ site.url }}{{ site.baseurl }}/assets/images/precision-1.png)
 
 Quite clearly, the data generating process works.The LHS figure shows correlated data, and the RHS figure shows a noise pattern.
 
