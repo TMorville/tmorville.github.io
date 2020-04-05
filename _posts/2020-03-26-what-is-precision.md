@@ -17,15 +17,11 @@ I want to answer three questions.
 
 Covariance is defined as the expected value (or mean) of the product of their deviations from their individual expected values
 
-![](P1.png)
-
-Test
-
-![png]({{ site.url }}{{ site.baseurl }}/assets/images/precision-eq-1.png)
+![](https://i.imgur.com/utA8qy1.jpg)
 
 and precision is the matrix inverse of the covariance matrix
 
-![png]({{ site.url }}{{ site.baseurl }}/assets/images/precision-eq-2.png)
+![](https://i.imgur.com/tPawtop.jpg)
 
 ```python
 import numpy as np
@@ -66,9 +62,9 @@ ax1.scatter(c[:, 0], c[:, 1])
 ax2.scatter(uc[:, 0], uc[:, 1])
 ```
 
-![precision-1]({{ site.url }}{{ site.baseurl }}/assets/images/precision-1.png)
+![](https://i.imgur.com/S5xu2zo.png)
 
-Quite clearly, the data generating process works.The LHS figure shows correlated data, and the RHS figure shows a noise pattern.
+Quite clearly, the data generating process works. The LHS figure shows correlated data, and the RHS figure shows a noise pattern.
 
 
 ```python
@@ -119,12 +115,9 @@ make_plot(100, 100, text=False)
 ```
 
 
-![png]({{ site.url }}{{ site.baseurl }}/assets/images/precision-2.png)
+![](https://i.imgur.com/S4qTaz5.png)
 
-
-
-![png]({{ site.url }}{{ site.baseurl }}/assets/images/precision-3.png)
-
+![](https://i.imgur.com/Jyq5dFy.png)
 
 The top two matrices are the uncorrelated data, and the bottom two matrices are the correlated data. Straight off the bat, we notice that the precision matrix shows the largest difference between uncorrelated and correlated data. The lines that permeate the precision matrix in the bottom RHS are clearly correlated (yellow colors) while the blue colors in the top RHS precision matrix are clearly very uncorrelated. 
 
