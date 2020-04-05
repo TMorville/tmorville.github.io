@@ -17,6 +17,10 @@ I want to answer three questions.
 
 Covariance is defined as the expected value (or mean) of the product of their deviations from their individual expected values
 
+![](P1.png)
+
+Test
+
 ![png]({{ site.url }}{{ site.baseurl }}/assets/images/precision-eq-1.png)
 
 and precision is the matrix inverse of the covariance matrix
