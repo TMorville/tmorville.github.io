@@ -21,8 +21,9 @@ $$
 cov(X,Y)=E\left[(X-E[X])(Y-E[X])\right]
 $$
 
-and precision is the matrix inverse of the covariance matrix
+![png]({{ site.url }}{{ site.baseurl }}/assets/images/precision-eq-1.png)
 
+and precision is the matrix inverse of the covariance matrix
 $$
 precision(X,Y) = cov(X, Y)^{-1}
 $$
