@@ -339,7 +339,6 @@ As mentioned above, the aim with this is to provide a solution that generates ac
 
 To do this we are working on a dashboard that display these messages and allow product owners to sort and look through data easily. For example, this could be sorting by most frequent bug and quickly identifying the functionality where most users are experiencing problems. 
 
-Agoutirelatedprotein12
 
 
 
