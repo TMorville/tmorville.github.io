@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>"Her" Movie-Inspired Color Palette</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Nunito+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-coral-red: #f25c54;
+            --color-soft-peach: #ffad9e;
+            --color-blush-pink: #ffceb6;
+            --color-warm-orange: #ffd38d;
+            --color-muted-teal: #4d6875;
+            --color-midnight-blue: #2e3440;
+            --color-cream-white: #faf8f1;
+            --color-dusty-rose: #e8a598;
+            
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Nunito Sans', sans-serif;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-cream-white);
+            color: var(--color-midnight-blue);
+            margin: 0;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            color: var(--color-coral-red);
+            text-align: center;
+            margin-bottom: 40px;
+            line-height: 1.2;
+        }
+        
+        .palette-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+        
+        .color-card {
+            background: white;
+            border-radius: 12px;
+            padding: 0;
+            box-shadow: 0 4px 20px rgba(46, 52, 64, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .color-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .color-swatch {
+            height: 120px;
+            width: 100%;
+            position: relative;
+        }
+        
+        .color-info {
+            padding: 20px;
+        }
+        
+        .color-name {
+            font-family: var(--font-heading);
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .color-hex {
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            color: var(--color-muted-teal);
+            margin-bottom: 8px;
+        }
+        
+        .color-description {
+            font-size: 14px;
+            color: var(--color-muted-teal);
+            line-height: 1.4;
+        }
+        
+        /* Color-specific backgrounds */
+        .coral-red { background-color: var(--color-coral-red); }
+        .soft-peach { background-color: var(--color-soft-peach); }
+        .blush-pink { background-color: var(--color-blush-pink); }
+        .warm-orange { background-color: var(--color-warm-orange); }
+        .muted-teal { background-color: var(--color-muted-teal); }
+        .midnight-blue { background-color: var(--color-midnight-blue); }
+        .cream-white { background-color: var(--color-cream-white); border: 2px solid var(--color-dusty-rose); }
+        .dusty-rose { background-color: var(--color-dusty-rose); }
+        
+        .typography-section {
+            margin-top: 60px;
+            padding: 40px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(46, 52, 64, 0.1);
+        }
+        
+        .typography-section h2 {
+            font-family: var(--font-heading);
+            font-size: 36px;
+            color: var(--color-coral-red);
+            margin-bottom: 30px;
+        }
+        
+        .font-demo {
+            margin-bottom: 40px;
+        }
+        
+        .font-demo h3 {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            color: var(--color-midnight-blue);
+            margin-bottom: 20px;
+        }
+        
+        .font-demo .heading-demo {
+            font-family: var(--font-heading);
+            font-size: 32px;
+            color: var(--color-coral-red);
+            margin-bottom: 15px;
+        }
+        
+        .font-demo .body-demo {
+            font-family: var(--font-body);
+            font-size: 16px;
+            color: var(--color-midnight-blue);
+            line-height: 1.6;
+        }
+        
+        .inspiration-note {
+            background: var(--color-blush-pink);
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 40px;
+            text-align: center;
+        }
+        
+        .inspiration-note p {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            color: var(--color-midnight-blue);
+            margin: 0;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>"Her" Movie-Inspired Color Palette</h1>
+        
+        <div class="palette-grid">
+            <div class="color-card">
+                <div class="color-swatch coral-red"></div>
+                <div class="color-info">
+                    <div class="color-name">Coral Red</div>
+                    <div class="color-hex">#f25c54</div>
+                    <div class="color-description">Primary accent color, warm and inviting. Perfect for UI elements and emotional highlights.</div>
+                </div>
+            </div>
+            
+            <div class="color-card">
+                <div class="color-swatch soft-peach"></div>
+                <div class="color-info">
+                    <div class="color-name">Soft Peach</div>
+                    <div class="color-hex">#ffad9e</div>
+                    <div class="color-description">Secondary warm tone. Ideal for hover states and gentle backgrounds.</div>
+                </div>
+            </div>
+            
+            <div class="color-card">
+                <div class="color-swatch blush-pink"></div>
+                <div class="color-info">
+                    <div class="color-name">Blush Pink</div>
+                    <div class="color-hex">#ffceb6</div>
+                    <div class="color-description">Tertiary warm tone. Great for subtle backgrounds and card elements.</div>
+                </div>
+            </div>
+            
+            <div class="color-card">
+                <div class="color-swatch warm-orange"></div>
+                <div class="color-info">
+                    <div class="color-name">Warm Orange</div>
+                    <div class="color-hex">#ffd38d</div>
+                    <div class="color-description">Complementary warm accent. Perfect for call-to-action elements.</div>
+                </div>
+            </div>
+            
+            <div class="color-card">
+                <div class="color-swatch muted-teal"></div>
+                <div class="color-info">
+                    <div class="color-name">Muted Teal</div>
+                    <div class="color-hex">#4d6875</div>
+                    <div class="color-description">Cool balance to warm tones. Excellent for text and borders.</div>
+                </div>
+            </div>
+            
+            <div class="color-card">
+                <div class="color-swatch midnight-blue"></div>
+                <div class="color-info">
+                    <div class="color-name">Midnight Blue</div>
+                    <div class="color-hex">#2e3440</div>
+                    <div class="color-description">Deep, sophisticated dark tone. Ideal for body text and UI elements.</div>
+                </div>
+            </div>
+            
+            <div class="color-card">
+                <div class="color-swatch cream-white"></div>
+                <div class="color-info">
+                    <div class="color-name">Cream White</div>
+                    <div class="color-hex">#faf8f1</div>
+                    <div class="color-description">Soft, warm white. Primary background color for the palette.</div>
+                </div>
+            </div>
+            
+            <div class="color-card">
+                <div class="color-swatch dusty-rose"></div>
+                <div class="color-info">
+                    <div class="color-name">Dusty Rose</div>
+                    <div class="color-hex">#e8a598</div>
+                    <div class="color-description">Additional warm tone. Great for subtle accents and dividers.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="typography-section">
+            <h2>Typography Pairing</h2>
+            
+            <div class="font-demo">
+                <h3>Playfair Display (Headings)</h3>
+                <div class="heading-demo">Elegant and Sophisticated Headlines</div>
+                <p class="body-demo">A serif font that brings emotional impact and attention. Perfect for titles, headlines, and featured text that needs to stand out.</p>
+            </div>
+            
+            <div class="font-demo">
+                <h3>Nunito Sans (Body Text)</h3>
+                <div class="body-demo">
+                    <strong>This is Nunito Sans in action.</strong> A modern, readable sans-serif font that ensures excellent readability across all devices. Perfect for body text, navigation, and UI elements. The font maintains clarity while complementing the elegant serif headlines.
+                </div>
+            </div>
+        </div>
+        
+        <div class="inspiration-note">
+            <p>"The way you talk to yourself becomes your reality."</p>
+            <p style="font-size: 14px; margin-top: 10px; font-style: normal; opacity: 0.8;">— Inspired by the intimate, warm aesthetic of "Her" (2013)</p>
+        </div>
+    </div>
+</body>
+</html>

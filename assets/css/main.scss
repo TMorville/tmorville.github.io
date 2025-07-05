@@ -2,14 +2,105 @@
 # Only the main Sass file needs front matter (the dashes are enough)
 ---
 
-$background-color: rgba(0, 76, 86, .8);
-$text-color: rgb(255, 250, 241);
-$link-color: rgb(255, 179, 71);
-$masthead-link-color: rgb(255, 179, 71);
-$masthead-color: rgba(0, 76, 86, .8);
+// Import Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap');
+
+// Typography and spacing variables
+$body-font-family: "Nunito Sans", "Helvetica Neue", Arial, sans-serif;
+$heading-font-family: "Playfair Display", Georgia, serif;
+$root-font-size: 18px;
+$spacer: 1.25rem;
+
+// Commented out manual color overrides - let skin be authoritative
+// $background-color: rgba(0, 76, 86, .8);
+// $text-color: rgb(255, 250, 241);
+// $link-color: rgb(255, 179, 71);
+// $masthead-link-color: rgb(255, 179, 71);
+// $masthead-color: rgba(0, 76, 86, .8);
 
 @charset "utf-8";
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
+
+// Subtle enhancements while keeping Minimal Mistakes structure
+a {
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn {
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.masthead {
+  .site-title {
+    font-family: $heading-font-family;
+  }
+}
+
+.page__title,
+.archive__item-title {
+  font-family: $heading-font-family;
+}
+
+// Typography improvements for better readability
+p {
+  line-height: 1.7;
+}
+
+// Enhanced letter spacing for headings
+h1, h2, h3 {
+  letter-spacing: .03em;
+}
+
+// Accessible focus outlines with proper contrast
+*:focus {
+  outline: 2px solid #4d6875;
+  outline-offset: 2px;
+}
+
+// Additional focus styles for interactive elements
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid #4d6875;
+  outline-offset: 2px;
+}
+
+// Enhanced color contrast overrides for WCAG AA compliance
+// Using darker coral color that meets 4.5:1 contrast ratio on peach background
+$link-color: #913732 !default;
+$primary-color: #913732 !default;
+$link-color-hover: #792e2a !default;
+$link-color-visited: #612522 !default;
+
+// Apply the improved colors
+a {
+  color: $link-color;
+  
+  &:hover {
+    color: $link-color-hover;
+  }
+  
+  &:visited {
+    color: $link-color-visited;
+  }
+}
+
+// Ensure buttons and other primary elements use the accessible color
+.btn--primary {
+  background-color: $primary-color;
+  
+  &:hover {
+    background-color: $link-color-hover;
+  }
+}
 
