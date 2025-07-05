@@ -1,0 +1,80 @@
+/* ==========================================================================
+   Her skin - A warm, approachable theme with high contrast
+   ========================================================================== */
+
+/* Colors - Custom palette for the "Her" theme */
+$dark-gray: #2e3440 !default;
+$background-color: #ffceb6 !default;     // Warm peach background
+$text-color: #2e3440 !default;           // Dark gray text for readability
+$muted-text-color: mix($text-color, $background-color, 70%) !default;
+$primary-color: #f25c54 !default;        // Coral red accent
+$border-color: mix(#000, $background-color, 20%) !default;
+$code-background-color: mix(#fff, $background-color, 40%) !default;
+$code-background-color-dark: mix(#000, $background-color, 15%) !default;
+$form-background-color: mix(#fff, $background-color, 25%) !default;
+$footer-background-color: #ffd38d !default;  // Golden yellow footer
+$link-color: mix(#000, $primary-color, 10%) !default;
+$link-color-hover: mix(#fff, $link-color, 25%) !default;
+$link-color-visited: mix(#000, $link-color, 25%) !default;
+
+/* Masthead overrides - Enhanced contrast for navigation */
+$masthead-link-color: $text-color !default;
+$masthead-link-color-hover: mix(#000, $text-color, 30%) !default;
+$navicon-link-color-hover: mix(#000, $background-color, 40%) !default;
+
+/* High-contrast syntax highlighting (base16) - Optimized for readability */
+$base00: #1a1a1a !default;    // Dark background for code blocks
+$base01: #2d2d2d !default;    // Slightly lighter for selection
+$base02: #3a3a3a !default;    // Comments background
+$base03: #767676 !default;    // Comments text
+$base04: #b0b0b0 !default;    // Light gray
+$base05: #d4d4d4 !default;    // Default text in code
+$base06: #e8e8e8 !default;    // Light text
+$base07: #ffffff !default;    // White text
+$base08: #e74c3c !default;    // Red - errors, deletion
+$base09: #f39c12 !default;    // Orange - numbers, constants
+$base0a: #f1c40f !default;    // Yellow - strings, search highlight
+$base0b: #27ae60 !default;    // Green - strings, addition
+$base0c: #16a085 !default;    // Cyan - support, regex
+$base0d: #3498db !default;    // Blue - functions, methods
+$base0e: #9b59b6 !default;    // Purple - keywords, storage
+$base0f: #a0522d !default;    // Brown - deprecated, opening/closing tags
+
+/* Social icons inheritance - Ensures proper color inheritance */
+.author__urls.social-icons .fa,
+.page__footer-follow .social-icons .svg-inline--fa {
+  color: inherit;
+}
+
+/* Additional masthead customizations for better contrast */
+.masthead {
+  background-color: mix($background-color, #fff, 80%);
+  border-bottom: 1px solid mix($border-color, $background-color, 50%);
+}
+
+.masthead__inner-wrap {
+  .masthead__menu-item {
+    &:hover {
+      background-color: mix($background-color, #fff, 60%);
+    }
+  }
+}
+
+/* Enhanced code block styling for better readability */
+.highlight {
+  background-color: $base00;
+  border: 1px solid mix($base00, $background-color, 80%);
+  border-radius: 4px;
+  
+  pre {
+    background-color: $base00;
+    color: $base05;
+  }
+}
+
+/* Inline code styling */
+code {
+  background-color: $code-background-color;
+  color: mix($text-color, $primary-color, 80%);
+  border: 1px solid mix($border-color, $background-color, 60%);
+}
